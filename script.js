@@ -84,7 +84,6 @@ const categoryFilter = document.getElementById('category-filter');
 const productModal = document.getElementById('product-modal');
 const modalTitle = document.getElementById('modal-title');
 const modalContent = document.getElementById('modal-content');
-const closeModal = document.getElementById('close-modal');
 const mobileMenuButton = document.getElementById('mobile-menu-button');
 const mobileMenu = document.getElementById('mobile-menu');
 
@@ -251,7 +250,6 @@ function setupEventListeners() {
     });
     
     // Modal functionality
-    closeModal.addEventListener('click', closeProductModal);
     productModal.addEventListener('click', function(e) {
         if (e.target === productModal) {
             closeProductModal();
