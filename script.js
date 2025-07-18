@@ -9,72 +9,72 @@ AOS.init({
 const products = {
     diesel: [
         // Sintético
-        { id: 'd-s1', name: 'Vecton CK-4/SN 15W-40', viscosity: '15W-40', oilType: 'Sintético', format: '5 gal / 18.9 L', description: 'Aceite sintético para motores diésel de alto desempeño y protección avanzada.', category: 'diesel', image: 'fas fa-truck', specs: { features: [] } },
-        { id: 'd-s2', name: 'Vecton LongDrain E6/E9 10W-40', viscosity: '10W-40', oilType: 'Sintético', format: '5 gal / 208 L', description: 'Aceite sintético de larga duración para motores diésel Euro VI y anteriores.', category: 'diesel', image: 'fas fa-truck', specs: { features: [] } },
-        { id: 'd-s3', name: 'Vecton LD CK-4/E9 10W-30', viscosity: '10W-30', oilType: 'Sintético', format: '5 gal / 208 L', description: 'Aceite sintético para motores diésel modernos, máxima eficiencia y protección.', category: 'diesel', image: 'fas fa-truck', specs: { features: [] } },
+        { id: 'd-s1', name: 'Vecton CK-4/SN 15W-40', viscosity: '15W-40', oilType: 'Sintético', format: '5 gal / 18.9 L', description: 'Aceite sintético para motores diésel de alto desempeño y protección avanzada.', category: 'diesel', image: 'img/Vecton CK-4.jpg', specs: { features: [] } },
+        { id: 'd-s2', name: 'Vecton LongDrain E6/E9 10W-40', viscosity: '10W-40', oilType: 'Sintético', format: '5 gal / 208 L', description: 'Aceite sintético de larga duración para motores diésel Euro VI y anteriores.', category: 'diesel', image: 'img/Vecton LD CK-4.jpg', specs: { features: [] } },
+        { id: 'd-s3', name: 'Vecton LD CK-4/E9 10W-30', viscosity: '10W-30', oilType: 'Sintético', format: '5 gal / 208 L', description: 'Aceite sintético para motores diésel modernos, máxima eficiencia y protección.', category: 'diesel', image: 'img/CastrolVectonLD.jpg', specs: { features: [] } },
         // Semi-sintético
-        { id: 'd-ss1', name: 'CRB Multi CK-4 15W-40', viscosity: '15W-40', oilType: 'Semi-sintético', format: '18.9 L / 5 gal', description: 'Aceite semi-sintético para motores diésel, excelente limpieza y protección.', category: 'diesel', image: 'fas fa-truck', specs: { features: [] } },
+        { id: 'd-ss1', name: 'CRB Multi CK-4 15W-40', viscosity: '15W-40', oilType: 'Semi-sintético', format: '18.9 L / 5 gal', description: 'Aceite semi-sintético para motores diésel, excelente limpieza y protección.', category: 'diesel', image: 'img/CRB Multi CK-4.jpg', specs: { features: [] } },
         // Mineral
-        { id: 'd-m1', name: 'CRB Tmax CI-4/SL/E7 15W-40', viscosity: '15W-40', oilType: 'Mineral', format: '18.9 L / 5 gal', description: 'Aceite mineral para motores diésel, protección robusta y confiable.', category: 'diesel', image: 'fas fa-truck', specs: { features: [] } },
-        { id: 'd-m2', name: 'CRB Viscus 25W-60', viscosity: '25W-60', oilType: 'Mineral', format: 'galón / 946 ml', description: 'Aceite mineral de alta viscosidad para motores diésel exigentes.', category: 'diesel', image: 'fas fa-truck', specs: { features: [] } },
-        { id: 'd-m3', name: 'CRB Monograde SAE 40 / 50', viscosity: 'SAE 40 / 50', oilType: 'Mineral', format: '5 gal / 208 L', description: 'Aceite monogrado mineral para motores diésel convencionales.', category: 'diesel', image: 'fas fa-truck', specs: { features: [] } },
-        { id: 'd-m4', name: 'HD Motor Oil SAE 40 / 50', viscosity: 'SAE 40 / 50', oilType: 'Mineral', format: '12x946 ml', description: 'Aceite mineral para motores diésel, protección básica y económica.', category: 'diesel', image: 'fas fa-truck', specs: { features: [] } }
+        { id: 'd-m1', name: 'CRB Tmax CI-4/SL/E7 15W-40', viscosity: '15W-40', oilType: 'Mineral', format: '18.9 L / 5 gal', description: 'Aceite mineral para motores diésel, protección robusta y confiable.', category: 'diesel', image: 'img/CRB Tmax CI-4-SL-E7 .jpg', specs: { features: [] } },
+        { id: 'd-m2', name: 'CRB Viscus 25W-60', viscosity: '25W-60', oilType: 'Mineral', format: 'galón / 946 ml', description: 'Aceite mineral de alta viscosidad para motores diésel exigentes.', category: 'diesel', image: 'img/CRB Viscus 25W-60.jpg', specs: { features: [] } },
+        { id: 'd-m3', name: 'CRB Monograde SAE 40 / 50', viscosity: 'SAE 40 / 50', oilType: 'Mineral', format: '5 gal / 208 L', description: 'Aceite monogrado mineral para motores diésel convencionales.', category: 'diesel', image: 'img/CRB Monograde SAE 40 - 50.jpg', specs: { features: [] } },
+        { id: 'd-m4', name: 'HD Motor Oil SAE 40 / 50', viscosity: 'SAE 40 / 50', oilType: 'Mineral', format: '12x946 ml', description: 'Aceite mineral para motores diésel, protección básica y económica.', category: 'diesel', image: 'img/HD Motor Oil SAE 40 - 50.jpg', specs: { features: [] } }
     ],
     gasolina: [
         // Sintético
-        { id: 'g-s1', name: 'EDGE Prof V 0W-20', viscosity: '0W-20', oilType: 'Sintético', format: '6x946 ml', description: 'Aceite sintético premium para motores gasolina modernos.', category: 'gasolina', image: 'fas fa-car', specs: { features: [] } },
-        { id: 'g-s2', name: 'EDGE Professional EC 0W-20', viscosity: '0W-20', oilType: 'Sintético', format: '6x946 ml', description: 'Aceite sintético para máxima eficiencia y protección.', category: 'gasolina', image: 'fas fa-car', specs: { features: [] } },
-        { id: 'g-s3', name: 'EDGE 0W-30 HC1', viscosity: '0W-30', oilType: 'Sintético', format: '12x1 L', description: 'Aceite sintético para motores de alto rendimiento.', category: 'gasolina', image: 'fas fa-car', specs: { features: [] } },
-        { id: 'g-s4', name: 'EDGE US Dexos 5W-30', viscosity: '5W-30', oilType: 'Sintético', format: '6x946 ml / 5qt', description: 'Aceite sintético Dexos para motores gasolina.', category: 'gasolina', image: 'fas fa-car', specs: { features: [] } },
-        { id: 'g-s5', name: 'EDGE K 5W-30', viscosity: '5W-30', oilType: 'Sintético', format: '5qt', description: 'Aceite sintético para motores de última generación.', category: 'gasolina', image: 'fas fa-car', specs: { features: [] } },
-        { id: 'g-s6', name: 'EDGE A3/B4 5W-40', viscosity: '5W-40', oilType: 'Sintético', format: '6x946 ml', description: 'Aceite sintético para motores de alto desempeño.', category: 'gasolina', image: 'fas fa-car', specs: { features: [] } },
-        { id: 'g-s7', name: 'EDGE Turbo Diesel 5W-40', viscosity: '5W-40', oilType: 'Sintético', format: '12x1 L / 4x4 L', description: 'Aceite sintético para motores turbo gasolina y diésel.', category: 'gasolina', image: 'fas fa-car', specs: { features: [] } },
+        { id: 'g-s1', name: 'EDGE Prof V 0W-20', viscosity: '0W-20', oilType: 'Sintético', format: '6x946 ml', description: 'Aceite sintético premium para motores gasolina modernos.', category: 'gasolina', image: 'img/EDGE Prof V 0W-20.jpg', specs: { features: [] } },
+        { id: 'g-s2', name: 'EDGE Professional EC 0W-20', viscosity: '0W-20', oilType: 'Sintético', format: '6x946 ml', description: 'Aceite sintético para máxima eficiencia y protección.', category: 'gasolina', image: 'img/EDGE Professional EC 0W-20.jpg', specs: { features: [] } },
+        { id: 'g-s3', name: 'EDGE 0W-30 HC1', viscosity: '0W-30', oilType: 'Sintético', format: '12x1 L', description: 'Aceite sintético para motores de alto rendimiento.', category: 'gasolina', image: 'img/EDGE 0W-30 HC1.jpg', specs: { features: [] } },
+        { id: 'g-s4', name: 'EDGE US Dexos 5W-30', viscosity: '5W-30', oilType: 'Sintético', format: '6x946 ml / 5qt', description: 'Aceite sintético Dexos para motores gasolina.', category: 'gasolina', image: 'img/EDGE US Dexos 5W-30.jpg', specs: { features: [] } },
+        { id: 'g-s5', name: 'EDGE K 5W-30', viscosity: '5W-30', oilType: 'Sintético', format: '5qt', description: 'Aceite sintético para motores de última generación.', category: 'gasolina', image: 'img/EDGE K 5W-30.jpg', specs: { features: [] } },
+        { id: 'g-s6', name: 'EDGE A3/B4 5W-40', viscosity: '5W-40', oilType: 'Sintético', format: '6x946 ml', description: 'Aceite sintético para motores de alto desempeño.', category: 'gasolina', image: 'img/EDGE A3-B4 5W-40.jpg', specs: { features: [] } },
+        { id: 'g-s7', name: 'EDGE Turbo Diesel 5W-40', viscosity: '5W-40', oilType: 'Sintético', format: '12x1 L / 4x4 L', description: 'Aceite sintético para motores turbo gasolina y diésel.', category: 'gasolina', image: 'img/EDGE Turbo Diesel 5W-40.jpg', specs: { features: [] } },
         // Semi-sintético
-        { id: 'g-ss1', name: 'MAGNATEC C3 5W-30', viscosity: '5W-30', oilType: 'Semi-sintético', format: '12x1 L / 4x4 L', description: 'Aceite semi-sintético con moléculas inteligentes para protección continua.', category: 'gasolina', image: 'fas fa-car', specs: { features: [] } },
-        { id: 'g-ss2', name: 'MAGNATEC 508 88 5W-40', viscosity: '5W-40', oilType: 'Semi-sintético', format: '12x1 L', description: 'Aceite semi-sintético para motores europeos.', category: 'gasolina', image: 'fas fa-car', specs: { features: [] } },
-        { id: 'g-ss3', name: 'MAGNATEC 10W-30', viscosity: '10W-30', oilType: 'Semi-sintético', format: '6x946 ml / 3.78 L', description: 'Aceite semi-sintético para motores gasolina.', category: 'gasolina', image: 'fas fa-car', specs: { features: [] } },
-        { id: 'g-ss4', name: 'MAGNATEC 10W-40', viscosity: '10W-40', oilType: 'Semi-sintético', format: '6x946 ml / 3.78 L', description: 'Aceite semi-sintético para motores gasolina.', category: 'gasolina', image: 'fas fa-car', specs: { features: [] } },
-        { id: 'g-ss5', name: 'MAGNATEC 20W-50', viscosity: '20W-50', oilType: 'Semi-sintético', format: '6x946 ml / 3.78 L', description: 'Aceite semi-sintético para motores gasolina de alto kilometraje.', category: 'gasolina', image: 'fas fa-car', specs: { features: [] } },
+        { id: 'g-ss1', name: 'MAGNATEC C3 5W-30', viscosity: '5W-30', oilType: 'Semi-sintético', format: '12x1 L / 4x4 L', description: 'Aceite semi-sintético con moléculas inteligentes para protección continua.', category: 'gasolina', image: 'img/MAGNATEC C3 5W-30.jpg', specs: { features: [] } },
+        { id: 'g-ss2', name: 'MAGNATEC 508 88 5W-40', viscosity: '5W-40', oilType: 'Semi-sintético', format: '12x1 L', description: 'Aceite semi-sintético para motores europeos.', category: 'gasolina', image: 'img/MAGNATEC 508 88 5W-40.jpg', specs: { features: [] } },
+        { id: 'g-ss3', name: 'MAGNATEC 10W-30', viscosity: '10W-30', oilType: 'Semi-sintético', format: '6x946 ml / 3.78 L', description: 'Aceite semi-sintético para motores gasolina.', category: 'gasolina', image: 'img/MAGNATEC 10W-30.jpg', specs: { features: [] } },
+        { id: 'g-ss4', name: 'MAGNATEC 10W-40', viscosity: '10W-40', oilType: 'Semi-sintético', format: '6x946 ml / 3.78 L', description: 'Aceite semi-sintético para motores gasolina.', category: 'gasolina', image: 'img/MAGNATEC 10W-40.jpg', specs: { features: [] } },
+        { id: 'g-ss5', name: 'MAGNATEC 20W-50', viscosity: '20W-50', oilType: 'Semi-sintético', format: '6x946 ml / 3.78 L', description: 'Aceite semi-sintético para motores gasolina de alto kilometraje.', category: 'gasolina', image: 'img/MAGNATEC 20W-50.jpg', specs: { features: [] } },
         // Mineral
-        { id: 'g-m1', name: 'GTX 5W-30', viscosity: '5W-30', oilType: 'Mineral', format: '6x946 ml / 3x4 L', description: 'Aceite mineral para motores gasolina, protección confiable.', category: 'gasolina', image: 'fas fa-car', specs: { features: [] } },
-        { id: 'g-m2', name: 'GTX 10W-30', viscosity: '10W-30', oilType: 'Mineral', format: '12x1qt / 3.78 L', description: 'Aceite mineral para motores gasolina.', category: 'gasolina', image: 'fas fa-car', specs: { features: [] } },
-        { id: 'g-m3', name: 'GTX 10W-40', viscosity: '10W-40', oilType: 'Mineral', format: '3.78 L', description: 'Aceite mineral para motores gasolina.', category: 'gasolina', image: 'fas fa-car', specs: { features: [] } },
-        { id: 'g-m4', name: 'GTX 20W-50', viscosity: '20W-50', oilType: 'Mineral', format: '12x946 ml / 5x3.78 L', description: 'Aceite mineral para motores gasolina de alto kilometraje.', category: 'gasolina', image: 'fas fa-car', specs: { features: [] } },
-        { id: 'g-m5', name: 'GTX Gas 20W-50', viscosity: '20W-50', oilType: 'Mineral', format: '12x946 ml / 3.78 L', description: 'Aceite mineral para motores a gas.', category: 'gasolina', image: 'fas fa-car', specs: { features: [] } },
-        { id: 'g-m6', name: 'GTX Alto KM 25W-60', viscosity: '25W-60', oilType: 'Mineral', format: '3.78 L', description: 'Aceite mineral para motores de alto kilometraje.', category: 'gasolina', image: 'fas fa-car', specs: { features: [] } }
+        { id: 'g-m1', name: 'GTX 5W-30', viscosity: '5W-30', oilType: 'Mineral', format: '6x946 ml / 3x4 L', description: 'Aceite mineral para motores gasolina, protección confiable.', category: 'gasolina', image: 'img/GTX 5W-30.jpg', specs: { features: [] } },
+        { id: 'g-m2', name: 'GTX 10W-30', viscosity: '10W-30', oilType: 'Mineral', format: '12x1qt / 3.78 L', description: 'Aceite mineral para motores gasolina.', category: 'gasolina', image: 'img/GTX 10W-30.jpg', specs: { features: [] } },
+        { id: 'g-m3', name: 'GTX 10W-40', viscosity: '10W-40', oilType: 'Mineral', format: '3.78 L', description: 'Aceite mineral para motores gasolina.', category: 'gasolina', image: 'img/GTX 10W-40.jpg', specs: { features: [] } },
+        { id: 'g-m4', name: 'GTX 20W-50', viscosity: '20W-50', oilType: 'Mineral', format: '12x946 ml / 5x3.78 L', description: 'Aceite mineral para motores gasolina de alto kilometraje.', category: 'gasolina', image: 'img/GTX 20W-50.jpg', specs: { features: [] } },
+        { id: 'g-m5', name: 'GTX Gas 20W-50', viscosity: '20W-50', oilType: 'Mineral', format: '12x946 ml / 3.78 L', description: 'Aceite mineral para motores a gas.', category: 'gasolina', image: 'img/GTX Gas 20W-50.jpg', specs: { features: [] } },
+        { id: 'g-m6', name: 'GTX Alto KM 25W-60', viscosity: '25W-60', oilType: 'Mineral', format: '3.78 L', description: 'Aceite mineral para motores de alto kilometraje.', category: 'gasolina', image: 'img/GTX Alto KM 25W-60.jpg', specs: { features: [] } }
     ],
     motos: [
         // Sintético
-        { id: 'm-s1', name: 'POWER 1 Ultimate 4T 10W-40', viscosity: '10W-40', oilType: 'Sintético', format: '12x1 L', description: 'Aceite sintético para motos de alto rendimiento.', category: 'motos', image: 'fas fa-motorcycle', specs: { features: [] } },
-        { id: 'm-s2', name: 'POWER 1 4T 15W-50', viscosity: '15W-50', oilType: 'Sintético', format: '12x1 L', description: 'Aceite sintético para motos deportivas.', category: 'motos', image: 'fas fa-motorcycle', specs: { features: [] } },
+        { id: 'm-s1', name: 'POWER 1 Ultimate 4T 10W-40', viscosity: '10W-40', oilType: 'Sintético', format: '12x1 L', description: 'Aceite sintético para motos de alto rendimiento.', category: 'motos', image: 'img/POWER 1 Ultimate 4T 10W-40-4L.jpg', specs: { features: [] } },
+        { id: 'm-s2', name: 'POWER 1 4T 15W-50', viscosity: '15W-50', oilType: 'Sintético', format: '12x1 L', description: 'Aceite sintético para motos deportivas.', category: 'motos', image: 'img/POWER 1 4T 15W-50.jpg', specs: { features: [] } },
         // Semi-sintético
-        { id: 'm-ss1', name: 'Actevo St-St 4T 10W-30', viscosity: '10W-30', oilType: 'Semi-sintético', format: '6x1 L', description: 'Aceite semi-sintético para motos 4T.', category: 'motos', image: 'fas fa-motorcycle', specs: { features: [] } },
-        { id: 'm-ss2', name: 'Actevo St-St 4T 10W-40', viscosity: '10W-40', oilType: 'Semi-sintético', format: '6x1 L', description: 'Aceite semi-sintético para motos 4T.', category: 'motos', image: 'fas fa-motorcycle', specs: { features: [] } },
-        { id: 'm-ss3', name: 'Actevo St-St 4T 15W-50', viscosity: '15W-50', oilType: 'Semi-sintético', format: '12x1 L', description: 'Aceite semi-sintético para motos 4T.', category: 'motos', image: 'fas fa-motorcycle', specs: { features: [] } },
+        { id: 'm-ss1', name: 'Actevo St-St 4T 10W-30', viscosity: '10W-30', oilType: 'Semi-sintético', format: '6x1 L', description: 'Aceite semi-sintético para motos 4T.', category: 'motos', image: 'img/Actevo St-St 4T 10W-30.jpg', specs: { features: [] } },
+        { id: 'm-ss2', name: 'Actevo St-St 4T 10W-40', viscosity: '10W-40', oilType: 'Semi-sintético', format: '6x1 L', description: 'Aceite semi-sintético para motos 4T.', category: 'motos', image: 'img/Actevo St-St 4T 10W-40.jpg', specs: { features: [] } },
+        { id: 'm-ss3', name: 'Actevo St-St 4T 15W-50', viscosity: '15W-50', oilType: 'Semi-sintético', format: '12x1 L', description: 'Aceite semi-sintético para motos 4T.', category: 'motos', image: 'img/Actevo St-St 4T 15W-50.jpg', specs: { features: [] } },
         // Mineral
-        { id: 'm-m1', name: 'POWER 1 V-Twin 4T 20W-50', viscosity: '20W-50', oilType: 'Mineral', format: '6x1qt', description: 'Aceite mineral para motos V-Twin.', category: 'motos', image: 'fas fa-motorcycle', specs: { features: [] } },
-        { id: 'm-m2', name: 'Actevo 4T 20W-50', viscosity: '20W-50', oilType: 'Mineral', format: '6x1 L', description: 'Aceite mineral para motos 4T.', category: 'motos', image: 'fas fa-motorcycle', specs: { features: [] } },
-        { id: 'm-m3', name: 'Actevo Essential 4T 25W-60', viscosity: '25W-60', oilType: 'Mineral', format: '6x946 ml', description: 'Aceite mineral para motos 4T, protección extra.', category: 'motos', image: 'fas fa-motorcycle', specs: { features: [] } },
-        { id: 'm-m4', name: 'Actevo Essential 4T 20W-50', viscosity: '20W-50', oilType: 'Mineral', format: '6x946 ml', description: 'Aceite mineral para motos 4T.', category: 'motos', image: 'fas fa-motorcycle', specs: { features: [] } }
+        { id: 'm-m1', name: 'POWER 1 V-Twin 4T 20W-50', viscosity: '20W-50', oilType: 'Mineral', format: '6x1qt', description: 'Aceite mineral para motos V-Twin.', category: 'motos', image: 'img/POWER 1 V-Twin 4T 20W-50.jpg', specs: { features: [] } },
+        { id: 'm-m2', name: 'Actevo 4T 20W-50', viscosity: '20W-50', oilType: 'Mineral', format: '6x1 L', description: 'Aceite mineral para motos 4T.', category: 'motos', image: 'img/Actevo Essential 4T 20W-50.jpg', specs: { features: [] } },
+        { id: 'm-m3', name: 'Actevo Essential 4T 25W-60', viscosity: '25W-60', oilType: 'Mineral', format: '6x946 ml', description: 'Aceite mineral para motos 4T, protección extra.', category: 'motos', image: 'img/Actevo Essential 4T 25W-60.jpg', specs: { features: [] } },
+        { id: 'm-m4', name: 'Actevo Essential 4T 20W-50', viscosity: '20W-50', oilType: 'Mineral', format: '6x946 ml', description: 'Aceite mineral para motos 4T.', category: 'motos', image: 'img/Actevo Essential 4T 20W-50.jpg', specs: { features: [] } }
     ],
     transmisiones: [
         // Sintético
-        { id: 't-s1', name: 'TRANSMAX Universal LL 75W-90', viscosity: '75W-90', oilType: 'Sintético', format: '18.9 L', description: 'Aceite sintético para transmisiones universales.', category: 'transmisiones', image: 'fas fa-cogs', specs: { features: [] } },
+        { id: 't-s1', name: 'TRANSMAX Universal LL 75W-90', viscosity: '75W-90', oilType: 'Sintético', format: '18.9 L', description: 'Aceite sintético para transmisiones universales.', category: 'transmisiones', image: 'img/TRANSMAX Universal LL 75W-90.jpg', specs: { features: [] } },
         // Mineral
-        { id: 't-m1', name: 'TRANSMAX CVT', viscosity: 'CVT', oilType: 'Mineral', format: '', description: 'Aceite mineral para transmisiones CVT.', category: 'transmisiones', image: 'fas fa-cogs', specs: { features: [] } },
-        { id: 't-m2', name: 'TRANSMAX ATF DX III', viscosity: 'ATF DX III', oilType: 'Mineral', format: '', description: 'Aceite mineral para transmisiones automáticas.', category: 'transmisiones', image: 'fas fa-cogs', specs: { features: [] } },
-        { id: 't-m3', name: 'TRANSMAX Mercon V / Dexron III', viscosity: 'Mercon V / Dexron III', oilType: 'Mineral', format: '', description: 'Aceite mineral para transmisiones automáticas.', category: 'transmisiones', image: 'fas fa-cogs', specs: { features: [] } },
-        { id: 't-m4', name: 'TRANSMAX Dex/Merc', viscosity: 'Dex/Merc', oilType: 'Mineral', format: '', description: 'Aceite mineral para transmisiones automáticas.', category: 'transmisiones', image: 'fas fa-cogs', specs: { features: [] } },
-        { id: 't-m5', name: 'AXLE Limited Slip 80W-90', viscosity: '80W-90', oilType: 'Mineral', format: '', description: 'Aceite mineral para diferenciales Limited Slip.', category: 'transmisiones', image: 'fas fa-cogs', specs: { features: [] } },
-        { id: 't-m6', name: 'AXLE GL-5 85W-140', viscosity: '85W-140', oilType: 'Mineral', format: '', description: 'Aceite mineral para diferenciales GL-5.', category: 'transmisiones', image: 'fas fa-cogs', specs: { features: [] } },
-        { id: 't-m7', name: 'TRANS C 10W / 30', viscosity: '10W / 30', oilType: 'Mineral', format: '5 gal', description: 'Aceite mineral para transmisiones y convertidores.', category: 'transmisiones', image: 'fas fa-cogs', specs: { features: [] } }
+        { id: 't-m1', name: 'TRANSMAX CVT', viscosity: 'CVT', oilType: 'Mineral', format: '', description: 'Aceite mineral para transmisiones CVT.', category: 'transmisiones', image: 'img/TRANSMAX CVT.jpg', specs: { features: [] } },
+        { id: 't-m2', name: 'TRANSMAX ATF DX III', viscosity: 'ATF DX III', oilType: 'Mineral', format: '', description: 'Aceite mineral para transmisiones automáticas.', category: 'transmisiones', image: 'img/TRANSMAX ATF DX III.jpg', specs: { features: [] } },
+        { id: 't-m3', name: 'TRANSMAX Mercon V / Dexron III', viscosity: 'Mercon V / Dexron III', oilType: 'Mineral', format: '', description: 'Aceite mineral para transmisiones automáticas.', category: 'transmisiones', image: 'img/TRANSMAX Mercon V.jpg', specs: { features: [] } },
+        { id: 't-m4', name: 'TRANSMAX Dex/Merc', viscosity: 'Dex/Merc', oilType: 'Mineral', format: '', description: 'Aceite mineral para transmisiones automáticas.', category: 'transmisiones', image: 'img/TRANSMAX Dex-Merc.jpg', specs: { features: [] } },
+        { id: 't-m5', name: 'AXLE Limited Slip 80W-90', viscosity: '80W-90', oilType: 'Mineral', format: '', description: 'Aceite mineral para diferenciales Limited Slip.', category: 'transmisiones', image: 'img/AXLE Limited Slip 80W-90.jpg', specs: { features: [] } },
+        { id: 't-m6', name: 'AXLE GL-5 85W-140', viscosity: '85W-140', oilType: 'Mineral', format: '', description: 'Aceite mineral para diferenciales GL-5.', category: 'transmisiones', image: 'img/AXLE GL-5 85W-140.jpg', specs: { features: [] } },
+        { id: 't-m7', name: 'TRANS C 10W / 30', viscosity: '10W / 30', oilType: 'Mineral', format: '5 gal', description: 'Aceite mineral para transmisiones y convertidores.', category: 'transmisiones', image: 'img/TRANS C 10W - 30.jpg', specs: { features: [] } }
     ],
     complementarios: [
-        { id: 'c1', name: 'Hyspin AWS 68', viscosity: '68', oilType: '', format: '5 gal', description: 'Aceite hidráulico para sistemas industriales.', category: 'complementarios', image: 'fas fa-tools', specs: { features: [] } },
-        { id: 'c2', name: 'Hyspin AWS 46', viscosity: '46', oilType: '', format: '5 gal', description: 'Aceite hidráulico para sistemas industriales.', category: 'complementarios', image: 'fas fa-tools', specs: { features: [] } },
-        { id: 'c3', name: 'Universal Tractor Fluid (UTF)', viscosity: '', oilType: '', format: '5 gal', description: 'Fluido universal para tractores y maquinaria agrícola.', category: 'complementarios', image: 'fas fa-tools', specs: { features: [] } },
-        { id: 'c4', name: 'Actevo Essential 2T 100x160ml', viscosity: '2T', oilType: '', format: '100x160ml', description: 'Aceite para motores 2T, presentación económica.', category: 'complementarios', image: 'fas fa-tools', specs: { features: [] } },
-        { id: 'c5', name: 'Actevo Essential 2T 100x200ml', viscosity: '2T', oilType: '', format: '100x200ml', description: 'Aceite para motores 2T, presentación económica.', category: 'complementarios', image: 'fas fa-tools', specs: { features: [] } }
+        { id: 'c1', name: 'Hyspin AWS 68', viscosity: '68', oilType: '', format: '5 gal', description: 'Aceite hidráulico para sistemas industriales.', category: 'complementarios', image: 'img/Hyspin AWS 68.jpg', specs: { features: [] } },
+        { id: 'c2', name: 'Hyspin AWS 46', viscosity: '46', oilType: '', format: '5 gal', description: 'Aceite hidráulico para sistemas industriales.', category: 'complementarios', image: 'img/Hyspin AWS 46.jpg', specs: { features: [] } },
+        { id: 'c3', name: 'Universal Tractor Fluid (UTF)', viscosity: '', oilType: '', format: '5 gal', description: 'Fluido universal para tractores y maquinaria agrícola.', category: 'complementarios', image: 'img/Universal Tractor Fluid (UTF).jpg', specs: { features: [] } },
+        { id: 'c4', name: 'Actevo Essential 2T 100x160ml', viscosity: '2T', oilType: '', format: '100x160ml', description: 'Aceite para motores 2T, presentación económica.', category: 'complementarios', image: 'img/Actevo Essential 2T.jpg', specs: { features: [] } },
+        { id: 'c5', name: 'Actevo Essential 2T 100x200ml', viscosity: '2T', oilType: '', format: '100x200ml', description: 'Aceite para motores 2T, presentación económica.', category: 'complementarios', image: 'img/Actevo Essential 2T 100x200ml.jpg', specs: { features: [] } }
     ]
 };
 
@@ -126,11 +126,17 @@ function createProductCard(product) {
     card.setAttribute('data-category', product.category);
     card.setAttribute('data-search', `${product.name} ${product.viscosity} ${product.description}`.toLowerCase());
     
+    // Check if image is a file path or icon class
+    const isImageFile = product.image.startsWith('img/');
+    const imageContent = isImageFile 
+        ? `<img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover rounded-lg">`
+        : `<i class="${product.image} text-white text-xl"></i>`;
+    
     card.innerHTML = `
         <div class="p-6">
             <div class="flex items-center justify-between mb-4">
-                <div class="w-12 h-12 bg-castrol-green rounded-lg flex items-center justify-center">
-                    <i class="${product.image} text-white text-xl"></i>
+                <div class="w-12 h-12 bg-castrol-green rounded-lg flex items-center justify-center overflow-hidden">
+                    ${imageContent}
                 </div>
                 <span class="text-sm font-semibold text-gray-500">${product.format}</span>
             </div>
@@ -172,11 +178,17 @@ function createModalContent(product) {
     if (specs.dot) specsHtml += `<p><strong>DOT:</strong> ${specs.dot}</p>`;
     if (specs.type) specsHtml += `<p><strong>Tipo:</strong> ${specs.type}</p>`;
     
+    // Check if image is a file path or icon class
+    const isImageFile = product.image.startsWith('img/');
+    const imageContent = isImageFile 
+        ? `<img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover rounded-lg">`
+        : `<i class="${product.image} text-white text-2xl"></i>`;
+    
     return `
         <div class="space-y-6">
             <div class="flex items-center space-x-4">
-                <div class="w-16 h-16 bg-castrol-green rounded-lg flex items-center justify-center">
-                    <i class="${product.image} text-white text-2xl"></i>
+                <div class="w-16 h-16 bg-castrol-green rounded-lg flex items-center justify-center overflow-hidden">
+                    ${imageContent}
                 </div>
                 <div>
                     <p class="text-lg font-semibold">Viscosidad: ${product.viscosity}</p>
