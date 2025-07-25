@@ -16,7 +16,7 @@ let currentView = 'grid';
 let comparisonList = [];
 let allProducts = [];
 
-// Product data with enhanced specifications
+// Product data with enhanced specifications and multiple format support
 const products = {
     diesel: [
         // Full Sintético
@@ -25,10 +25,12 @@ const products = {
             name: 'Castrol Vecton Long Drain E6/E9 10W-40', 
             viscosity: '10W-40', 
             oilType: 'Full Sintético', 
-            format: '5 gal / 208 L', 
+            formats: [
+                { size: '5 gal', image: 'img/Castrol Vecton Long Drain E6-E9 10W-40 — 5 gal.jpg' },
+                { size: '208 L', image: 'img/Castrol Vecton Long Drain E6-E9 10W-40 —  208 L.jpg' }
+            ],
             description: 'Aceite sintético de larga duración para motores diésel Euro VI y anteriores.', 
             category: 'diesel', 
-            image: 'img/Vecton LD CK-4.jpg', 
             specs: { 
                 api: 'CK-4', 
                 acea: 'E6/E9', 
@@ -46,10 +48,12 @@ const products = {
             name: 'Castrol Vecton LD CK-4/E9 10W-30', 
             viscosity: '10W-30', 
             oilType: 'Full Sintético', 
-            format: '5 gal / 208 L', 
+            formats: [
+                { size: '5 gal', image: 'img/Castrol Vecton LD CK-4-E9 10W-30 — 5 gal.jpg' },
+                { size: '208 L', image: 'img/Castrol Vecton LD CK-4-E9 10W-30 —  208 L.jpg' }
+            ],
             description: 'Aceite sintético para motores diésel modernos, máxima eficiencia y protección.', 
             category: 'diesel', 
-            image: 'img/CastrolVectonLD.jpg', 
             specs: { 
                 api: 'CK-4', 
                 acea: 'E9', 
@@ -67,10 +71,12 @@ const products = {
             name: 'Castrol Vecton CK-4/SN 15W-40', 
             viscosity: '15W-40', 
             oilType: 'Sintético', 
-            format: '5 gal / 208 L', 
+            formats: [
+                { size: '5 gal', image: 'img/Castrol Vecton CK-4-SN 15W-40 — 5 gal.jpg' },
+                { size: '208L', image: 'img/Castrol Vecton CK-4-SN 15W-40 — 208L.jpg' }
+            ],
             description: 'Aceite sintético para motores diésel de alto desempeño y protección avanzada.', 
             category: 'diesel', 
-            image: 'img/Vecton CK-4.jpg', 
             specs: { 
                 api: 'CK-4/SN', 
                 features: [
@@ -87,10 +93,12 @@ const products = {
             name: 'Castrol CRB Multi CK-4 15W-40', 
             viscosity: '15W-40', 
             oilType: 'Semi-sintético', 
-            format: '18.9 L / 5 gal', 
+            formats: [
+                { size: '18.9 L', image: 'img/Castrol CRB Multi CK-4 15W-40 — 18.9 L.jpg' },
+                { size: '5 gal', image: 'img/Castrol CRB Multi CK-4 15W-40 — 5gal.jpg' }
+            ],
             description: 'Aceite semi-sintético para motores diésel, excelente limpieza y protección.', 
             category: 'diesel', 
-            image: 'img/CRB Multi CK-4.jpg', 
             specs: { 
                 api: 'CK-4', 
                 features: [
@@ -107,18 +115,20 @@ const products = {
             name: 'Castrol CRB Turbomax CI-4/SL/E7 15W-40', 
             viscosity: '15W-40', 
             oilType: 'Mineral', 
-            format: '18.9 L / 5 gal', 
+            formats: [
+                { size: '18.9 L', image: 'img/Castrol CRB Turbomax CI-4-SL-E7 15W-40 — 18.9 L.jpg' },
+                { size: '5 gal', image: 'img/Castrol CRB Turbomax CI-4-SL-E7 15W-40 —  5 gal.jpg' }
+            ],
             description: 'Aceite mineral para motores diésel, protección robusta y confiable.', 
             category: 'diesel', 
-            image: 'img/CRB Tmax CI-4-SL-E7 .jpg', 
             specs: { 
                 api: 'CI-4/SL', 
                 acea: 'E7', 
                 features: [
-                    'Base mineral de alta calidad',
-                    'Protección contra desgaste',
-                    'Control de espesamiento por hollín',
-                    'Excelente flujo en frío'
+                    'Protección confiable y económica',
+                    'Control de depósitos',
+                    'Resistencia a altas temperaturas',
+                    'Compatibilidad universal'
                 ]
             }
         },
@@ -127,54 +137,57 @@ const products = {
             name: 'Castrol CRB Viscus 25W-60', 
             viscosity: '25W-60', 
             oilType: 'Mineral', 
-            format: 'galón / 946 ml', 
+            formats: [
+                { size: '946 ml', image: 'img/Castrol CRB Viscus 25W-60 —  946 ml.jpg' },
+                { size: 'galón', image: 'img/Castrol CRB Viscus 25W-60 — galón.jpg' }
+            ],
             description: 'Aceite mineral de alta viscosidad para motores diésel exigentes.', 
             category: 'diesel', 
-            image: 'img/CRB Viscus 25W-60.jpg', 
             specs: { 
                 features: [
                     'Alta viscosidad para motores desgastados',
+                    'Protección contra fugas',
                     'Sellado mejorado',
-                    'Reducción de consumo de aceite',
-                    'Protección en condiciones extremas'
+                    'Economía de uso'
                 ]
             }
         },
         { 
             id: 'd-m3', 
-            name: 'Castrol CRB Monograde SAE 40 / 50', 
-            viscosity: 'SAE 40 / 50', 
+            name: 'Castrol CRB Monograde SAE 40/50', 
+            viscosity: 'SAE 40/50', 
             oilType: 'Mineral', 
-            format: '5 gal / 208 L', 
+            formats: [
+                { size: '5 gal', image: 'img/Castrol CRB Monograde SAE 40 - 50 — 5 gal.jpg' },
+                { size: '208 L', image: 'img/Castrol CRB Monograde SAE 40 - 50 — 208 L.jpg' }
+            ],
             description: 'Aceite monogrado mineral para motores diésel convencionales.', 
             category: 'diesel', 
-            image: 'img/CRB Monograde SAE 40 - 50.jpg', 
             specs: { 
-                type: 'Monogrado', 
                 features: [
                     'Fórmula monogrado tradicional',
-                    'Ideal para climas cálidos',
-                    'Costo-efectivo',
-                    'Protección básica confiable'
+                    'Protección básica confiable',
+                    'Económico y eficiente',
+                    'Para motores convencionales'
                 ]
             }
         },
         { 
             id: 'd-m4', 
-            name: 'Castrol HD Motor Oil SAE 40 / 50', 
-            viscosity: 'SAE 40 / 50', 
+            name: 'Castrol HD Motor Oil SAE 40/50', 
+            viscosity: 'SAE 40/50', 
             oilType: 'Mineral', 
-            format: '12x946 ml', 
+            formats: [
+                { size: '12x946 ml', image: 'img/Castrol HD Motor Oil SAE 40- 50 — 12x946 ml.jpg' }
+            ],
             description: 'Aceite mineral para motores diésel, protección básica y económica.', 
             category: 'diesel', 
-            image: 'img/HD Motor Oil SAE 40 - 50.jpg', 
             specs: { 
-                type: 'Monogrado', 
                 features: [
-                    'Opción económica',
+                    'Protección básica económica',
                     'Para uso general',
-                    'Fácil disponibilidad',
-                    'Rendimiento básico'
+                    'Disponible en presentación múltiple',
+                    'Ideal para flotas'
                 ]
             }
         }
@@ -186,17 +199,18 @@ const products = {
             name: 'Castrol EDGE Professional V 0W-20', 
             viscosity: '0W-20', 
             oilType: 'Full Sintético', 
-            format: '6x946 ml', 
+            formats: [
+                { size: '6x946 ml', image: 'img/Castrol EDGE Professional V 0W-20 — 6x946 ml.jpg' }
+            ],
             description: 'Aceite sintético premium para motores gasolina modernos.', 
             category: 'gasolina', 
-            image: 'img/EDGE Prof V 0W-20.jpg', 
             specs: { 
                 api: 'SP', 
                 features: [
                     'Tecnología Fluid TITANIUM',
-                    'Máxima eficiencia de combustible',
-                    'Arranque en frío superior',
-                    'Protección avanzada del motor'
+                    'Reducción de fricción hasta 15%',
+                    'Protección en condiciones extremas',
+                    'Máximo rendimiento del motor'
                 ]
             }
         },
@@ -205,17 +219,18 @@ const products = {
             name: 'Castrol EDGE Professional EC 0W-20', 
             viscosity: '0W-20', 
             oilType: 'Full Sintético', 
-            format: '6x946 ml', 
+            formats: [
+                { size: '6x946 ml', image: 'img/Castrol EDGE Professional EC 0W-20 — 6x946 ml.jpg' }
+            ],
             description: 'Aceite sintético para máxima eficiencia y protección.', 
             category: 'gasolina', 
-            image: 'img/EDGE Professional EC 0W-20.jpg', 
             specs: { 
                 api: 'SP', 
                 features: [
-                    'Eco-eficiencia certificada',
-                    'Reducción de emisiones',
-                    'Protección del catalizador',
-                    'Rendimiento de combustible optimizado'
+                    'Eficiencia de combustible superior',
+                    'Arranque en frío mejorado',
+                    'Protección avanzada del motor',
+                    'Tecnología de vanguardia'
                 ]
             }
         },
@@ -224,17 +239,18 @@ const products = {
             name: 'Castrol EDGE 0W-30 HC1', 
             viscosity: '0W-30', 
             oilType: 'Full Sintético', 
-            format: '12x1 L', 
+            formats: [
+                { size: '12x1 L', image: 'img/Castrol EDGE 0W-30 HC1 — 12x1 L.jpg' }
+            ],
             description: 'Aceite sintético para motores de alto rendimiento.', 
             category: 'gasolina', 
-            image: 'img/EDGE 0W-30 HC1.jpg', 
             specs: { 
                 api: 'SP', 
                 features: [
                     'Fórmula HC1 avanzada',
-                    'Resistencia extrema a la presión',
-                    'Protección contra desgaste',
-                    'Flujo instantáneo'
+                    'Protección superior',
+                    'Rendimiento excepcional',
+                    'Tecnología probada'
                 ]
             }
         },
@@ -243,18 +259,20 @@ const products = {
             name: 'Castrol EDGE US Dexos 5W-30', 
             viscosity: '5W-30', 
             oilType: 'Full Sintético', 
-            format: '6x946 ml / 5 qt', 
+            formats: [
+                { size: '6x946 ml', image: 'img/Castrol EDGE US Dexos 5W-30 — 6x946 ml.jpg' },
+                { size: '5 qt', image: 'img/Castrol EDGE US Dexos 5W-30 — 5 qt.jpg' }
+            ],
             description: 'Aceite sintético Dexos para motores gasolina.', 
             category: 'gasolina', 
-            image: 'img/EDGE US Dexos 5W-30.jpg', 
             specs: { 
                 api: 'SP', 
-                dexos: 'dexos1 Gen 3', 
+                dexos: 'Gen 2', 
                 features: [
-                    'Certificación dexos1 Gen 3',
-                    'Especialmente para GM',
-                    'Protección de inyectores',
-                    'Control de depósitos'
+                    'Aprobación GM Dexos',
+                    'Protección avanzada',
+                    'Eficiencia mejorada',
+                    'Tecnología sintética'
                 ]
             }
         },
@@ -263,17 +281,18 @@ const products = {
             name: 'Castrol EDGE K 5W-30', 
             viscosity: '5W-30', 
             oilType: 'Full Sintético', 
-            format: '5 qt', 
+            formats: [
+                { size: '5 qt', image: 'img/Castrol EDGE K 5W-30 — 5 qt.jpg' }
+            ],
             description: 'Aceite sintético para motores de última generación.', 
             category: 'gasolina', 
-            image: 'img/EDGE K 5W-30.jpg', 
             specs: { 
                 api: 'SP', 
                 features: [
-                    'Tecnología K-Series',
-                    'Protección avanzada',
-                    'Limpieza del motor',
-                    'Durabilidad extendida'
+                    'Fórmula K especializada',
+                    'Máxima protección',
+                    'Rendimiento superior',
+                    'Tecnología avanzada'
                 ]
             }
         },
@@ -282,18 +301,19 @@ const products = {
             name: 'Castrol EDGE A3/B4 5W-40', 
             viscosity: '5W-40', 
             oilType: 'Full Sintético', 
-            format: '6x946 ml', 
+            formats: [
+                { size: '6x946 ml', image: 'img/Castrol EDGE A3-B4 5W-40 — 6x946 ml.jpg' }
+            ],
             description: 'Aceite sintético para motores de alto desempeño.', 
             category: 'gasolina', 
-            image: 'img/EDGE A3-B4 5W-40.jpg', 
             specs: { 
                 api: 'SP', 
                 acea: 'A3/B4', 
                 features: [
-                    'Especificación A3/B4',
-                    'Para motores de alta potencia',
-                    'Resistencia al cizallamiento',
-                    'Protección en condiciones severas'
+                    'Especificación europea A3/B4',
+                    'Alto rendimiento',
+                    'Protección avanzada',
+                    'Calidad superior'
                 ]
             }
         },
@@ -302,17 +322,19 @@ const products = {
             name: 'Castrol EDGE Turbo Diesel 5W-40', 
             viscosity: '5W-40', 
             oilType: 'Full Sintético', 
-            format: '12x1 L / 4x4 L', 
+            formats: [
+                { size: '12x1 L', image: 'img/Castrol EDGE Turbo Diesel 5W-40 — 12x1 L.jpg' },
+                { size: '4x4 L', image: 'img/Castrol EDGE Turbo Diesel 5W-40 —  4x4 L.jpg' }
+            ],
             description: 'Aceite sintético para motores turbo gasolina y diésel.', 
             category: 'gasolina', 
-            image: 'img/EDGE Turbo Diesel 5W-40.jpg', 
             specs: { 
-                api: 'SP/CK-4', 
+                api: 'SP', 
                 features: [
-                    'Dual gasolina/diésel',
-                    'Protección turbo',
-                    'Resistencia a altas temperaturas',
-                    'Control de depósitos'
+                    'Para motores turbo',
+                    'Protección contra altas temperaturas',
+                    'Rendimiento dual',
+                    'Tecnología avanzada'
                 ]
             }
         },
@@ -322,18 +344,20 @@ const products = {
             name: 'Castrol MAGNATEC C3 5W-30', 
             viscosity: '5W-30', 
             oilType: 'Semi-sintético', 
-            format: '12x1 L / 4x4 L', 
+            formats: [
+                { size: '12x1 L', image: 'img/Castrol MAGNATEC C3 5W-30 — 12x1 L.jpg' },
+                { size: '4x4 L', image: 'img/Castrol MAGNATEC C3 5W-30 —  4x4 L.jpg' }
+            ],
             description: 'Aceite semi-sintético con moléculas inteligentes para protección continua.', 
             category: 'gasolina', 
-            image: 'img/MAGNATEC C3 5W-30.jpg', 
             specs: { 
-                api: 'SP', 
+                api: 'SN', 
                 acea: 'C3', 
                 features: [
-                    'Moléculas inteligentes DUALOCK',
+                    'Moléculas inteligentes',
                     'Protección desde el arranque',
-                    'Compatible con DPF',
-                    'Reducción de emisiones'
+                    'Reducción del desgaste',
+                    'Tecnología MAGNATEC'
                 ]
             }
         },
@@ -342,17 +366,19 @@ const products = {
             name: 'Castrol MAGNATEC 508 88 5W-40', 
             viscosity: '5W-40', 
             oilType: 'Semi-sintético', 
-            format: '12x1 L', 
+            formats: [
+                { size: '12x1 L', image: 'img/Castrol MAGNATEC 508 88 5W-40 — 12x1 L.jpg' }
+            ],
             description: 'Aceite semi-sintético para motores europeos.', 
             category: 'gasolina', 
-            image: 'img/MAGNATEC 508 88 5W-40.jpg', 
             specs: { 
-                vw: 'VW 508 88', 
+                api: 'SN', 
+                vw: '508 88', 
                 features: [
                     'Especificación VW 508 88',
-                    'Para motores VAG',
-                    'Intervalos extendidos',
-                    'Low SAPS'
+                    'Para motores europeos',
+                    'Protección inteligente',
+                    'Calidad premium'
                 ]
             }
         },
@@ -361,17 +387,19 @@ const products = {
             name: 'Castrol MAGNATEC 10W-30', 
             viscosity: '10W-30', 
             oilType: 'Semi-sintético', 
-            format: '6x946 ml / 3.78 L', 
+            formats: [
+                { size: '6x946 ml', image: 'img/Castrol MAGNATEC 10W-30 — 6x946 ml.jpg' },
+                { size: '3.78 L', image: 'img/Castrol MAGNATEC 10W-30 —  3.78 L.jpg' }
+            ],
             description: 'Aceite semi-sintético para motores gasolina.', 
             category: 'gasolina', 
-            image: 'img/MAGNATEC 10W-30.jpg', 
             specs: { 
                 api: 'SN', 
                 features: [
-                    'Tecnología MAGNATEC',
                     'Protección inteligente',
-                    'Adherencia molecular',
-                    'Arranque protegido'
+                    'Arranque seguro',
+                    'Durabilidad mejorada',
+                    'Tecnología probada'
                 ]
             }
         },
@@ -380,17 +408,19 @@ const products = {
             name: 'Castrol MAGNATEC 10W-40', 
             viscosity: '10W-40', 
             oilType: 'Semi-sintético', 
-            format: '6x946 ml / 3.78 L', 
+            formats: [
+                { size: '6x946 ml', image: 'img/Castrol MAGNATEC 10W-40 — 6x946 ml.jpg' },
+                { size: '3.78 L', image: 'img/Castrol MAGNATEC 10W-40 —  3.78 L.jpg' }
+            ],
             description: 'Aceite semi-sintético para motores gasolina.', 
             category: 'gasolina', 
-            image: 'img/MAGNATEC 10W-40.jpg', 
             specs: { 
                 api: 'SN', 
                 features: [
-                    'Protección continua 24/7',
-                    'Reduce el desgaste del motor',
-                    'Fórmula balanceada',
-                    'Confiabilidad comprobada'
+                    'Fórmula semi-sintética',
+                    'Protección continua',
+                    'Rendimiento confiable',
+                    'Moléculas inteligentes'
                 ]
             }
         },
@@ -399,17 +429,19 @@ const products = {
             name: 'Castrol MAGNATEC 20W-50', 
             viscosity: '20W-50', 
             oilType: 'Semi-sintético', 
-            format: '6x946 ml / 3.78 L', 
+            formats: [
+                { size: '6x946 ml', image: 'img/Castrol MAGNATEC 20W-50 — 6x946 ml.jpg' },
+                { size: '3.78 L', image: 'img/Castrol MAGNATEC 20W-50 —  3.78 L.jpg' }
+            ],
             description: 'Aceite semi-sintético para motores gasolina de alto kilometraje.', 
             category: 'gasolina', 
-            image: 'img/MAGNATEC 20W-50.jpg', 
             specs: { 
                 api: 'SN', 
                 features: [
-                    'Ideal para alto kilometraje',
-                    'Sella fugas menores',
-                    'Protección reforzada',
-                    'Viscosidad estable'
+                    'Para alto kilometraje',
+                    'Protección extendida',
+                    'Control de fugas',
+                    'Rendimiento duradero'
                 ]
             }
         },
@@ -419,17 +451,19 @@ const products = {
             name: 'Castrol GTX 5W-30', 
             viscosity: '5W-30', 
             oilType: 'Mineral', 
-            format: '6x946 ml / 3x4 L', 
+            formats: [
+                { size: '6x946 ml', image: 'img/Castrol GTX 5W-30 — 6x946 ml.jpg' },
+                { size: '3x4 L', image: 'img/Castrol GTX 5W-30 —  3x4 L.jpg' }
+            ],
             description: 'Aceite mineral para motores gasolina, protección confiable.', 
             category: 'gasolina', 
-            image: 'img/GTX 5W-30.jpg', 
             specs: { 
                 api: 'SN', 
                 features: [
-                    'Protección GTX probada',
-                    'Limpieza superior',
-                    'Control de lodos',
-                    'Valor excepcional'
+                    'Protección confiable',
+                    'Limpieza del motor',
+                    'Durabilidad comprobada',
+                    'Economía de uso'
                 ]
             }
         },
@@ -438,17 +472,19 @@ const products = {
             name: 'Castrol GTX 10W-30', 
             viscosity: '10W-30', 
             oilType: 'Mineral', 
-            format: '12x1 qt / 3.78 L', 
+            formats: [
+                { size: '12x1 qt', image: 'img/Castrol GTX 10W-30 — 12x1 qt.jpg' },
+                { size: '3.78 L', image: 'img/Castrol GTX 10W-30 —  3.78 L.jpg' }
+            ],
             description: 'Aceite mineral para motores gasolina.', 
             category: 'gasolina', 
-            image: 'img/GTX 10W-30.jpg', 
             specs: { 
                 api: 'SN', 
                 features: [
-                    'Fórmula GTX clásica',
-                    'Protección confiable',
-                    'Disponibilidad amplia',
-                    'Precio accesible'
+                    'Fórmula mineral confiable',
+                    'Protección básica',
+                    'Económico y eficiente',
+                    'Calidad Castrol'
                 ]
             }
         },
@@ -457,17 +493,18 @@ const products = {
             name: 'Castrol GTX 10W-40', 
             viscosity: '10W-40', 
             oilType: 'Mineral', 
-            format: '3.78 L', 
+            formats: [
+                { size: '3.78 L', image: 'img/Castrol GTX 10W-40 — 3.78 L.jpg' }
+            ],
             description: 'Aceite mineral para motores gasolina.', 
             category: 'gasolina', 
-            image: 'img/GTX 10W-40.jpg', 
             specs: { 
                 api: 'SN', 
                 features: [
-                    'Viscosidad versátil',
-                    'Protección balanceada',
-                    'Para uso general',
-                    'Confiabilidad GTX'
+                    'Viscosidad media',
+                    'Protección equilibrada',
+                    'Uso general',
+                    'Confiabilidad probada'
                 ]
             }
         },
@@ -476,17 +513,19 @@ const products = {
             name: 'Castrol GTX 20W-50', 
             viscosity: '20W-50', 
             oilType: 'Mineral', 
-            format: '12x946 ml / 5x3.78 L', 
+            formats: [
+                { size: '12x946 ml', image: 'img/Castrol GTX 20W-50 — 12x946 ml.jpg' },
+                { size: '5x3.78 L', image: 'img/Castrol GTX 20W-50 —  5x3.78 L.jpg' }
+            ],
             description: 'Aceite mineral para motores gasolina de alto kilometraje.', 
             category: 'gasolina', 
-            image: 'img/GTX 20W-50.jpg', 
             specs: { 
                 api: 'SN', 
                 features: [
-                    'Para motores con desgaste',
+                    'Para alto kilometraje',
                     'Viscosidad alta',
-                    'Sellado mejorado',
-                    'Reducción de consumo'
+                    'Control de fugas',
+                    'Protección extendida'
                 ]
             }
         },
@@ -495,17 +534,19 @@ const products = {
             name: 'Castrol GTX Gas 20W-50', 
             viscosity: '20W-50', 
             oilType: 'Mineral', 
-            format: '12x946 ml / 3.78 L', 
+            formats: [
+                { size: '12x946 ml', image: 'img/Castrol GTX Gas 20W-50 — 12x946 ml.jpg' },
+                { size: '3.78 L', image: 'img/Castrol GTX Gas 20W-50 —  3.78 L.jpg' }
+            ],
             description: 'Aceite mineral para motores a gas.', 
             category: 'gasolina', 
-            image: 'img/GTX Gas 20W-50.jpg', 
             specs: { 
-                type: 'Gas/GNC', 
+                api: 'SN', 
                 features: [
-                    'Especial para gas natural',
-                    'Resistencia a la nitración',
-                    'Protección de válvulas',
-                    'Compatibilidad GNC/GLP'
+                    'Especializado para gas',
+                    'Protección específica',
+                    'Rendimiento optimizado',
+                    'Economía de combustible'
                 ]
             }
         },
@@ -514,17 +555,18 @@ const products = {
             name: 'Castrol GTX Alto Kilometraje 25W-60', 
             viscosity: '25W-60', 
             oilType: 'Mineral', 
-            format: '3.78 L', 
+            formats: [
+                { size: '3.78 L', image: 'img/Castrol GTX Alto Kilometraje 25W-60 — 3.78 L.jpg' }
+            ],
             description: 'Aceite mineral para motores de alto kilometraje.', 
             category: 'gasolina', 
-            image: 'img/GTX Alto KM 25W-60.jpg', 
             specs: { 
-                type: 'Alto Kilometraje', 
+                api: 'SN', 
                 features: [
-                    'Fórmula para alto km',
-                    'Aditivos sellantes',
-                    'Reduce fugas de aceite',
-                    'Rejuvenece sellos'
+                    'Alto kilometraje',
+                    'Viscosidad especial',
+                    'Sellado mejorado',
+                    'Restauración del motor'
                 ]
             }
         }
@@ -536,18 +578,19 @@ const products = {
             name: 'Castrol POWER 1 Ultimate 4T 10W-40', 
             viscosity: '10W-40', 
             oilType: 'Full Sintético', 
-            format: '12x1 L', 
+            formats: [
+                { size: '12x1 L', image: 'img/Castrol POWER 1 Ultimate 4T 10W-40 — 12x1 L.jpg' }
+            ],
             description: 'Aceite sintético para motos de alto rendimiento.', 
             category: 'motos', 
-            image: 'img/POWER 1 Ultimate 4T 10W-40-4L.jpg', 
             specs: { 
-                api: 'SN', 
                 jaso: 'MA2', 
+                api: 'SN', 
                 features: [
                     'Tecnología sintética avanzada',
                     'Protección del embrague húmedo',
-                    'Resistencia al cizallamiento',
-                    'Rendimiento deportivo'
+                    'Máximo rendimiento',
+                    'Para motos deportivas'
                 ]
             }
         },
@@ -556,18 +599,19 @@ const products = {
             name: 'Castrol POWER 1 4T 15W-50', 
             viscosity: '15W-50', 
             oilType: 'Full Sintético', 
-            format: '12x1 L', 
+            formats: [
+                { size: '12x1 L', image: 'img/Castrol POWER 1 4T 15W-50 — 12x1 L.jpg' }
+            ],
             description: 'Aceite sintético para motos deportivas.', 
             category: 'motos', 
-            image: 'img/POWER 1 4T 15W-50.jpg', 
             specs: { 
-                api: 'SN', 
                 jaso: 'MA2', 
+                api: 'SN', 
                 features: [
-                    'Para altas revoluciones',
-                    'Protección en condiciones extremas',
-                    'Estabilidad térmica',
-                    'Limpieza del motor'
+                    'Para motos deportivas',
+                    'Resistencia a altas RPM',
+                    'Protección superior',
+                    'Tecnología de carreras'
                 ]
             }
         },
@@ -577,18 +621,18 @@ const products = {
             name: 'Castrol Actevo St-St 4T 10W-30', 
             viscosity: '10W-30', 
             oilType: 'Semi-sintético', 
-            format: '6x1 L', 
+            formats: [
+                { size: '6x1 L', image: 'img/Castrol Actevo St-St 4T 10W-30 — 6x1 L.jpg' }
+            ],
             description: 'Aceite semi-sintético para motos 4T.', 
             category: 'motos', 
-            image: 'img/Actevo St-St 4T 10W-30.jpg', 
             specs: { 
-                api: 'SL', 
                 jaso: 'MA', 
                 features: [
                     'Fórmula semi-sintética',
-                    'Protección balanceada',
-                    'Arranque fácil',
-                    'Precio competitivo'
+                    'Protección equilibrada',
+                    'Arranque mejorado',
+                    'Rendimiento confiable'
                 ]
             }
         },
@@ -597,18 +641,18 @@ const products = {
             name: 'Castrol Actevo St-St 4T 10W-40', 
             viscosity: '10W-40', 
             oilType: 'Semi-sintético', 
-            format: '6x1 L', 
+            formats: [
+                { size: '6x1 L', image: 'img/Castrol Actevo St-St 4T 10W-40 — 6x1 L.jpg' }
+            ],
             description: 'Aceite semi-sintético para motos 4T.', 
             category: 'motos', 
-            image: 'img/Actevo St-St 4T 10W-40.jpg', 
             specs: { 
-                api: 'SL', 
                 jaso: 'MA', 
                 features: [
                     'Viscosidad versátil',
-                    'Protección del embrague',
-                    'Control de depósitos',
-                    'Rendimiento confiable'
+                    'Protección del motor',
+                    'Control de temperatura',
+                    'Durabilidad mejorada'
                 ]
             }
         },
@@ -617,18 +661,18 @@ const products = {
             name: 'Castrol Actevo St-St 4T 15W-50', 
             viscosity: '15W-50', 
             oilType: 'Semi-sintético', 
-            format: '12x1 L', 
+            formats: [
+                { size: '12x1 L', image: 'img/Castrol Actevo St-St 4T 15W-50 — 12x1 L.jpg' }
+            ],
             description: 'Aceite semi-sintético para motos 4T.', 
             category: 'motos', 
-            image: 'img/Actevo St-St 4T 15W-50.jpg', 
             specs: { 
-                api: 'SL', 
                 jaso: 'MA', 
                 features: [
                     'Alta viscosidad',
-                    'Para motores trabajados',
-                    'Protección reforzada',
-                    'Estabilidad en calor'
+                    'Protección extrema',
+                    'Para condiciones severas',
+                    'Resistencia térmica'
                 ]
             }
         },
@@ -638,18 +682,18 @@ const products = {
             name: 'Castrol POWER 1 V-Twin 4T 20W-50', 
             viscosity: '20W-50', 
             oilType: 'Mineral', 
-            format: '6x1 qt', 
+            formats: [
+                { size: '6x1 qt', image: 'img/Castrol POWER 1 V-Twin 4T 20W-50 — 6x1 qt.jpg' }
+            ],
             description: 'Aceite mineral para motos V-Twin.', 
             category: 'motos', 
-            image: 'img/POWER 1 V-Twin 4T 20W-50.jpg', 
             specs: { 
-                api: 'SJ', 
                 jaso: 'MA', 
                 features: [
-                    'Especial para V-Twin',
-                    'Protección de cojinetes',
-                    'Resistencia al calor',
-                    'Para motores grandes'
+                    'Especializado para V-Twin',
+                    'Protección de motores grandes',
+                    'Resistencia a la vibración',
+                    'Fórmula tradicional'
                 ]
             }
         },
@@ -658,18 +702,18 @@ const products = {
             name: 'Castrol Actevo 4T 20W-50', 
             viscosity: '20W-50', 
             oilType: 'Mineral', 
-            format: '6x1 L', 
+            formats: [
+                { size: '6x1 L', image: 'img/Castrol Actevo 4T 20W-50 — 6x1 L.jpg' }
+            ],
             description: 'Aceite mineral para motos 4T.', 
             category: 'motos', 
-            image: 'img/Actevo Essential 4T 20W-50.jpg', 
             specs: { 
-                api: 'SJ', 
                 jaso: 'MA', 
                 features: [
-                    'Base mineral de calidad',
+                    'Fórmula mineral económica',
                     'Protección básica',
-                    'Precio económico',
-                    'Para uso general'
+                    'Uso general',
+                    'Confiabilidad probada'
                 ]
             }
         },
@@ -678,17 +722,18 @@ const products = {
             name: 'Castrol Actevo Essential 4T 25W-60', 
             viscosity: '25W-60', 
             oilType: 'Mineral', 
-            format: '6x946 ml', 
+            formats: [
+                { size: '6x946 ml', image: 'img/Castrol Actevo Essential 4T 25W-60 — 6x946 ml.jpg' }
+            ],
             description: 'Aceite mineral para motos 4T, protección extra.', 
             category: 'motos', 
-            image: 'img/Actevo Essential 4T 25W-60.jpg', 
             specs: { 
-                api: 'SJ', 
+                jaso: 'MA', 
                 features: [
                     'Alta viscosidad',
                     'Para motores desgastados',
-                    'Sellado mejorado',
-                    'Reducción de humo'
+                    'Control de fugas',
+                    'Protección extendida'
                 ]
             }
         },
@@ -697,18 +742,18 @@ const products = {
             name: 'Castrol Actevo Essential 4T 20W-50', 
             viscosity: '20W-50', 
             oilType: 'Mineral', 
-            format: '6x946 ml', 
+            formats: [
+                { size: '6x946 ml', image: 'img/Castrol Actevo Essential 4T 20W-50 — 6x946 ml.jpg' }
+            ],
             description: 'Aceite mineral para motos 4T.', 
             category: 'motos', 
-            image: 'img/Actevo Essential 4T 20W-50.jpg', 
             specs: { 
-                api: 'SJ', 
                 jaso: 'MA', 
                 features: [
-                    'Línea Essential',
+                    'Presentación económica',
                     'Protección confiable',
-                    'Valor por dinero',
-                    'Para motos convencionales'
+                    'Para uso diario',
+                    'Calidad Castrol'
                 ]
             }
         }
@@ -720,17 +765,18 @@ const products = {
             name: 'Castrol TRANSMAX Universal LL 75W-90', 
             viscosity: '75W-90', 
             oilType: 'Sintético', 
-            format: '18.9 L', 
+            formats: [
+                { size: '18.9 L', image: 'img/Castrol TRANSMAX Universal LL 75W-90 — 18.9 L.jpg' }
+            ],
             description: 'Aceite sintético para transmisiones universales.', 
             category: 'transmisiones', 
-            image: 'img/TRANSMAX Universal LL 75W-90.jpg', 
             specs: { 
                 api: 'GL-5', 
                 features: [
-                    'Larga duración (LL)',
-                    'Protección universal',
-                    'Compatibilidad extendida',
-                    'Reducción de fricción'
+                    'Fórmula sintética avanzada',
+                    'Compatibilidad universal',
+                    'Larga duración',
+                    'Protección superior'
                 ]
             }
         },
@@ -740,16 +786,17 @@ const products = {
             name: 'Castrol TRANSMAX CVT', 
             viscosity: 'CVT', 
             oilType: 'Mineral', 
-            format: '18.9 L', 
+            formats: [
+                { size: '18.9 L', image: 'img/Castrol TRANSMAX CVT — 18.9 L.jpg' }
+            ],
             description: 'Aceite mineral para transmisiones CVT.', 
             category: 'transmisiones', 
-            image: 'img/TRANSMAX CVT.jpg', 
             specs: { 
                 type: 'CVT', 
                 features: [
-                    'Específico para CVT',
-                    'Protección de la correa',
-                    'Suavidad de cambios',
+                    'Especializado para CVT',
+                    'Protección de correa',
+                    'Suavidad de operación',
                     'Durabilidad extendida'
                 ]
             }
@@ -759,36 +806,38 @@ const products = {
             name: 'Castrol TRANSMAX ATF DX III', 
             viscosity: 'ATF DX III', 
             oilType: 'Mineral', 
-            format: '18.9 L', 
+            formats: [
+                { size: '18.9 L', image: 'img/Castrol TRANSMAX ATF DX III — 18.9 L.jpg' }
+            ],
             description: 'Aceite mineral para transmisiones automáticas.', 
             category: 'transmisiones', 
-            image: 'img/TRANSMAX ATF DX III.jpg', 
             specs: { 
-                type: 'ATF Dexron III', 
+                type: 'ATF DX III', 
                 features: [
                     'Especificación Dexron III',
-                    'Para GM y compatibles',
                     'Cambios suaves',
-                    'Protección de sellos'
+                    'Protección hidráulica',
+                    'Compatibilidad amplia'
                 ]
             }
         },
         { 
             id: 't-m3', 
-            name: 'Castrol TRANSMAX Mercon V / Dexron III', 
-            viscosity: 'Mercon V / Dexron III', 
+            name: 'Castrol TRANSMAX Mercon V/Dexron III', 
+            viscosity: 'Mercon V/Dexron III', 
             oilType: 'Mineral', 
-            format: '18.9 L', 
+            formats: [
+                { size: '18.9 L', image: 'img/Castrol TRANSMAX Mercon V - Dexron III — 18.9 L.jpg' }
+            ],
             description: 'Aceite mineral para transmisiones automáticas.', 
             category: 'transmisiones', 
-            image: 'img/TRANSMAX Mercon V.jpg', 
             specs: { 
-                type: 'ATF Mercon V / Dexron III', 
+                type: 'Mercon V/Dexron III', 
                 features: [
                     'Doble especificación',
-                    'Ford y GM compatibilidad',
-                    'Versatilidad amplia',
-                    'Rendimiento confiable'
+                    'Versatilidad de uso',
+                    'Protección confiable',
+                    'Rendimiento probado'
                 ]
             }
         },
@@ -797,17 +846,18 @@ const products = {
             name: 'Castrol TRANSMAX Dex/Merc', 
             viscosity: 'Dex/Merc', 
             oilType: 'Mineral', 
-            format: '18.9 L', 
+            formats: [
+                { size: '18.9 L', image: 'img/Castrol TRANSMAX Dex-Merc — 18.9 L.jpg' }
+            ],
             description: 'Aceite mineral para transmisiones automáticas.', 
             category: 'transmisiones', 
-            image: 'img/TRANSMAX Dex-Merc.jpg', 
             specs: { 
-                type: 'ATF Dexron/Mercon', 
+                type: 'Dexron/Mercon', 
                 features: [
-                    'Fórmula universal',
-                    'Amplia compatibilidad',
-                    'Precio competitivo',
-                    'Disponibilidad global'
+                    'Compatibilidad múltiple',
+                    'Uso universal',
+                    'Economía de inventario',
+                    'Calidad confiable'
                 ]
             }
         },
@@ -816,17 +866,18 @@ const products = {
             name: 'Castrol AXLE Limited Slip 80W-90', 
             viscosity: '80W-90', 
             oilType: 'Mineral', 
-            format: '18.9 L', 
+            formats: [
+                { size: '18.9 L', image: 'img/Castrol AXLE Limited Slip 80W-90 — 18.9 L.jpg' }
+            ],
             description: 'Aceite mineral para diferenciales Limited Slip.', 
             category: 'transmisiones', 
-            image: 'img/AXLE Limited Slip 80W-90.jpg', 
             specs: { 
                 api: 'GL-5 LS', 
                 features: [
                     'Para diferenciales Limited Slip',
                     'Aditivos especiales',
-                    'Protección de embragues',
-                    'Funcionamiento suave'
+                    'Protección anti-chatter',
+                    'Rendimiento optimizado'
                 ]
             }
         },
@@ -835,36 +886,37 @@ const products = {
             name: 'Castrol AXLE GL-5 85W-140', 
             viscosity: '85W-140', 
             oilType: 'Mineral', 
-            format: '18.9 L', 
+            formats: [
+                { size: '18.9 L', image: 'img/Castrol AXLE GL-5 85W-140 — 18.9 L.jpg' }
+            ],
             description: 'Aceite mineral para diferenciales GL-5.', 
             category: 'transmisiones', 
-            image: 'img/AXLE GL-5 85W-140.jpg', 
             specs: { 
                 api: 'GL-5', 
                 features: [
                     'Especificación GL-5',
-                    'Para servicio severo',
                     'Alta viscosidad',
-                    'Protección de engranajes'
+                    'Protección extrema',
+                    'Para trabajo pesado'
                 ]
             }
         },
         { 
             id: 't-m7', 
-            name: 'Castrol TRANS C 10W / 30', 
-            viscosity: '10W / 30', 
+            name: 'Castrol TRANS C 10W/30', 
+            viscosity: '10W/30', 
             oilType: 'Mineral', 
-            format: '5 gal', 
+            formats: [
+                { size: '5 gal', image: 'img/Castrol TRANS C 10W - 30 — 5 gal.jpg' }
+            ],
             description: 'Aceite mineral para transmisiones y convertidores.', 
             category: 'transmisiones', 
-            image: 'img/TRANS C 10W - 30.jpg', 
             specs: { 
-                type: 'Transmisión/Convertidor', 
                 features: [
-                    'Para convertidores de torque',
-                    'Transmisiones manuales',
-                    'Versatilidad de uso',
-                    'Costo efectivo'
+                    'Para transmisiones y convertidores',
+                    'Viscosidad media',
+                    'Uso industrial',
+                    'Protección confiable'
                 ]
             }
         }
@@ -875,17 +927,17 @@ const products = {
             name: 'Castrol Hyspin AWS 68', 
             viscosity: '68', 
             oilType: '', 
-            format: '5 gal', 
+            formats: [
+                { size: '5 gal', image: 'img/Castrol Hyspin AWS 68 — 5 gal.jpg' }
+            ],
             description: 'Aceite hidráulico para sistemas industriales.', 
             category: 'complementarios', 
-            image: 'img/Hyspin AWS 68.jpg', 
             specs: { 
-                iso: 'ISO VG 68', 
                 features: [
-                    'Sistema hidráulico industrial',
-                    'Anti-desgaste (AWS)',
-                    'Filtración superior',
-                    'Vida útil extendida'
+                    'Para sistemas hidráulicos',
+                    'Protección anti-desgaste',
+                    'Estabilidad térmica',
+                    'Uso industrial'
                 ]
             }
         },
@@ -894,17 +946,17 @@ const products = {
             name: 'Castrol Hyspin AWS 46', 
             viscosity: '46', 
             oilType: '', 
-            format: '5 gal', 
+            formats: [
+                { size: '5 gal', image: 'img/Castrol Hyspin AWS 46 — 5 gal.jpg' }
+            ],
             description: 'Aceite hidráulico para sistemas industriales.', 
             category: 'complementarios', 
-            image: 'img/Hyspin AWS 46.jpg', 
             specs: { 
-                iso: 'ISO VG 46', 
                 features: [
                     'Viscosidad media',
-                    'Protección anti-desgaste',
-                    'Estabilidad oxidativa',
-                    'Para maquinaria industrial'
+                    'Aplicación universal',
+                    'Protección hidráulica',
+                    'Calidad industrial'
                 ]
             }
         },
@@ -913,17 +965,17 @@ const products = {
             name: 'Castrol Universal Tractor Fluid (UTF)', 
             viscosity: '', 
             oilType: '', 
-            format: '5 gal', 
+            formats: [
+                { size: '5 gal', image: 'img/Castrol Universal Tractor Fluid (UTF) — 5 gal.jpg' }
+            ],
             description: 'Fluido universal para tractores y maquinaria agrícola.', 
             category: 'complementarios', 
-            image: 'img/Universal Tractor Fluid (UTF).jpg', 
             specs: { 
-                type: 'UTF', 
                 features: [
-                    'Multi-funcional agrícola',
-                    'Transmisión, hidráulico, PTO',
-                    'Compatible con sellos',
-                    'Para equipos John Deere, Case, etc.'
+                    'Fluido multifuncional',
+                    'Para tractores',
+                    'Aplicación agrícola',
+                    'Versatilidad total'
                 ]
             }
         },
@@ -932,18 +984,18 @@ const products = {
             name: 'Castrol Actevo Essential 2T', 
             viscosity: '2T', 
             oilType: '', 
-            format: '100x160 ml / 100x200 ml', 
+            formats: [
+                { size: '100x160 ml - 100x200 ml', image: 'img/Castrol Actevo Essential 2T — 100x160 ml - 100x200 ml.jpg' }
+            ],
             description: 'Aceite para motores 2T, presentación económica.', 
             category: 'complementarios', 
-            image: 'img/Actevo Essential 2T.jpg', 
             specs: { 
-                api: 'TC', 
                 jaso: 'FD', 
                 features: [
                     'Para motores 2 tiempos',
-                    'Presentación conveniente',
-                    'Mezcla o inyección',
-                    'Precio accesible'
+                    'Presentación múltiple',
+                    'Combustión limpia',
+                    'Protección del motor'
                 ]
             }
         }
@@ -1124,6 +1176,9 @@ function displayProducts(products) {
     
     // Setup lazy loading
     setupLazyLoading();
+    
+    // Initialize carousels for products with multiple formats
+    initializeProductCarousels();
 }
 
 // Create category section
@@ -1159,30 +1214,77 @@ function getCategoryInfo(category) {
     return categoryMap[category] || { name: category, icon: 'fas fa-box' };
 }
 
-// Create product card HTML
+// Create product card HTML with carousel support
 function createProductCardHTML(product) {
     const oilTypeBadge = getOilTypeBadge(product.oilType);
     const isInComparison = comparisonList.find(p => p.id === product.id) !== undefined;
     
+    // Handle multiple formats
+    const hasMultipleFormats = product.formats && product.formats.length > 1;
+    const currentFormat = product.formats ? product.formats[0] : { size: product.format || '', image: product.image || '' };
+    
+    // Create image carousel if multiple formats
+    let imageContent = '';
+    if (hasMultipleFormats) {
+        imageContent = `
+            <div class="product-image-carousel w-full h-full relative" data-product-id="${product.id}">
+                ${product.formats.map((format, index) => `
+                    <img data-src="${format.image}" 
+                         alt="${product.name} - ${format.size}" 
+                         class="lazy-image carousel-image product-image absolute inset-0 w-full h-full object-contain transition-opacity duration-500 ${index === 0 ? 'opacity-100' : 'opacity-0'}"
+                         data-format-index="${index}"
+                         style="opacity: 0;">
+                `).join('')}
+                
+                <!-- Loading indicator for first image -->
+                <div class="image-loading absolute inset-0 flex items-center justify-center rounded-t-lg">
+                    <div class="text-center">
+                        <i class="fas fa-oil-can text-4xl text-gray-400 mb-2"></i>
+                        <p class="text-sm text-gray-500">Cargando imagen...</p>
+                    </div>
+                </div>
+                
+                <!-- Format indicators -->
+                <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-1 z-10">
+                    ${product.formats.map((format, index) => `
+                        <div class="format-indicator w-2 h-2 rounded-full cursor-pointer transition-all duration-300 ${index === 0 ? 'bg-white shadow-md' : 'bg-white bg-opacity-50 hover:bg-opacity-75'}" 
+                             data-format-index="${index}"
+                             title="${format.size}"></div>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+    } else {
+        imageContent = `
+            <img data-src="${currentFormat.image}" 
+                 alt="${product.name}" 
+                 class="lazy-image product-image w-full h-full object-contain"
+                 style="opacity: 0;">
+            <div class="image-loading absolute inset-0 flex items-center justify-center rounded-t-lg">
+                <div class="text-center">
+                    <i class="fas fa-oil-can text-4xl text-gray-400 mb-2"></i>
+                    <p class="text-sm text-gray-500">Cargando imagen...</p>
+                </div>
+            </div>
+        `;
+    }
+    
+    // Format display
+    const formatDisplay = hasMultipleFormats 
+        ? `<span class="text-sm font-semibold text-gray-500 format-display" data-product-id="${product.id}">${currentFormat.size}</span>`
+        : `<span class="text-sm font-semibold text-gray-500">${currentFormat.size}</span>`;
+    
     return `
         <div class="bg-white rounded-lg shadow-md card-hover overflow-hidden product-card ${currentView === 'list' ? 'flex' : ''}" 
              data-category="${product.category}" 
-             data-product-id="${product.id}">
+             data-product-id="${product.id}"
+             data-has-carousel="${hasMultipleFormats}">
             <div class="relative ${currentView === 'list' ? 'w-48 flex-shrink-0' : ''}">
-                <div class="product-image-container w-full ${currentView === 'list' ? 'h-full' : 'h-56'} flex items-center justify-center p-4 rounded-t-lg">
-                    <img data-src="${product.image}" 
-                         alt="${product.name}" 
-                         class="lazy-image product-image max-w-full max-h-full object-contain"
-                         style="opacity: 0;">
-                    <div class="image-loading absolute inset-0 flex items-center justify-center rounded-t-lg">
-                        <div class="text-center">
-                            <i class="fas fa-oil-can text-4xl text-gray-400 mb-2"></i>
-                            <p class="text-sm text-gray-500">Cargando imagen...</p>
-                        </div>
-                    </div>
+                <div class="product-image-container w-full ${currentView === 'list' ? 'h-full' : 'h-56'} flex items-center justify-center p-4 rounded-t-lg relative">
+                    ${imageContent}
                 </div>
                 ${oilTypeBadge}
-                <button class="absolute top-3 left-3 w-8 h-8 rounded-full ${isInComparison ? 'bg-blue-600 text-white' : 'bg-white text-gray-600'} shadow-md hover:shadow-lg transition-all" 
+                <button class="absolute top-3 left-3 w-8 h-8 rounded-full ${isInComparison ? 'bg-blue-600 text-white' : 'bg-white text-gray-600'} shadow-md hover:shadow-lg transition-all z-20" 
                         onclick="toggleProductComparison('${product.id}')" 
                         title="${isInComparison ? 'Remover de comparación' : 'Agregar a comparación'}">
                     <i class="fas fa-balance-scale text-xs"></i>
@@ -1195,7 +1297,7 @@ function createProductCardHTML(product) {
                         <div class="w-3 h-3 rounded-full ${getOilTypeColor(product.oilType)} mr-2"></div>
                         <span class="text-xs font-medium text-gray-500">${product.oilType || 'Estándar'}</span>
                     </div>
-                    <span class="text-sm font-semibold text-gray-500">${product.format}</span>
+                    ${formatDisplay}
                 </div>
                 
                 <h4 class="text-lg font-bold castrol-green-text mb-2 line-clamp-2">${product.name}</h4>
@@ -1289,6 +1391,91 @@ function setupLazyLoading() {
     lazyImages.forEach(img => imageObserver.observe(img));
 }
 
+// Initialize product carousels for multiple formats
+function initializeProductCarousels() {
+    const carousels = document.querySelectorAll('.product-image-carousel');
+    
+    carousels.forEach(carousel => {
+        const productId = carousel.dataset.productId;
+        const product = allProducts.find(p => p.id === productId);
+        
+        if (!product || !product.formats || product.formats.length <= 1) return;
+        
+        let currentIndex = 0;
+        let carouselInterval;
+        
+        const images = carousel.querySelectorAll('.carousel-image');
+        const indicators = carousel.querySelectorAll('.format-indicator');
+        const formatDisplay = document.querySelector(`.format-display[data-product-id="${productId}"]`);
+        
+        function showFormat(index) {
+            // Hide all images
+            images.forEach((img, i) => {
+                if (i === index) {
+                    img.classList.remove('opacity-0');
+                    img.classList.add('opacity-100');
+                } else {
+                    img.classList.remove('opacity-100');
+                    img.classList.add('opacity-0');
+                }
+            });
+            
+            // Update indicators
+            indicators.forEach((indicator, i) => {
+                if (i === index) {
+                    indicator.classList.remove('bg-opacity-50');
+                    indicator.classList.add('bg-white', 'shadow-md');
+                } else {
+                    indicator.classList.remove('shadow-md');
+                    indicator.classList.add('bg-opacity-50');
+                }
+            });
+            
+            // Update format display
+            if (formatDisplay) {
+                formatDisplay.textContent = product.formats[index].size;
+            }
+            
+            currentIndex = index;
+        }
+        
+        function nextFormat() {
+            const nextIndex = (currentIndex + 1) % product.formats.length;
+            showFormat(nextIndex);
+        }
+        
+        function startCarousel() {
+            carouselInterval = setInterval(nextFormat, 4000); // Change every 4 seconds
+        }
+        
+        function stopCarousel() {
+            if (carouselInterval) {
+                clearInterval(carouselInterval);
+            }
+        }
+        
+        // Add click handlers to indicators
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', (e) => {
+                e.stopPropagation();
+                showFormat(index);
+                stopCarousel();
+                setTimeout(startCarousel, 2000); // Restart after 2 seconds
+            });
+        });
+        
+        // Pause carousel on hover
+        const productCard = carousel.closest('.product-card');
+        if (productCard) {
+            productCard.addEventListener('mouseenter', stopCarousel);
+            productCard.addEventListener('mouseleave', startCarousel);
+        }
+        
+        // Start the carousel
+        startCarousel();
+    });
+}
+
 // Setup intersection observer for animations and back to top
 function setupIntersectionObserver() {
     // Back to top button
@@ -1320,11 +1507,16 @@ function openProductModal(productId) {
     
     addToCompareBtn.onclick = () => toggleProductComparison(productId);
     
+    // Initialize modal carousel if product has multiple formats
+    if (product.formats && product.formats.length > 1) {
+        initializeModalCarousel(product);
+    }
+    
     productModal.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
 }
 
-// Create modal content
+// Create modal content with multiple format support
 function createModalContent(product) {
     const specs = product.specs || {};
     let specsHtml = '';
@@ -1339,18 +1531,86 @@ function createModalContent(product) {
     
     const features = specs.features || [];
     
+    // Handle multiple formats
+    const hasMultipleFormats = product.formats && product.formats.length > 1;
+    const currentFormat = product.formats ? product.formats[0] : { size: product.format || '', image: product.image || '' };
+    
+    // Create image content
+    let imageContent = '';
+    if (hasMultipleFormats) {
+        imageContent = `
+            <div class="modal-image-carousel relative w-full h-64" data-product-id="${product.id}">
+                ${product.formats.map((format, index) => `
+                    <img src="${format.image}" 
+                         alt="${product.name} - ${format.size}" 
+                         class="modal-carousel-image absolute inset-0 w-full h-full object-contain rounded-lg transition-opacity duration-500 ${index === 0 ? 'opacity-100' : 'opacity-0'}"
+                         data-format-index="${index}"
+                         onerror="this.style.display='none'; this.parentElement.querySelector('.image-error').style.display='flex';">
+                `).join('')}
+                
+                <div class="image-error text-center absolute inset-0 flex items-center justify-center" style="display: none;">
+                    <div>
+                        <i class="fas fa-oil-can text-6xl text-gray-400 mb-3"></i>
+                        <p class="text-sm text-gray-500">Imagen no disponible</p>
+                    </div>
+                </div>
+                
+                <!-- Navigation arrows for modal -->
+                <button class="modal-carousel-prev absolute left-2 top-1/2 transform -translate-y-1/2 w-8 h-8 bg-black bg-opacity-50 text-white rounded-full hover:bg-opacity-70 transition-all">
+                    <i class="fas fa-chevron-left text-sm"></i>
+                </button>
+                <button class="modal-carousel-next absolute right-2 top-1/2 transform -translate-y-1/2 w-8 h-8 bg-black bg-opacity-50 text-white rounded-full hover:bg-opacity-70 transition-all">
+                    <i class="fas fa-chevron-right text-sm"></i>
+                </button>
+                
+                <!-- Format indicators -->
+                <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                    ${product.formats.map((format, index) => `
+                        <div class="modal-format-indicator px-2 py-1 rounded text-xs cursor-pointer transition-all duration-300 ${index === 0 ? 'bg-white text-black' : 'bg-black bg-opacity-50 text-white hover:bg-opacity-70'}" 
+                             data-format-index="${index}"
+                             title="${format.size}">${format.size}</div>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+    } else {
+        imageContent = `
+            <img src="${currentFormat.image}" alt="${product.name}" 
+                 class="w-full h-full object-contain rounded-lg"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="text-center" style="display: none;">
+                <i class="fas fa-oil-can text-6xl text-gray-400 mb-3"></i>
+                <p class="text-sm text-gray-500">Imagen no disponible</p>
+            </div>
+        `;
+    }
+    
+    // Create formats list for info section
+    let formatsInfo = '';
+    if (hasMultipleFormats) {
+        formatsInfo = `
+            <div class="flex justify-between">
+                <span class="font-medium">Formatos disponibles:</span>
+                <div class="text-right">
+                    ${product.formats.map(format => `<div class="text-sm">${format.size}</div>`).join('')}
+                </div>
+            </div>
+        `;
+    } else {
+        formatsInfo = `
+            <div class="flex justify-between">
+                <span class="font-medium">Formato:</span>
+                <span>${currentFormat.size}</span>
+            </div>
+        `;
+    }
+    
     return `
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div>
                 <div class="relative mb-6">
-                    <div class="w-full h-64 bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg flex items-center justify-center p-6">
-                        <img src="${product.image}" alt="${product.name}" 
-                             class="max-w-full max-h-full object-contain rounded-lg"
-                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <div class="text-center" style="display: none;">
-                            <i class="fas fa-oil-can text-6xl text-gray-400 mb-3"></i>
-                            <p class="text-sm text-gray-500">Imagen no disponible</p>
-                        </div>
+                    <div class="w-full h-64 bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg flex items-center justify-center p-6 relative">
+                        ${imageContent}
                     </div>
                     ${getOilTypeBadge(product.oilType)}
                 </div>
@@ -1366,10 +1626,7 @@ function createModalContent(product) {
                             <span class="font-medium">Tipo:</span>
                             <span>${product.oilType || 'Estándar'}</span>
                         </div>
-                        <div class="flex justify-between">
-                            <span class="font-medium">Formato:</span>
-                            <span>${product.format}</span>
-                        </div>
+                        ${formatsInfo}
                         <div class="flex justify-between">
                             <span class="font-medium">Categoría:</span>
                             <span class="capitalize">${product.category}</span>
@@ -1423,6 +1680,81 @@ function createModalContent(product) {
             </div>
         </div>
     `;
+}
+
+// Initialize modal carousel for multiple formats
+function initializeModalCarousel(product) {
+    const carousel = document.querySelector('.modal-image-carousel');
+    if (!carousel) return;
+    
+    let currentIndex = 0;
+    const images = carousel.querySelectorAll('.modal-carousel-image');
+    const indicators = carousel.querySelectorAll('.modal-format-indicator');
+    const prevBtn = carousel.querySelector('.modal-carousel-prev');
+    const nextBtn = carousel.querySelector('.modal-carousel-next');
+    
+    function showFormat(index) {
+        // Hide all images
+        images.forEach((img, i) => {
+            if (i === index) {
+                img.classList.remove('opacity-0');
+                img.classList.add('opacity-100');
+            } else {
+                img.classList.remove('opacity-100');
+                img.classList.add('opacity-0');
+            }
+        });
+        
+        // Update indicators
+        indicators.forEach((indicator, i) => {
+            if (i === index) {
+                indicator.classList.remove('bg-black', 'bg-opacity-50', 'text-white');
+                indicator.classList.add('bg-white', 'text-black');
+            } else {
+                indicator.classList.remove('bg-white', 'text-black');
+                indicator.classList.add('bg-black', 'bg-opacity-50', 'text-white');
+            }
+        });
+        
+        currentIndex = index;
+    }
+    
+    function nextFormat() {
+        const nextIndex = (currentIndex + 1) % product.formats.length;
+        showFormat(nextIndex);
+    }
+    
+    function prevFormat() {
+        const prevIndex = (currentIndex - 1 + product.formats.length) % product.formats.length;
+        showFormat(prevIndex);
+    }
+    
+    // Add navigation event listeners
+    if (nextBtn) {
+        nextBtn.addEventListener('click', nextFormat);
+    }
+    
+    if (prevBtn) {
+        prevBtn.addEventListener('click', prevFormat);
+    }
+    
+    // Add indicator click handlers
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => showFormat(index));
+    });
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', function modalKeyNav(e) {
+        if (!productModal.classList.contains('hidden')) {
+            if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                prevFormat();
+            } else if (e.key === 'ArrowRight') {
+                e.preventDefault();
+                nextFormat();
+            }
+        }
+    });
 }
 
 // Close product modal
