@@ -1251,13 +1251,18 @@ function createProductCardHTML(product) {
                     </div>
                 </div>
                 
-                <!-- Format indicators -->
+                <!-- Format indicators - MEJORADOS PARA MAYOR VISIBILIDAD -->
                 <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-1 z-10">
                     ${fixedFormats.map((format, index) => `
-                        <div class="format-indicator w-2 h-2 rounded-full cursor-pointer transition-all duration-300 ${index === 0 ? 'bg-white shadow-md' : 'bg-white bg-opacity-50 hover:bg-opacity-75'}" 
+                        <div class="format-indicator w-3 h-3 rounded-full cursor-pointer transition-all duration-300 border-2 ${index === 0 ? 'bg-white border-green-600 shadow-lg' : 'bg-white bg-opacity-70 border-white hover:bg-opacity-90 hover:border-green-400'}" 
                              data-format-index="${index}"
-                             title="${format.size}"></div>
+                             title="Presentación: ${format.size}"></div>
                     `).join('')}
+                </div>
+                
+                <!-- Multiple formats badge -->
+                <div class="absolute top-2 right-2 bg-green-600 text-white text-xs px-2 py-1 rounded-full shadow-md">
+                    <i class="fas fa-layers mr-1"></i>${fixedFormats.length}
                 </div>
             </div>
         `;
@@ -1282,9 +1287,14 @@ function createProductCardHTML(product) {
         `;
     }
     
-    // Format display
+    // Format display - MEJORADO PARA MÚLTIPLES PRESENTACIONES
     const formatDisplay = hasMultipleFormats 
-        ? `<span class="text-sm font-semibold text-gray-500 format-display" data-product-id="${product.id}">${currentFormat.size}</span>`
+        ? `<div class="flex items-center space-x-2">
+             <span class="text-sm font-semibold text-gray-500 format-display" data-product-id="${product.id}">${currentFormat.size}</span>
+             <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">
+               <i class="fas fa-sync-alt mr-1"></i>+${product.formats.length - 1} más
+             </span>
+           </div>`
         : `<span class="text-sm font-semibold text-gray-500">${currentFormat.size}</span>`;
     
     return `
@@ -1488,7 +1498,7 @@ function initializeProductCarousels() {
         }
         
         function startCarousel() {
-            carouselInterval = setInterval(nextFormat, 4000); // Change every 4 seconds
+            carouselInterval = setInterval(nextFormat, 5000); // Change every 5 seconds (un poco más lento)
         }
         
         function stopCarousel() {
@@ -1609,12 +1619,14 @@ function createModalContent(product) {
                     <i class="fas fa-chevron-right text-sm"></i>
                 </button>
                 
-                <!-- Format indicators -->
-                <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                <!-- Format indicators - MEJORADOS PARA MODAL -->
+                <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
                     ${fixedFormats.map((format, index) => `
-                        <div class="modal-format-indicator px-2 py-1 rounded text-xs cursor-pointer transition-all duration-300 ${index === 0 ? 'bg-white text-black' : 'bg-black bg-opacity-50 text-white hover:bg-opacity-70'}" 
+                        <div class="modal-format-indicator px-3 py-2 rounded-lg text-sm font-medium cursor-pointer transition-all duration-300 border-2 ${index === 0 ? 'bg-white text-green-600 border-green-600 shadow-lg' : 'bg-black bg-opacity-70 text-white border-transparent hover:bg-opacity-90 hover:border-green-400'}" 
                              data-format-index="${index}"
-                             title="${format.size}">${format.size}</div>
+                             title="Presentación: ${format.size}">
+                            <i class="fas fa-cube mr-1"></i>${format.size}
+                        </div>
                     `).join('')}
                 </div>
             </div>
