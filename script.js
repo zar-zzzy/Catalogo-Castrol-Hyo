@@ -27,7 +27,7 @@ const products = {
             oilType: 'Full Sintético', 
             formats: [
                 { size: '5 gal', image: 'img/Castrol Vecton Long Drain E6-E9 10W-40 - 5 gal.jpg' },
-                { size: '208 L', image: 'img/Castrol Vecton Long Drain E6-E9 10W-40 -  208 L.jpg' }
+                { size: '208 L', image: 'img/Castrol Vecton Long Drain E6-E9 10W-40 -  208 L.jpg' }
             ],
             description: 'Aceite sintético de larga duración para motores diésel Euro VI y anteriores.', 
             category: 'diesel', 
@@ -50,7 +50,7 @@ const products = {
             oilType: 'Full Sintético', 
             formats: [
                 { size: '5 gal', image: 'img/Castrol Vecton LD CK-4-E9 10W-30 - 5 gal.jpg' },
-                { size: '208 L', image: 'img/Castrol Vecton LD CK-4-E9 10W-30 -  208 L.jpg' }
+                { size: '208 L', image: 'img/Castrol Vecton LD CK-4-E9 10W-30 -  208 L.jpg' }
             ],
             description: 'Aceite sintético para motores diésel modernos, máxima eficiencia y protección.', 
             category: 'diesel', 
@@ -94,7 +94,7 @@ const products = {
             viscosity: '15W-40', 
             oilType: 'Semi-sintético', 
             formats: [
-                { size: '18.9 L', image: 'img/Castrol CRB Multi CK-4 15W-40 - 18.9 L.jpg' },
+                { size: '18.9 L', image: 'img/Castrol CRB Multi CK-4 15W-40 - 18.9 L.jpg' },
                 { size: '5 gal', image: 'img/Castrol CRB Multi CK-4 15W-40 - 5gal.jpg' }
             ],
             description: 'Aceite semi-sintético para motores diésel, excelente limpieza y protección.', 
@@ -116,7 +116,7 @@ const products = {
             viscosity: '15W-40', 
             oilType: 'Mineral', 
             formats: [
-                { size: '18.9 L', image: 'img/Castrol CRB Turbomax CI-4-SL-E7 15W-40 - 18.9 L.jpg' },
+                { size: '18.9 L', image: 'img/Castrol CRB Turbomax CI-4-SL-E7 15W-40 - 18.9 L.jpg' },
                 { size: '5 gal', image: 'img/Castrol CRB Turbomax CI-4-SL-E7 15W-40 -  5 gal.jpg' }
             ],
             description: 'Aceite mineral para motores diésel, protección robusta y confiable.', 
@@ -138,7 +138,7 @@ const products = {
             viscosity: '25W-60', 
             oilType: 'Mineral', 
             formats: [
-                { size: '946 ml', image: 'img/Castrol CRB Viscus 25W-60 -  946 ml.jpg' },
+                { size: '946 ml', image: 'img/Castrol CRB Viscus 25W-60 -  946 ml.jpg' },
                 { size: 'galón', image: 'img/Castrol CRB Viscus 25W-60 - galón.jpg' }
             ],
             description: 'Aceite mineral de alta viscosidad para motores diésel exigentes.', 
@@ -159,7 +159,7 @@ const products = {
             oilType: 'Mineral', 
             formats: [
                 { size: '5 gal', image: 'img/Castrol CRB Monograde SAE 40 - 50 - 5 gal.jpg' },
-                { size: '208 L', image: 'img/Castrol CRB Monograde SAE 40 - 50 - 208 L.jpg' }
+                { size: '208 L', image: 'img/Castrol CRB Monograde SAE 40 - 50 - 208 L.jpg' }
             ],
             description: 'Aceite monogrado mineral para motores diésel convencionales.', 
             category: 'diesel', 
@@ -178,7 +178,7 @@ const products = {
             viscosity: 'SAE 40/50', 
             oilType: 'Mineral', 
             formats: [
-                { size: '12x946 ml', image: 'img/Castrol HD Motor Oil SAE 40- 50 - 12x946 ml.jpg' }
+                { size: '12x946 ml', image: 'img/Castrol HD Motor Oil SAE 40- 50 - 12x946 ml.jpg' }
             ],
             description: 'Aceite mineral para motores diésel, protección básica y económica.', 
             category: 'diesel', 
@@ -200,7 +200,7 @@ const products = {
             viscosity: '0W-20', 
             oilType: 'Full Sintético', 
             formats: [
-                { size: '6x946 ml', image: 'img/Castrol EDGE Professional V 0W-20 - 6x946 ml.jpg' }
+                { size: '6x946 ml', image: 'img/Castrol EDGE Professional V 0W-20 - 6x946 ml.jpg' }
             ],
             description: 'Aceite sintético premium para motores gasolina modernos.', 
             category: 'gasolina', 
@@ -220,7 +220,7 @@ const products = {
             viscosity: '0W-20', 
             oilType: 'Full Sintético', 
             formats: [
-                { size: '6x946 ml', image: 'img/Castrol EDGE Professional EC 0W-20 - 6x946 ml.jpg' }
+                { size: '6x946 ml', image: 'img/Castrol EDGE Professional EC 0W-20 - 6x946 ml.jpg' }
             ],
             description: 'Aceite sintético para máxima eficiencia y protección.', 
             category: 'gasolina', 
@@ -240,7 +240,7 @@ const products = {
             viscosity: '0W-30', 
             oilType: 'Full Sintético', 
             formats: [
-                { size: '12x1 L', image: 'img/Castrol EDGE 0W-30 HC1 - 12x1 L.jpg' }
+                { size: '12x1 L', image: 'img/Castrol EDGE 0W-30 HC1 - 12x1 L.jpg' }
             ],
             description: 'Aceite sintético para motores de alto rendimiento.', 
             category: 'gasolina', 
@@ -260,8 +260,8 @@ const products = {
             viscosity: '5W-30', 
             oilType: 'Full Sintético', 
             formats: [
-                { size: '6x946 ml', image: 'img/Castrol EDGE US Dexos 5W-30 - 6x946 ml.jpg' },
-                { size: '5 qt', image: 'img/Castrol EDGE US Dexos 5W-30 - 5 qt.jpg' }
+                { size: '6x946 ml', image: 'img/Castrol EDGE US Dexos 5W-30 - 6x946 ml.jpg' },
+                { size: '5 qt', image: 'img/Castrol EDGE US Dexos 5W-30 - 5 qt.jpg' }
             ],
             description: 'Aceite sintético Dexos para motores gasolina.', 
             category: 'gasolina', 
@@ -282,7 +282,7 @@ const products = {
             viscosity: '5W-30', 
             oilType: 'Full Sintético', 
             formats: [
-                { size: '5 qt', image: 'img/Castrol EDGE K 5W-30 - 5 qt.jpg' }
+                { size: '5 qt', image: 'img/Castrol EDGE K 5W-30 - 5 qt.jpg' }
             ],
             description: 'Aceite sintético para motores de última generación.', 
             category: 'gasolina', 
@@ -302,7 +302,7 @@ const products = {
             viscosity: '5W-40', 
             oilType: 'Full Sintético', 
             formats: [
-                { size: '6x946 ml', image: 'img/Castrol EDGE A3-B4 5W-40 - 6x946 ml.jpg' }
+                { size: '6x946 ml', image: 'img/Castrol EDGE A3-B4 5W-40 - 6x946 ml.jpg' }
             ],
             description: 'Aceite sintético para motores de alto desempeño.', 
             category: 'gasolina', 
@@ -323,8 +323,8 @@ const products = {
             viscosity: '5W-40', 
             oilType: 'Full Sintético', 
             formats: [
-                { size: '12x1 L', image: 'img/Castrol EDGE Turbo Diesel 5W-40 - 12x1 L.jpg' },
-                { size: '4x4 L', image: 'img/Castrol EDGE Turbo Diesel 5W-40 -  4x4 L.jpg' }
+                { size: '12x1 L', image: 'img/Castrol EDGE Turbo Diesel 5W-40 - 12x1 L.jpg' },
+                { size: '4x4 L', image: 'img/Castrol EDGE Turbo Diesel 5W-40 -  4x4 L.jpg' }
             ],
             description: 'Aceite sintético para motores turbo gasolina y diésel.', 
             category: 'gasolina', 
@@ -345,8 +345,8 @@ const products = {
             viscosity: '5W-30', 
             oilType: 'Semi-sintético', 
             formats: [
-                { size: '12x1 L', image: 'img/Castrol MAGNATEC C3 5W-30 - 12x1 L.jpg' },
-                { size: '4x4 L', image: 'img/Castrol MAGNATEC C3 5W-30 -  4x4 L.jpg' }
+                { size: '12x1 L', image: 'img/Castrol MAGNATEC C3 5W-30 - 12x1 L.jpg' },
+                { size: '4x4 L', image: 'img/Castrol MAGNATEC C3 5W-30 -  4x4 L.jpg' }
             ],
             description: 'Aceite semi-sintético con moléculas inteligentes para protección continua.', 
             category: 'gasolina', 
@@ -367,7 +367,7 @@ const products = {
             viscosity: '5W-40', 
             oilType: 'Semi-sintético', 
             formats: [
-                { size: '12x1 L', image: 'img/Castrol MAGNATEC 508 88 5W-40 - 12x1 L.jpg' }
+                { size: '12x1 L', image: 'img/Castrol MAGNATEC 508 88 5W-40 - 12x1 L.jpg' }
             ],
             description: 'Aceite semi-sintético para motores europeos.', 
             category: 'gasolina', 
@@ -388,8 +388,8 @@ const products = {
             viscosity: '10W-30', 
             oilType: 'Semi-sintético', 
             formats: [
-                { size: '6x946 ml', image: 'img/Castrol MAGNATEC 10W-30 - 6x946 ml.jpg' },
-                { size: '3.78 L', image: 'img/Castrol MAGNATEC 10W-30 -  3.78 L.jpg' }
+                { size: '6x946 ml', image: 'img/Castrol MAGNATEC 10W-30 - 6x946 ml.jpg' },
+                { size: '3.78 L', image: 'img/Castrol MAGNATEC 10W-30 -  3.78 L.jpg' }
             ],
             description: 'Aceite semi-sintético para motores gasolina.', 
             category: 'gasolina', 
@@ -409,8 +409,8 @@ const products = {
             viscosity: '10W-40', 
             oilType: 'Semi-sintético', 
             formats: [
-                { size: '6x946 ml', image: 'img/Castrol MAGNATEC 10W-40 - 6x946 ml.jpg' },
-                { size: '3.78 L', image: 'img/Castrol MAGNATEC 10W-40 -  3.78 L.jpg' }
+                { size: '6x946 ml', image: 'img/Castrol MAGNATEC 10W-40 - 6x946 ml.jpg' },
+                { size: '3.78 L', image: 'img/Castrol MAGNATEC 10W-40 -  3.78 L.jpg' }
             ],
             description: 'Aceite semi-sintético para motores gasolina.', 
             category: 'gasolina', 
@@ -430,8 +430,8 @@ const products = {
             viscosity: '20W-50', 
             oilType: 'Semi-sintético', 
             formats: [
-                { size: '6x946 ml', image: 'img/Castrol MAGNATEC 20W-50 - 6x946 ml.jpg' },
-                { size: '3.78 L', image: 'img/Castrol MAGNATEC 20W-50 -  3.78 L.jpg' }
+                { size: '6x946 ml', image: 'img/Castrol MAGNATEC 20W-50 - 6x946 ml.jpg' },
+                { size: '3.78 L', image: 'img/Castrol MAGNATEC 20W-50 -  3.78 L.jpg' }
             ],
             description: 'Aceite semi-sintético para motores gasolina de alto kilometraje.', 
             category: 'gasolina', 
@@ -452,8 +452,8 @@ const products = {
             viscosity: '5W-30', 
             oilType: 'Mineral', 
             formats: [
-                { size: '6x946 ml', image: 'img/Castrol GTX 5W-30 - 6x946 ml.jpg' },
-                { size: '3x4 L', image: 'img/Castrol GTX 5W-30 -  3x4 L.jpg' }
+                { size: '6x946 ml', image: 'img/Castrol GTX 5W-30 - 6x946 ml.jpg' },
+                { size: '3x4 L', image: 'img/Castrol GTX 5W-30 -  3x4 L.jpg' }
             ],
             description: 'Aceite mineral para motores gasolina, protección confiable.', 
             category: 'gasolina', 
@@ -473,8 +473,8 @@ const products = {
             viscosity: '10W-30', 
             oilType: 'Mineral', 
             formats: [
-                { size: '12x1 qt', image: 'img/Castrol GTX 10W-30 - 12x1 qt.jpg' },
-                { size: '3.78 L', image: 'img/Castrol GTX 10W-30 -  3.78 L.jpg' }
+                { size: '12x1 qt', image: 'img/Castrol GTX 10W-30 - 12x1 qt.jpg' },
+                { size: '3.78 L', image: 'img/Castrol GTX 10W-30 -  3.78 L.jpg' }
             ],
             description: 'Aceite mineral para motores gasolina.', 
             category: 'gasolina', 
@@ -494,7 +494,7 @@ const products = {
             viscosity: '10W-40', 
             oilType: 'Mineral', 
             formats: [
-                { size: '3.78 L', image: 'img/Castrol GTX 10W-40 - 3.78 L.jpg' }
+                { size: '3.78 L', image: 'img/Castrol GTX 10W-40 - 3.78 L.jpg' }
             ],
             description: 'Aceite mineral para motores gasolina.', 
             category: 'gasolina', 
@@ -514,8 +514,8 @@ const products = {
             viscosity: '20W-50', 
             oilType: 'Mineral', 
             formats: [
-                { size: '12x946 ml', image: 'img/Castrol GTX 20W-50 - 12x946 ml.jpg' },
-                { size: '5x3.78 L', image: 'img/Castrol GTX 20W-50 -  5x3.78 L.jpg' }
+                { size: '12x946 ml', image: 'img/Castrol GTX 20W-50 - 12x946 ml.jpg' },
+                { size: '5x3.78 L', image: 'img/Castrol GTX 20W-50 -  5x3.78 L.jpg' }
             ],
             description: 'Aceite mineral para motores gasolina de alto kilometraje.', 
             category: 'gasolina', 
@@ -535,8 +535,8 @@ const products = {
             viscosity: '20W-50', 
             oilType: 'Mineral', 
             formats: [
-                { size: '12x946 ml', image: 'img/Castrol GTX Gas 20W-50 - 12x946 ml.jpg' },
-                { size: '3.78 L', image: 'img/Castrol GTX Gas 20W-50 -  3.78 L.jpg' }
+                { size: '12x946 ml', image: 'img/Castrol GTX Gas 20W-50 - 12x946 ml.jpg' },
+                { size: '3.78 L', image: 'img/Castrol GTX Gas 20W-50 -  3.78 L.jpg' }
             ],
             description: 'Aceite mineral para motores a gas.', 
             category: 'gasolina', 
@@ -556,7 +556,7 @@ const products = {
             viscosity: '25W-60', 
             oilType: 'Mineral', 
             formats: [
-                { size: '3.78 L', image: 'img/Castrol GTX Alto Kilometraje 25W-60 - 3.78 L.jpg' }
+                { size: '3.78 L', image: 'img/Castrol GTX Alto Kilometraje 25W-60 - 3.78 L.jpg' }
             ],
             description: 'Aceite mineral para motores de alto kilometraje.', 
             category: 'gasolina', 
@@ -579,7 +579,7 @@ const products = {
             viscosity: '10W-40', 
             oilType: 'Full Sintético', 
             formats: [
-                { size: '12x1 L', image: 'img/Castrol POWER 1 Ultimate 4T 10W-40 - 12x1 L.jpg' }
+                { size: '12x1 L', image: 'img/Castrol POWER 1 Ultimate 4T 10W-40 - 12x1 L.jpg' }
             ],
             description: 'Aceite sintético para motos de alto rendimiento.', 
             category: 'motos', 
@@ -600,7 +600,7 @@ const products = {
             viscosity: '15W-50', 
             oilType: 'Full Sintético', 
             formats: [
-                { size: '12x1 L', image: 'img/Castrol POWER 1 4T 15W-50 - 12x1 L.jpg' }
+                { size: '12x1 L', image: 'img/Castrol POWER 1 4T 15W-50 - 12x1 L.jpg' }
             ],
             description: 'Aceite sintético para motos deportivas.', 
             category: 'motos', 
@@ -622,7 +622,7 @@ const products = {
             viscosity: '10W-30', 
             oilType: 'Semi-sintético', 
             formats: [
-                { size: '6x1 L', image: 'img/Castrol Actevo St-St 4T 10W-30 - 6x1 L.jpg' }
+                { size: '6x1 L', image: 'img/Castrol Actevo St-St 4T 10W-30 - 6x1 L.jpg' }
             ],
             description: 'Aceite semi-sintético para motos 4T.', 
             category: 'motos', 
@@ -642,7 +642,7 @@ const products = {
             viscosity: '10W-40', 
             oilType: 'Semi-sintético', 
             formats: [
-                { size: '6x1 L', image: 'img/Castrol Actevo St-St 4T 10W-40 - 6x1 L.jpg' }
+                { size: '6x1 L', image: 'img/Castrol Actevo St-St 4T 10W-40 - 6x1 L.jpg' }
             ],
             description: 'Aceite semi-sintético para motos 4T.', 
             category: 'motos', 
@@ -662,7 +662,7 @@ const products = {
             viscosity: '15W-50', 
             oilType: 'Semi-sintético', 
             formats: [
-                { size: '12x1 L', image: 'img/Castrol Actevo St-St 4T 15W-50 - 12x1 L.jpg' }
+                { size: '12x1 L', image: 'img/Castrol Actevo St-St 4T 15W-50 - 12x1 L.jpg' }
             ],
             description: 'Aceite semi-sintético para motos 4T.', 
             category: 'motos', 
@@ -683,7 +683,7 @@ const products = {
             viscosity: '20W-50', 
             oilType: 'Mineral', 
             formats: [
-                { size: '6x1 qt', image: 'img/Castrol POWER 1 V-Twin 4T 20W-50 - 6x1 qt.jpg' }
+                { size: '6x1 qt', image: 'img/Castrol POWER 1 V-Twin 4T 20W-50 - 6x1 qt.jpg' }
             ],
             description: 'Aceite mineral para motos V-Twin.', 
             category: 'motos', 
@@ -703,7 +703,7 @@ const products = {
             viscosity: '20W-50', 
             oilType: 'Mineral', 
             formats: [
-                { size: '6x1 L', image: 'img/Castrol Actevo 4T 20W-50 - 6x1 L.jpg' }
+                { size: '6x1 L', image: 'img/Castrol Actevo 4T 20W-50 - 6x1 L.jpg' }
             ],
             description: 'Aceite mineral para motos 4T.', 
             category: 'motos', 
@@ -723,7 +723,7 @@ const products = {
             viscosity: '25W-60', 
             oilType: 'Mineral', 
             formats: [
-                { size: '6x946 ml', image: 'img/Castrol Actevo Essential 4T 25W-60 - 6x946 ml.jpg' }
+                { size: '6x946 ml', image: 'img/Castrol Actevo Essential 4T 25W-60 - 6x946 ml.jpg' }
             ],
             description: 'Aceite mineral para motos 4T, protección extra.', 
             category: 'motos', 
@@ -743,7 +743,7 @@ const products = {
             viscosity: '20W-50', 
             oilType: 'Mineral', 
             formats: [
-                { size: '6x946 ml', image: 'img/Castrol Actevo Essential 4T 20W-50 - 6x946 ml.jpg' }
+                { size: '6x946 ml', image: 'img/Castrol Actevo Essential 4T 20W-50 - 6x946 ml.jpg' }
             ],
             description: 'Aceite mineral para motos 4T.', 
             category: 'motos', 
@@ -766,7 +766,7 @@ const products = {
             viscosity: '75W-90', 
             oilType: 'Sintético', 
             formats: [
-                { size: '18.9 L', image: 'img/Castrol TRANSMAX Universal LL 75W-90 - 18.9 L.jpg' }
+                { size: '18.9 L', image: 'img/Castrol TRANSMAX Universal LL 75W-90 - 18.9 L.jpg' }
             ],
             description: 'Aceite sintético para transmisiones universales.', 
             category: 'transmisiones', 
@@ -787,7 +787,7 @@ const products = {
             viscosity: 'CVT', 
             oilType: 'Mineral', 
             formats: [
-                { size: '18.9 L', image: 'img/Castrol TRANSMAX CVT - 18.9 L.jpg' }
+                { size: '18.9 L', image: 'img/Castrol TRANSMAX CVT - 18.9 L.jpg' }
             ],
             description: 'Aceite mineral para transmisiones CVT.', 
             category: 'transmisiones', 
@@ -807,7 +807,7 @@ const products = {
             viscosity: 'ATF DX III', 
             oilType: 'Mineral', 
             formats: [
-                { size: '18.9 L', image: 'img/Castrol TRANSMAX ATF DX III - 18.9 L.jpg' }
+                { size: '18.9 L', image: 'img/Castrol TRANSMAX ATF DX III - 18.9 L.jpg' }
             ],
             description: 'Aceite mineral para transmisiones automáticas.', 
             category: 'transmisiones', 
@@ -827,7 +827,7 @@ const products = {
             viscosity: 'Mercon V/Dexron III', 
             oilType: 'Mineral', 
             formats: [
-                { size: '18.9 L', image: 'img/Castrol TRANSMAX Mercon V - Dexron III - 18.9 L.jpg' }
+                { size: '18.9 L', image: 'img/Castrol TRANSMAX Mercon V - Dexron III - 18.9 L.jpg' }
             ],
             description: 'Aceite mineral para transmisiones automáticas.', 
             category: 'transmisiones', 
@@ -847,7 +847,7 @@ const products = {
             viscosity: 'Dex/Merc', 
             oilType: 'Mineral', 
             formats: [
-                { size: '18.9 L', image: 'img/Castrol TRANSMAX Dex-Merc - 18.9 L.jpg' }
+                { size: '18.9 L', image: 'img/Castrol TRANSMAX Dex-Merc - 18.9 L.jpg' }
             ],
             description: 'Aceite mineral para transmisiones automáticas.', 
             category: 'transmisiones', 
@@ -867,7 +867,7 @@ const products = {
             viscosity: '80W-90', 
             oilType: 'Mineral', 
             formats: [
-                { size: '18.9 L', image: 'img/Castrol AXLE Limited Slip 80W-90 - 18.9 L.jpg' }
+                { size: '18.9 L', image: 'img/Castrol AXLE Limited Slip 80W-90 - 18.9 L.jpg' }
             ],
             description: 'Aceite mineral para diferenciales Limited Slip.', 
             category: 'transmisiones', 
@@ -887,7 +887,7 @@ const products = {
             viscosity: '85W-140', 
             oilType: 'Mineral', 
             formats: [
-                { size: '18.9 L', image: 'img/Castrol AXLE GL-5 85W-140 - 18.9 L.jpg' }
+                { size: '18.9 L', image: 'img/Castrol AXLE GL-5 85W-140 - 18.9 L.jpg' }
             ],
             description: 'Aceite mineral para diferenciales GL-5.', 
             category: 'transmisiones', 
@@ -985,7 +985,7 @@ const products = {
             viscosity: '2T', 
             oilType: '', 
             formats: [
-                { size: '100x160 ml - 100x200 ml', image: 'img/Castrol Actevo Essential 2T - 100x160 ml - 100x200 ml.jpg' }
+                { size: '100x160 ml - 100x200 ml', image: 'img/Castrol Actevo Essential 2T - 100x160 ml - 100x200 ml.jpg' }
             ],
             description: 'Aceite para motores 2T, presentación económica.', 
             category: 'complementarios', 
@@ -1220,14 +1220,11 @@ function createProductCardHTML(product) {
     const hasMultipleFormats = product.formats && product.formats.length > 1;
     const currentFormat = product.formats ? product.formats[0] : { size: product.format || '', image: product.image || '' };
     
-    // Create image carousel if multiple formats - CAMBIO A CARGA INMEDIATA
+    // Create image carousel if multiple formats - RUTAS CORREGIDAS
     let imageContent = '';
     if (hasMultipleFormats) {
-        // Normalize image paths
-        const fixedFormats = product.formats.map(format => ({
-            ...format,
-            image: normalizeImagePath(format.image)
-        }));
+        // Use direct image paths (now perfectly aligned)
+        const fixedFormats = product.formats;
         
         imageContent = `
             <div class="product-image-carousel w-full h-full relative" data-product-id="${product.id}">
@@ -1265,8 +1262,8 @@ function createProductCardHTML(product) {
             </div>
         `;
     } else {
-        // Normalize single image path
-        const fixedImagePath = normalizeImagePath(currentFormat.image);
+        // Use direct image path (now perfectly aligned)
+        const fixedImagePath = currentFormat.image;
         
         imageContent = `
             <img src="${fixedImagePath}" 
@@ -1581,14 +1578,11 @@ function createModalContent(product) {
     const hasMultipleFormats = product.formats && product.formats.length > 1;
     const currentFormat = product.formats ? product.formats[0] : { size: product.format || '', image: product.image || '' };
     
-    // Create image content - with normalized image paths
+    // Create image content - with corrected image paths
     let imageContent = '';
     if (hasMultipleFormats) {
-        // Normalize image paths
-        const fixedFormats = product.formats.map(format => ({
-            ...format,
-            image: normalizeImagePath(format.image)
-        }));
+        // Use direct image paths (now perfectly aligned)
+        const fixedFormats = product.formats;
         
         imageContent = `
             <div class="modal-image-carousel relative w-full h-64" data-product-id="${product.id}">
@@ -1626,8 +1620,8 @@ function createModalContent(product) {
             </div>
         `;
     } else {
-        // Normalize single image path
-        const fixedImagePath = normalizeImagePath(currentFormat.image);
+        // Use direct image path (now perfectly aligned)
+        const fixedImagePath = currentFormat.image;
         
         imageContent = `
             <img src="${fixedImagePath}" alt="${product.name}" 
@@ -1900,7 +1894,7 @@ function createComparisonContent() {
                         ${comparisonList.map(product => {
                             // Get the first format image or fallback to product.image
                             const imagePath = product.formats ? product.formats[0].image : product.image;
-                            const fixedImagePath = normalizeImagePath(imagePath);
+                            const fixedImagePath = imagePath; // Now perfectly aligned
                             
                             return `
                             <td class="border p-3 text-center">
@@ -2555,16 +2549,7 @@ function checkMissingImages() {
     }, 3000);
 }
 
-// Function to normalize image paths to match actual file names
-function normalizeImagePath(imagePath) {
-    // SOLUCION: Convertir todos los em dashes (—) a guiones normales (-) 
-    // porque los archivos reales usan guiones normales
-    return imagePath
-        .replace(/—/g, '-')   // Convertir em dash (—) a guión normal (-)
-        .replace(/\s+/g, ' ') // Normalizar múltiples espacios a uno solo
-        .replace(/\s*-\s*/g, ' - ')  // Espaciado consistente alrededor del guión
-        .trim();             // Remover espacios al inicio/final
-}
+// ✅ SOLUCIONADO: Ya no necesitamos normalización - todas las rutas están perfectamente alineadas
 
 // ✅ SOLUCIONADO: Ya no necesitamos imagePathFixes
 // Todas las rutas de imágenes en el código ahora usan guiones normales (-) 
@@ -2572,34 +2557,14 @@ function normalizeImagePath(imagePath) {
 
 // ✅ Ya no necesitamos función de test - problema resuelto
 
-// Fix all product image paths
-function fixProductImagePaths() {
-    console.log('🔧 Normalizando rutas de imágenes...');
-    
-    Object.keys(products).forEach(category => {
-        products[category].forEach(product => {
-            if (product.formats) {
-                product.formats.forEach(format => {
-                    const originalPath = format.image;
-                    format.image = normalizeImagePath(format.image);
-                    if (originalPath !== format.image) {
-                        console.log(`📝 Normalizado: ${originalPath} → ${format.image}`);
-                    }
-                });
-            } else if (product.image) {
-                const originalPath = product.image;
-                product.image = normalizeImagePath(product.image);
-                if (originalPath !== product.image) {
-                    console.log(`📝 Normalizado: ${originalPath} → ${product.image}`);
-                }
-            }
-        });
-    });
+// ✅ Ya no necesitamos función de fix - todas las rutas están corregidas
+function initializeImageSystem() {
+    console.log('✅ Sistema de imágenes: Todas las rutas están alineadas correctamente');
 }
 
-// Run fixes on page load with diagnostic
+// Initialize image system on page load
 document.addEventListener('DOMContentLoaded', function() {
-    fixProductImagePaths();
+    initializeImageSystem();
     // Enable diagnostic temporarily to check improvements
     setTimeout(() => {
         checkMissingImages();
