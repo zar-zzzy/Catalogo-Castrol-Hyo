@@ -2557,31 +2557,53 @@ function checkMissingImages() {
 
 // Function to normalize image paths to match actual file names
 function normalizeImagePath(imagePath) {
-    // Don't URL encode - keep the original characters as they appear in file system
+    // SOLUCION: Convertir todos los em dashes (—) a guiones normales (-) 
+    // porque los archivos reales usan guiones normales
     return imagePath
-        .replace(/—/g, '—')  // Ensure consistent em dash (U+2014)
-        .replace(/\s+/g, ' ') // Normalize multiple spaces to single space
-        .replace(/\s*—\s*/g, ' — ')  // Ensure consistent spacing around em dash
-        .trim();             // Remove leading/trailing spaces
+        .replace(/—/g, '-')   // Convertir em dash (—) a guión normal (-)
+        .replace(/\s+/g, ' ') // Normalizar múltiples espacios a uno solo
+        .replace(/\s*-\s*/g, ' - ')  // Espaciado consistente alrededor del guión
+        .trim();             // Remover espacios al inicio/final
 }
 
-// Manual fixes for known problematic file names (mapeos automáticos generados)
+// Manual fixes for known problematic file names 
+// ACTUALIZADOS: Ahora mapeamos desde em-dash a guión normal según archivos reales
 const imagePathFixes = {
-    // Archivos con espacios extra antes del guión largo
-    'img/Castrol CRB Turbomax CI-4-SL-E7 15W-40 — 5 gal.jpg': 'img/Castrol CRB Turbomax CI-4-SL-E7 15W-40 —  5 gal.jpg',
-    'img/Castrol CRB Viscus 25W-60 — 946 ml.jpg': 'img/Castrol CRB Viscus 25W-60 —  946 ml.jpg',
-    'img/Castrol EDGE Turbo Diesel 5W-40 — 4x4 L.jpg': 'img/Castrol EDGE Turbo Diesel 5W-40 —  4x4 L.jpg',
-    'img/Castrol GTX 10W-30 — 3.78 L.jpg': 'img/Castrol GTX 10W-30 —  3.78 L.jpg',
-    'img/Castrol GTX 20W-50 — 5x3.78 L.jpg': 'img/Castrol GTX 20W-50 —  5x3.78 L.jpg',
-    'img/Castrol GTX 5W-30 — 3x4 L.jpg': 'img/Castrol GTX 5W-30 —  3x4 L.jpg',
-    'img/Castrol GTX Gas 20W-50 — 3.78 L.jpg': 'img/Castrol GTX Gas 20W-50 —  3.78 L.jpg',
-    'img/Castrol MAGNATEC 10W-30 — 3.78 L.jpg': 'img/Castrol MAGNATEC 10W-30 —  3.78 L.jpg',
-    'img/Castrol MAGNATEC 10W-40 — 3.78 L.jpg': 'img/Castrol MAGNATEC 10W-40 —  3.78 L.jpg',
-    'img/Castrol MAGNATEC 20W-50 — 3.78 L.jpg': 'img/Castrol MAGNATEC 20W-50 —  3.78 L.jpg',
-    'img/Castrol MAGNATEC C3 5W-30 — 4x4 L.jpg': 'img/Castrol MAGNATEC C3 5W-30 —  4x4 L.jpg',
-    'img/Castrol Vecton LD CK-4-E9 10W-30 — 208 L.jpg': 'img/Castrol Vecton LD CK-4-E9 10W-30 —  208 L.jpg',
-    'img/Castrol Vecton Long Drain E6-E9 10W-40 — 208 L.jpg': 'img/Castrol Vecton Long Drain E6-E9 10W-40 —  208 L.jpg'
+    // Archivos que en código tienen em-dash (—) pero en sistema tienen guión normal (-) + espacios extra
+    'img/Castrol CRB Turbomax CI-4-SL-E7 15W-40 - 5 gal.jpg': 'img/Castrol CRB Turbomax CI-4-SL-E7 15W-40 —  5 gal.jpg',
+    'img/Castrol CRB Viscus 25W-60 - 946 ml.jpg': 'img/Castrol CRB Viscus 25W-60 —  946 ml.jpg',
+    'img/Castrol EDGE Turbo Diesel 5W-40 - 4x4 L.jpg': 'img/Castrol EDGE Turbo Diesel 5W-40 —  4x4 L.jpg',
+    'img/Castrol GTX 10W-30 - 3.78 L.jpg': 'img/Castrol GTX 10W-30 —  3.78 L.jpg',
+    'img/Castrol GTX 20W-50 - 5x3.78 L.jpg': 'img/Castrol GTX 20W-50 —  5x3.78 L.jpg',
+    'img/Castrol GTX 5W-30 - 3x4 L.jpg': 'img/Castrol GTX 5W-30 —  3x4 L.jpg',
+    'img/Castrol GTX Gas 20W-50 - 3.78 L.jpg': 'img/Castrol GTX Gas 20W-50 —  3.78 L.jpg',
+    'img/Castrol MAGNATEC 10W-30 - 3.78 L.jpg': 'img/Castrol MAGNATEC 10W-30 —  3.78 L.jpg',
+    'img/Castrol MAGNATEC 10W-40 - 3.78 L.jpg': 'img/Castrol MAGNATEC 10W-40 —  3.78 L.jpg',
+    'img/Castrol MAGNATEC 20W-50 - 3.78 L.jpg': 'img/Castrol MAGNATEC 20W-50 —  3.78 L.jpg',
+    'img/Castrol MAGNATEC C3 5W-30 - 4x4 L.jpg': 'img/Castrol MAGNATEC C3 5W-30 —  4x4 L.jpg',
+    'img/Castrol Vecton LD CK-4-E9 10W-30 - 208 L.jpg': 'img/Castrol Vecton LD CK-4-E9 10W-30 —  208 L.jpg',
+    'img/Castrol Vecton Long Drain E6-E9 10W-40 - 208 L.jpg': 'img/Castrol Vecton Long Drain E6-E9 10W-40 —  208 L.jpg'
 };
+
+// Test la nueva función de normalización
+function testImagePathNormalization() {
+    console.log('🧪 TESTEANDO CONVERSIÓN DE EM-DASH A GUIÓN NORMAL:');
+    
+    const testPaths = [
+        'img/Castrol GTX 10W-30 — 3.78 L.jpg',
+        'img/Castrol MAGNATEC 20W-50 — 3.78 L.jpg',  
+        'img/Castrol EDGE Turbo Diesel 5W-40 — 4x4 L.jpg'
+    ];
+    
+    testPaths.forEach(path => {
+        const normalized = normalizeImagePath(path);
+        const fixed = imagePathFixes[normalized] || normalized;
+        console.log(`📄 Original: ${path}`);
+        console.log(`✅ Normalizada: ${normalized}`);
+        console.log(`🔧 Final: ${fixed}`);
+        console.log('---');
+    });
+}
 
 // Fix all product image paths
 function fixProductImagePaths() {
@@ -2624,6 +2646,9 @@ function fixProductImagePaths() {
 
 // Run fixes on page load with diagnostic
 document.addEventListener('DOMContentLoaded', function() {
+    // Test la conversión de em-dash a guión normal
+    testImagePathNormalization();
+    
     fixProductImagePaths();
     // Enable diagnostic temporarily to check improvements
     setTimeout(() => {
