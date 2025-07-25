@@ -1340,8 +1340,8 @@ function createProductCardHTML(product) {
                 <p class="text-gray-700 text-sm mb-4 line-clamp-3">${product.description}</p>
                 
                 <div class="flex gap-2">
-                    <button class="flex-1 bg-[#007C41] text-white py-2 px-4 rounded-lg font-medium shadow-md transition-all hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-700 focus:ring-offset-2 hover:shadow-xl hover:-translate-y-1 transform duration-200" 
-                            onclick="openProductModal('${product.id}')">
+                    <button class="flex-1 bg-[#007C41] text-white py-2 px-4 rounded-lg font-medium shadow-md transition-all hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-700 focus:ring-offset-2 hover:shadow-xl hover:-translate-y-1 transform duration-200 relative z-30" 
+                            onclick="event.stopPropagation(); openProductModal('${product.id}'); console.log('🖱️ Ver detalles clicked for:', '${product.id}');">
                         Ver detalles
                     </button>
                     <button class="px-4 py-2 border-2 border-green-600 text-green-600 rounded-lg hover:bg-green-600 hover:text-white transition-colors" 
@@ -1491,16 +1491,16 @@ function initializeProductCarousels() {
                 }
             });
             
-            // Update indicators
-            indicators.forEach((indicator, i) => {
-                if (i === index) {
-                    indicator.classList.remove('bg-opacity-50');
-                    indicator.classList.add('bg-white', 'shadow-md');
-                } else {
-                    indicator.classList.remove('shadow-md');
-                    indicator.classList.add('bg-opacity-50');
-                }
-            });
+                    // Update indicators - FIXED CLASSES
+        indicators.forEach((indicator, i) => {
+            if (i === index) {
+                indicator.classList.remove('bg-white', 'bg-opacity-70', 'border-white');
+                indicator.classList.add('bg-white', 'border-green-600', 'shadow-lg');
+            } else {
+                indicator.classList.remove('bg-white', 'border-green-600', 'shadow-lg');
+                indicator.classList.add('bg-white', 'bg-opacity-70', 'border-white');
+            }
+        });
             
             // Update format display
             if (formatDisplay) {
@@ -1527,10 +1527,12 @@ function initializeProductCarousels() {
             }
         }
         
-        // Add click handlers to indicators
+        // Add click handlers to indicators with improved error handling
         indicators.forEach((indicator, index) => {
             indicator.addEventListener('click', (e) => {
+                e.preventDefault();
                 e.stopPropagation();
+                console.log(`🎯 Card indicator clicked: ${index} for product ${productId}`);
                 showFormat(index);
                 stopCarousel();
                 setTimeout(startCarousel, 2000); // Restart after 2 seconds
@@ -1765,8 +1767,13 @@ function createModalContent(product) {
 
 // Initialize modal carousel for multiple formats
 function initializeModalCarousel(product) {
+    console.log('🖼️ Initializing modal carousel for:', product.name, 'Formats:', product.formats?.length);
+    
     const carousel = document.querySelector('.modal-image-carousel');
-    if (!carousel) return;
+    if (!carousel) {
+        console.error('❌ Modal carousel not found for product:', product.id);
+        return;
+    }
     
     let currentIndex = 0;
     const images = carousel.querySelectorAll('.modal-carousel-image');
@@ -1774,7 +1781,16 @@ function initializeModalCarousel(product) {
     const prevBtn = carousel.querySelector('.modal-carousel-prev');
     const nextBtn = carousel.querySelector('.modal-carousel-next');
     
+    console.log('🔍 Found modal elements:', {
+        images: images.length,
+        indicators: indicators.length,
+        prevBtn: !!prevBtn,
+        nextBtn: !!nextBtn
+    });
+    
     function showFormat(index) {
+        console.log(`🎯 Modal showing format ${index}:`, product.formats[index]?.size);
+        
         // Hide all images
         images.forEach((img, i) => {
             if (i === index) {
@@ -1802,30 +1818,62 @@ function initializeModalCarousel(product) {
     
     function nextFormat() {
         const nextIndex = (currentIndex + 1) % product.formats.length;
+        console.log(`➡️ Modal next: ${currentIndex} → ${nextIndex}`);
         showFormat(nextIndex);
     }
     
     function prevFormat() {
         const prevIndex = (currentIndex - 1 + product.formats.length) % product.formats.length;
+        console.log(`⬅️ Modal prev: ${currentIndex} → ${prevIndex}`);
         showFormat(prevIndex);
     }
     
+    // Remove any existing event listeners first
+    const existingNextBtn = carousel.querySelector('.modal-carousel-next');
+    const existingPrevBtn = carousel.querySelector('.modal-carousel-prev');
+    
+    if (existingNextBtn) {
+        existingNextBtn.replaceWith(existingNextBtn.cloneNode(true));
+    }
+    if (existingPrevBtn) {
+        existingPrevBtn.replaceWith(existingPrevBtn.cloneNode(true));
+    }
+    
+    // Get fresh references after cloning
+    const freshNextBtn = carousel.querySelector('.modal-carousel-next');
+    const freshPrevBtn = carousel.querySelector('.modal-carousel-prev');
+    
     // Add navigation event listeners
-    if (nextBtn) {
-        nextBtn.addEventListener('click', nextFormat);
+    if (freshNextBtn) {
+        freshNextBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            nextFormat();
+        });
     }
     
-    if (prevBtn) {
-        prevBtn.addEventListener('click', prevFormat);
+    if (freshPrevBtn) {
+        freshPrevBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            prevFormat();
+        });
     }
     
-    // Add indicator click handlers
+    // Add indicator click handlers (also refresh these)
     indicators.forEach((indicator, index) => {
-        indicator.addEventListener('click', () => showFormat(index));
+        const newIndicator = indicator.cloneNode(true);
+        indicator.parentNode.replaceChild(newIndicator, indicator);
+        newIndicator.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log(`🎯 Modal indicator clicked: ${index}`);
+            showFormat(index);
+        });
     });
     
-    // Keyboard navigation
-    document.addEventListener('keydown', function modalKeyNav(e) {
+    // Store the keyboard handler to remove it later
+    window.modalKeyNavHandler = function(e) {
         if (!productModal.classList.contains('hidden')) {
             if (e.key === 'ArrowLeft') {
                 e.preventDefault();
@@ -1835,13 +1883,32 @@ function initializeModalCarousel(product) {
                 nextFormat();
             }
         }
-    });
+    };
+    
+    // Remove previous handler if exists
+    if (window.previousModalKeyNavHandler) {
+        document.removeEventListener('keydown', window.previousModalKeyNavHandler);
+    }
+    
+    // Add new keyboard navigation
+    document.addEventListener('keydown', window.modalKeyNavHandler);
+    window.previousModalKeyNavHandler = window.modalKeyNavHandler;
+    
+    console.log('✅ Modal carousel initialized successfully');
 }
 
 // Close product modal
 function closeProductModal() {
     productModal.classList.add('hidden');
     document.body.style.overflow = 'auto';
+    
+    // Clean up modal carousel event listeners
+    if (window.previousModalKeyNavHandler) {
+        document.removeEventListener('keydown', window.previousModalKeyNavHandler);
+        window.previousModalKeyNavHandler = null;
+    }
+    
+    console.log('🚪 Modal closed and event listeners cleaned up');
 }
 
 // Toggle product in comparison list
