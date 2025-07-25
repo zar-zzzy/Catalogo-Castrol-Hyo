@@ -2524,34 +2524,32 @@ function checkMissingImages() {
     }, 3000);
 }
 
-// Function to normalize image paths for browser compatibility
+// Function to normalize image paths to match actual file names
 function normalizeImagePath(imagePath) {
-    // Split the path into directory and filename
-    const parts = imagePath.split('/');
-    if (parts.length < 2) return imagePath;
-    
-    const directory = parts[0];
-    let filename = parts.slice(1).join('/');
-    
-    // Normalize the filename for URL compatibility
-    filename = filename
+    // Don't URL encode - keep the original characters as they appear in file system
+    return imagePath
         .replace(/—/g, '—')  // Ensure consistent em dash (U+2014)
         .replace(/\s+/g, ' ') // Normalize multiple spaces to single space
         .replace(/\s*—\s*/g, ' — ')  // Ensure consistent spacing around em dash
         .trim();             // Remove leading/trailing spaces
-    
-    // URL encode problematic characters for better browser compatibility
-    const encodedFilename = encodeURIComponent(filename)
-        .replace(/'/g, '%27')   // Single quotes
-        .replace(/\(/g, '%28')  // Parentheses
-        .replace(/\)/g, '%29');
-    
-    return directory + '/' + encodedFilename;
 }
 
-// Manual fixes for known problematic file names
+// Manual fixes for known problematic file names (mapeos automáticos generados)
 const imagePathFixes = {
-    // Add specific fixes here if needed
+    // Archivos con espacios extra antes del guión largo
+    'img/Castrol CRB Turbomax CI-4-SL-E7 15W-40 — 5 gal.jpg': 'img/Castrol CRB Turbomax CI-4-SL-E7 15W-40 —  5 gal.jpg',
+    'img/Castrol CRB Viscus 25W-60 — 946 ml.jpg': 'img/Castrol CRB Viscus 25W-60 —  946 ml.jpg',
+    'img/Castrol EDGE Turbo Diesel 5W-40 — 4x4 L.jpg': 'img/Castrol EDGE Turbo Diesel 5W-40 —  4x4 L.jpg',
+    'img/Castrol GTX 10W-30 — 3.78 L.jpg': 'img/Castrol GTX 10W-30 —  3.78 L.jpg',
+    'img/Castrol GTX 20W-50 — 5x3.78 L.jpg': 'img/Castrol GTX 20W-50 —  5x3.78 L.jpg',
+    'img/Castrol GTX 5W-30 — 3x4 L.jpg': 'img/Castrol GTX 5W-30 —  3x4 L.jpg',
+    'img/Castrol GTX Gas 20W-50 — 3.78 L.jpg': 'img/Castrol GTX Gas 20W-50 —  3.78 L.jpg',
+    'img/Castrol MAGNATEC 10W-30 — 3.78 L.jpg': 'img/Castrol MAGNATEC 10W-30 —  3.78 L.jpg',
+    'img/Castrol MAGNATEC 10W-40 — 3.78 L.jpg': 'img/Castrol MAGNATEC 10W-40 —  3.78 L.jpg',
+    'img/Castrol MAGNATEC 20W-50 — 3.78 L.jpg': 'img/Castrol MAGNATEC 20W-50 —  3.78 L.jpg',
+    'img/Castrol MAGNATEC C3 5W-30 — 4x4 L.jpg': 'img/Castrol MAGNATEC C3 5W-30 —  4x4 L.jpg',
+    'img/Castrol Vecton LD CK-4-E9 10W-30 — 208 L.jpg': 'img/Castrol Vecton LD CK-4-E9 10W-30 —  208 L.jpg',
+    'img/Castrol Vecton Long Drain E6-E9 10W-40 — 208 L.jpg': 'img/Castrol Vecton Long Drain E6-E9 10W-40 —  208 L.jpg'
 };
 
 // Fix all product image paths
@@ -2593,10 +2591,11 @@ function fixProductImagePaths() {
     });
 }
 
-// Run fixes and diagnostic on page load
+// Run fixes on page load with diagnostic
 document.addEventListener('DOMContentLoaded', function() {
     fixProductImagePaths();
+    // Enable diagnostic temporarily to check improvements
     setTimeout(() => {
         checkMissingImages();
-    }, 500);
+    }, 1000);
 });
