@@ -1356,7 +1356,7 @@ function updateResultsCount(count) {
     }
 }
 
-// Setup lazy loading for images
+// Setup lazy loading for images with better error handling
 function setupLazyLoading() {
     const lazyImages = document.querySelectorAll('.lazy-image');
     
@@ -1366,23 +1366,53 @@ function setupLazyLoading() {
                 const img = entry.target;
                 const loadingDiv = img.nextElementSibling;
                 
-                img.src = img.dataset.src;
+                // Normalize the image source
+                const originalSrc = img.dataset.src;
+                const normalizedSrc = normalizeImagePath(originalSrc);
+                
+                img.src = normalizedSrc;
+                
                 img.onload = () => {
                     img.style.opacity = '1';
                     img.style.transition = 'opacity 0.3s ease';
                     if (loadingDiv) loadingDiv.style.display = 'none';
+                    console.log(`✅ Imagen cargada exitosamente: ${normalizedSrc}`);
                 };
+                
                 img.onerror = () => {
-                    img.style.display = 'none';
-                    if (loadingDiv) {
-                        loadingDiv.innerHTML = `
-                            <div class="text-center">
-                                <i class="fas fa-image text-4xl text-gray-300 mb-2"></i>
-                                <p class="text-xs text-gray-400">Imagen no disponible</p>
-                            </div>
-                        `;
+                    console.error(`❌ Error cargando imagen: ${originalSrc} (normalizada: ${normalizedSrc})`);
+                    
+                    // Try with the original path as fallback
+                    if (normalizedSrc !== originalSrc) {
+                        console.log(`🔄 Intentando con ruta original: ${originalSrc}`);
+                        img.src = originalSrc;
+                        
+                        img.onerror = () => {
+                            img.style.display = 'none';
+                            if (loadingDiv) {
+                                loadingDiv.innerHTML = `
+                                    <div class="text-center">
+                                        <i class="fas fa-image text-4xl text-gray-300 mb-2"></i>
+                                        <p class="text-xs text-gray-400">Imagen no disponible</p>
+                                        <p class="text-xs text-gray-300 mt-1">${originalSrc}</p>
+                                    </div>
+                                `;
+                            }
+                        };
+                    } else {
+                        img.style.display = 'none';
+                        if (loadingDiv) {
+                            loadingDiv.innerHTML = `
+                                <div class="text-center">
+                                    <i class="fas fa-image text-4xl text-gray-300 mb-2"></i>
+                                    <p class="text-xs text-gray-400">Imagen no disponible</p>
+                                    <p class="text-xs text-gray-300 mt-1">${originalSrc}</p>
+                                </div>
+                            `;
+                        }
                     }
                 };
+                
                 imageObserver.unobserve(img);
             }
         });
@@ -2442,3 +2472,116 @@ window.clearComparison = clearComparison;
 window.shareProduct = shareProduct;
 window.resetAllFilters = resetAllFilters;
 window.updateComparisonAfterRemove = updateComparisonAfterRemove;
+
+// Diagnostic function to check missing images
+function checkMissingImages() {
+    console.log('🔍 Verificando imágenes faltantes...');
+    const missingImages = [];
+    
+    Object.keys(products).forEach(category => {
+        products[category].forEach(product => {
+            if (product.formats) {
+                product.formats.forEach((format, index) => {
+                    const img = new Image();
+                    img.onload = () => {
+                        console.log(`✅ Imagen cargada: ${format.image}`);
+                    };
+                    img.onerror = () => {
+                        console.error(`❌ Imagen NO encontrada: ${format.image}`);
+                        missingImages.push({
+                            product: product.name,
+                            category: category,
+                            format: format.size,
+                            image: format.image
+                        });
+                    };
+                    img.src = format.image;
+                });
+            } else if (product.image) {
+                const img = new Image();
+                img.onload = () => {
+                    console.log(`✅ Imagen cargada: ${product.image}`);
+                };
+                img.onerror = () => {
+                    console.error(`❌ Imagen NO encontrada: ${product.image}`);
+                    missingImages.push({
+                        product: product.name,
+                        category: category,
+                        image: product.image
+                    });
+                };
+                img.src = product.image;
+            }
+        });
+    });
+    
+    setTimeout(() => {
+        if (missingImages.length > 0) {
+            console.log('🚨 Imágenes faltantes encontradas:', missingImages);
+        } else {
+            console.log('✅ Todas las imágenes están disponibles');
+        }
+    }, 3000);
+}
+
+// Function to normalize image paths
+function normalizeImagePath(imagePath) {
+    // Fix common character encoding issues
+    return imagePath
+        .replace(/—/g, '—')  // Ensure consistent em dash (U+2014)
+        .replace(/\s+/g, ' ') // Normalize multiple spaces to single space
+        .replace(/\s*—\s*/g, ' — ')  // Ensure consistent spacing around em dash
+        .trim();             // Remove leading/trailing spaces
+}
+
+// Manual fixes for known problematic file names
+const imagePathFixes = {
+    // Add specific fixes here if needed
+};
+
+// Fix all product image paths
+function fixProductImagePaths() {
+    console.log('🔧 Normalizando rutas de imágenes...');
+    
+    Object.keys(products).forEach(category => {
+        products[category].forEach(product => {
+            if (product.formats) {
+                product.formats.forEach(format => {
+                    const originalPath = format.image;
+                    
+                    // Apply manual fixes first
+                    if (imagePathFixes[originalPath]) {
+                        format.image = imagePathFixes[originalPath];
+                        console.log(`🔧 Fix manual aplicado: ${originalPath} → ${format.image}`);
+                    } else {
+                        format.image = normalizeImagePath(format.image);
+                        if (originalPath !== format.image) {
+                            console.log(`📝 Normalizado: ${originalPath} → ${format.image}`);
+                        }
+                    }
+                });
+            } else if (product.image) {
+                const originalPath = product.image;
+                
+                // Apply manual fixes first
+                if (imagePathFixes[originalPath]) {
+                    product.image = imagePathFixes[originalPath];
+                    console.log(`🔧 Fix manual aplicado: ${originalPath} → ${product.image}`);
+                } else {
+                    product.image = normalizeImagePath(product.image);
+                    if (originalPath !== product.image) {
+                        console.log(`📝 Normalizado: ${originalPath} → ${product.image}`);
+                    }
+                }
+            }
+        });
+    });
+}
+
+// Run fixes and diagnostic on page load
+document.addEventListener('DOMContentLoaded', function() {
+    fixProductImagePaths();
+    setTimeout(() => {
+        checkMissingImages();
+    }, 500);
+});
