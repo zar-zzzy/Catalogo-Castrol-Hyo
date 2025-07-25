@@ -2524,14 +2524,29 @@ function checkMissingImages() {
     }, 3000);
 }
 
-// Function to normalize image paths
+// Function to normalize image paths for browser compatibility
 function normalizeImagePath(imagePath) {
-    // Fix common character encoding issues
-    return imagePath
+    // Split the path into directory and filename
+    const parts = imagePath.split('/');
+    if (parts.length < 2) return imagePath;
+    
+    const directory = parts[0];
+    let filename = parts.slice(1).join('/');
+    
+    // Normalize the filename for URL compatibility
+    filename = filename
         .replace(/—/g, '—')  // Ensure consistent em dash (U+2014)
         .replace(/\s+/g, ' ') // Normalize multiple spaces to single space
         .replace(/\s*—\s*/g, ' — ')  // Ensure consistent spacing around em dash
         .trim();             // Remove leading/trailing spaces
+    
+    // URL encode problematic characters for better browser compatibility
+    const encodedFilename = encodeURIComponent(filename)
+        .replace(/'/g, '%27')   // Single quotes
+        .replace(/\(/g, '%28')  // Parentheses
+        .replace(/\)/g, '%29');
+    
+    return directory + '/' + encodedFilename;
 }
 
 // Manual fixes for known problematic file names
