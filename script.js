@@ -1175,7 +1175,10 @@ function displayProducts(products) {
     });
     
     // Initialize carousels for products with multiple formats (lazy loading ya no es necesario)
-    initializeProductCarousels();
+    // Using setTimeout to ensure DOM is fully rendered
+    setTimeout(() => {
+        initializeProductCarousels();
+    }, 100);
 }
 
 // Create category section
@@ -1219,6 +1222,12 @@ function createProductCardHTML(product) {
     // Handle multiple formats
     const hasMultipleFormats = product.formats && product.formats.length > 1;
     const currentFormat = product.formats ? product.formats[0] : { size: product.format || '', image: product.image || '' };
+    
+    console.log(`🏷️ Creating card for: ${product.name}`, {
+        hasMultipleFormats,
+        formatsCount: product.formats?.length,
+        formats: product.formats?.map(f => f.size)
+    });
     
     // Create image carousel if multiple formats - RUTAS CORREGIDAS
     let imageContent = '';
@@ -1446,13 +1455,20 @@ function setupLazyLoading() {
 
 // Initialize product carousels for multiple formats
 function initializeProductCarousels() {
+    console.log('🎠 Initializing product carousels...');
     const carousels = document.querySelectorAll('.product-image-carousel');
+    console.log('🔍 Found carousels:', carousels.length);
     
     carousels.forEach(carousel => {
         const productId = carousel.dataset.productId;
         const product = allProducts.find(p => p.id === productId);
         
-        if (!product || !product.formats || product.formats.length <= 1) return;
+        console.log(`📦 Processing product: ${productId}`, product?.name, 'Formats:', product?.formats?.length);
+        
+        if (!product || !product.formats || product.formats.length <= 1) {
+            console.log(`❌ Skipping product ${productId}: No multiple formats`);
+            return;
+        }
         
         let currentIndex = 0;
         let carouselInterval;
@@ -1462,6 +1478,8 @@ function initializeProductCarousels() {
         const formatDisplay = document.querySelector(`.format-display[data-product-id="${productId}"]`);
         
         function showFormat(index) {
+            console.log(`🎯 Showing format ${index} for product ${productId}`, product.formats[index]?.size);
+            
             // Hide all images
             images.forEach((img, i) => {
                 if (i === index) {
@@ -1494,10 +1512,12 @@ function initializeProductCarousels() {
         
         function nextFormat() {
             const nextIndex = (currentIndex + 1) % product.formats.length;
+            console.log(`➡️ Next format: ${currentIndex} → ${nextIndex} for product ${productId}`);
             showFormat(nextIndex);
         }
         
         function startCarousel() {
+            console.log(`🏁 Starting carousel for product ${productId}`);
             carouselInterval = setInterval(nextFormat, 5000); // Change every 5 seconds (un poco más lento)
         }
         
@@ -1766,14 +1786,14 @@ function initializeModalCarousel(product) {
             }
         });
         
-        // Update indicators
+        // Update indicators - FIXED TO MATCH GREEN THEME
         indicators.forEach((indicator, i) => {
             if (i === index) {
-                indicator.classList.remove('bg-black', 'bg-opacity-50', 'text-white');
-                indicator.classList.add('bg-white', 'text-black');
+                indicator.classList.remove('bg-black', 'bg-opacity-70', 'text-white', 'border-transparent');
+                indicator.classList.add('bg-white', 'text-green-600', 'border-green-600', 'shadow-lg');
             } else {
-                indicator.classList.remove('bg-white', 'text-black');
-                indicator.classList.add('bg-black', 'bg-opacity-50', 'text-white');
+                indicator.classList.remove('bg-white', 'text-green-600', 'border-green-600', 'shadow-lg');
+                indicator.classList.add('bg-black', 'bg-opacity-70', 'text-white', 'border-transparent');
             }
         });
         
