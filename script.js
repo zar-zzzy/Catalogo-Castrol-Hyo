@@ -1174,10 +1174,7 @@ function displayProducts(products) {
         productsContainer.appendChild(categorySection);
     });
     
-    // Setup lazy loading
-    setupLazyLoading();
-    
-    // Initialize carousels for products with multiple formats
+    // Initialize carousels for products with multiple formats (lazy loading ya no es necesario)
     initializeProductCarousels();
 }
 
@@ -1223,30 +1220,43 @@ function createProductCardHTML(product) {
     const hasMultipleFormats = product.formats && product.formats.length > 1;
     const currentFormat = product.formats ? product.formats[0] : { size: product.format || '', image: product.image || '' };
     
-    // Create image carousel if multiple formats
+    // Create image carousel if multiple formats - CAMBIO A CARGA INMEDIATA
     let imageContent = '';
     if (hasMultipleFormats) {
+        // Apply fixes to image paths
+        const fixedFormats = product.formats.map(format => ({
+            ...format,
+            image: imagePathFixes[format.image] || normalizeImagePath(format.image)
+        }));
+        
         imageContent = `
             <div class="product-image-carousel w-full h-full relative" data-product-id="${product.id}">
-                ${product.formats.map((format, index) => `
-                    <img data-src="${format.image}" 
+                ${fixedFormats.map((format, index) => `
+                    <img src="${format.image}" 
                          alt="${product.name} - ${format.size}" 
-                         class="lazy-image carousel-image product-image absolute inset-0 w-full h-full object-contain transition-opacity duration-500 ${index === 0 ? 'opacity-100' : 'opacity-0'}"
+                         class="carousel-image product-image absolute inset-0 w-full h-full object-contain transition-opacity duration-500 ${index === 0 ? 'opacity-100' : 'opacity-0'}"
                          data-format-index="${index}"
-                         style="opacity: 0;">
+                         onerror="this.style.display='none'; this.nextElementSibling && (this.nextElementSibling.style.display='flex');"
+                         onload="this.style.opacity='1'; this.parentElement.querySelector('.image-loading') && (this.parentElement.querySelector('.image-loading').style.display='none');">
+                    <div class="image-error absolute inset-0 items-center justify-center rounded-t-lg bg-gray-100" style="display: none;">
+                        <div class="text-center">
+                            <i class="fas fa-image text-4xl text-gray-300 mb-2"></i>
+                            <p class="text-xs text-gray-400">Imagen no disponible</p>
+                        </div>
+                    </div>
                 `).join('')}
                 
                 <!-- Loading indicator for first image -->
                 <div class="image-loading absolute inset-0 flex items-center justify-center rounded-t-lg">
                     <div class="text-center">
-                        <i class="fas fa-oil-can text-4xl text-gray-400 mb-2"></i>
+                        <i class="fas fa-oil-can text-4xl text-gray-400 mb-2 animate-pulse"></i>
                         <p class="text-sm text-gray-500">Cargando imagen...</p>
                     </div>
                 </div>
                 
                 <!-- Format indicators -->
                 <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-1 z-10">
-                    ${product.formats.map((format, index) => `
+                    ${fixedFormats.map((format, index) => `
                         <div class="format-indicator w-2 h-2 rounded-full cursor-pointer transition-all duration-300 ${index === 0 ? 'bg-white shadow-md' : 'bg-white bg-opacity-50 hover:bg-opacity-75'}" 
                              data-format-index="${index}"
                              title="${format.size}"></div>
@@ -1255,15 +1265,21 @@ function createProductCardHTML(product) {
             </div>
         `;
     } else {
+        // Apply fixes for single image
+        const fixedImagePath = imagePathFixes[currentFormat.image] || normalizeImagePath(currentFormat.image);
+        
         imageContent = `
-            <img data-src="${currentFormat.image}" 
+            <img src="${fixedImagePath}" 
                  alt="${product.name}" 
-                 class="lazy-image product-image w-full h-full object-contain"
-                 style="opacity: 0;">
+                 class="product-image w-full h-full object-contain"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                 onload="this.style.opacity='1'; this.nextElementSibling.style.display='none';"
+                 style="opacity: 1;">
             <div class="image-loading absolute inset-0 flex items-center justify-center rounded-t-lg">
                 <div class="text-center">
-                    <i class="fas fa-oil-can text-4xl text-gray-400 mb-2"></i>
-                    <p class="text-sm text-gray-500">Cargando imagen...</p>
+                    <i class="fas fa-image text-4xl text-gray-300 mb-2"></i>
+                    <p class="text-xs text-gray-400">Imagen no disponible</p>
+                    <p class="text-xs text-gray-200 mt-1">${currentFormat.image}</p>
                 </div>
             </div>
         `;
@@ -1565,12 +1581,18 @@ function createModalContent(product) {
     const hasMultipleFormats = product.formats && product.formats.length > 1;
     const currentFormat = product.formats ? product.formats[0] : { size: product.format || '', image: product.image || '' };
     
-    // Create image content
+    // Create image content - with fixed image paths
     let imageContent = '';
     if (hasMultipleFormats) {
+        // Apply fixes to image paths
+        const fixedFormats = product.formats.map(format => ({
+            ...format,
+            image: imagePathFixes[format.image] || normalizeImagePath(format.image)
+        }));
+        
         imageContent = `
             <div class="modal-image-carousel relative w-full h-64" data-product-id="${product.id}">
-                ${product.formats.map((format, index) => `
+                ${fixedFormats.map((format, index) => `
                     <img src="${format.image}" 
                          alt="${product.name} - ${format.size}" 
                          class="modal-carousel-image absolute inset-0 w-full h-full object-contain rounded-lg transition-opacity duration-500 ${index === 0 ? 'opacity-100' : 'opacity-0'}"
@@ -1595,7 +1617,7 @@ function createModalContent(product) {
                 
                 <!-- Format indicators -->
                 <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-2">
-                    ${product.formats.map((format, index) => `
+                    ${fixedFormats.map((format, index) => `
                         <div class="modal-format-indicator px-2 py-1 rounded text-xs cursor-pointer transition-all duration-300 ${index === 0 ? 'bg-white text-black' : 'bg-black bg-opacity-50 text-white hover:bg-opacity-70'}" 
                              data-format-index="${index}"
                              title="${format.size}">${format.size}</div>
@@ -1604,8 +1626,11 @@ function createModalContent(product) {
             </div>
         `;
     } else {
+        // Apply fixes for single image
+        const fixedImagePath = imagePathFixes[currentFormat.image] || normalizeImagePath(currentFormat.image);
+        
         imageContent = `
-            <img src="${currentFormat.image}" alt="${product.name}" 
+            <img src="${fixedImagePath}" alt="${product.name}" 
                  class="w-full h-full object-contain rounded-lg"
                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
             <div class="text-center" style="display: none;">
@@ -1622,7 +1647,7 @@ function createModalContent(product) {
             <div class="flex justify-between">
                 <span class="font-medium">Formatos disponibles:</span>
                 <div class="text-right">
-                    ${product.formats.map(format => `<div class="text-sm">${format.size}</div>`).join('')}
+                    ${fixedFormats.map(format => `<div class="text-sm">${format.size}</div>`).join('')}
                 </div>
             </div>
         `;
@@ -1872,10 +1897,15 @@ function createComparisonContent() {
                 <tbody>
                     <tr>
                         <td class="border p-3 font-medium">Imagen</td>
-                        ${comparisonList.map(product => `
+                        ${comparisonList.map(product => {
+                            // Get the first format image or fallback to product.image
+                            const imagePath = product.formats ? product.formats[0].image : product.image;
+                            const fixedImagePath = imagePathFixes[imagePath] || normalizeImagePath(imagePath);
+                            
+                            return `
                             <td class="border p-3 text-center">
                                 <div class="w-20 h-20 bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg flex items-center justify-center mx-auto p-2">
-                                    <img src="${product.image}" alt="${product.name}" 
+                                    <img src="${fixedImagePath}" alt="${product.name}" 
                                          class="max-w-full max-h-full object-contain rounded"
                                          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                                     <div class="text-center text-xs" style="display: none;">
@@ -1883,7 +1913,7 @@ function createComparisonContent() {
                                     </div>
                                 </div>
                             </td>
-                        `).join('')}
+                        `}).join('')}
                     </tr>
                     <tr>
                         <td class="border p-3 font-medium">Viscosidad</td>
@@ -1903,9 +1933,10 @@ function createComparisonContent() {
                     </tr>
                     <tr>
                         <td class="border p-3 font-medium">Formato</td>
-                        ${comparisonList.map(product => `
-                            <td class="border p-3 text-center">${product.format}</td>
-                        `).join('')}
+                        ${comparisonList.map(product => {
+                            const format = product.formats ? product.formats[0].size : product.format;
+                            return `<td class="border p-3 text-center">${format}</td>`;
+                        }).join('')}
                     </tr>
                     <tr>
                         <td class="border p-3 font-medium">Descripción</td>
