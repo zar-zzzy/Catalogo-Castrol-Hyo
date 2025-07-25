@@ -2602,3 +2602,50 @@ document.addEventListener('DOMContentLoaded', function() {
         checkMissingImages();
     }, 1000);
 });
+
+// Diagnostic function to manually test carousel functionality
+function testCarousels() {
+    console.log('🧪 Testing carousel functionality...');
+    
+    const carousels = document.querySelectorAll('.product-image-carousel');
+    console.log(`Found ${carousels.length} carousels on page`);
+    
+    carousels.forEach((carousel, carouselIndex) => {
+        const productId = carousel.dataset.productId;
+        const product = allProducts.find(p => p.id === productId);
+        const images = carousel.querySelectorAll('.carousel-image');
+        const indicators = carousel.querySelectorAll('.format-indicator');
+        
+        console.log(`Carousel ${carouselIndex}:`, {
+            productId,
+            productName: product?.name,
+            imagesFound: images.length,
+            indicatorsFound: indicators.length,
+            formatCount: product?.formats?.length
+        });
+        
+        // Test manual format switching
+        if (images.length > 1) {
+            console.log(`Testing format switch for ${product.name}`);
+            images.forEach((img, i) => {
+                if (i === 1) { // Show second image
+                    img.classList.remove('opacity-0');
+                    img.classList.add('opacity-100');
+                } else {
+                    img.classList.remove('opacity-100');
+                    img.classList.add('opacity-0');
+                }
+            });
+        }
+    });
+}
+
+// Force carousel initialization (for debugging)
+function forceCarouselInit() {
+    console.log('🔄 Force initializing carousels...');
+    initializeProductCarousels();
+}
+
+// Make diagnostic functions globally available
+window.testCarousels = testCarousels;
+window.forceCarouselInit = forceCarouselInit;
