@@ -1113,8 +1113,21 @@ function loadProducts() {
 
 // Get filtered products based on current filters
 function getFilteredProducts() {
-    // No filtering - return all products as requested by user
-    return allProducts;
+    let filtered = allProducts;
+    
+    // Apply search filter
+    if (currentFilters.search) {
+        const searchTerm = currentFilters.search.toLowerCase();
+        filtered = filtered.filter(product => 
+            product.name.toLowerCase().includes(searchTerm) ||
+            product.category.toLowerCase().includes(searchTerm) ||
+            product.viscosity.toLowerCase().includes(searchTerm) ||
+            product.oilType.toLowerCase().includes(searchTerm) ||
+            (product.description && product.description.toLowerCase().includes(searchTerm))
+        );
+    }
+    
+    return filtered;
 }
 
 // Sort products based on current sort option - FIXED TO CATEGORY ONLY
@@ -1554,14 +1567,29 @@ function openProductModal(productId) {
     const product = allProducts.find(p => p.id === productId);
     if (!product) {
         console.error('❌ Product not found:', productId);
+        console.log('Available products:', allProducts.map(p => ({ id: p.id, name: p.name })));
         return;
     }
     
+    console.log('✅ Product found:', product.name, 'with formats:', product.formats?.length || 0);
+    
     // Ensure modal elements are available
     if (!productModal) {
-        console.error('❌ Modal elements not initialized');
+        console.error('❌ productModal element not found');
         return;
     }
+    
+    if (!modalTitle) {
+        console.error('❌ modalTitle element not found');
+        return;
+    }
+    
+    if (!modalContent) {
+        console.error('❌ modalContent element not found');
+        return;
+    }
+    
+    console.log('✅ All modal elements found, proceeding with modal creation');
     
     modalTitle.textContent = product.name;
     modalContent.innerHTML = createModalContent(product);
@@ -1586,9 +1614,19 @@ function openProductModal(productId) {
 
 // Helper function for handling "Ver detalles" button clicks
 function handleVerDetallesClick(productId, event) {
+    console.log('🖱️ Ver detalles clicked for:', productId, event);
     event.stopPropagation();
     event.preventDefault();
-    console.log('🖱️ Ver detalles clicked for:', productId);
+    
+    // Double-check the product exists
+    const product = allProducts.find(p => p.id === productId);
+    if (!product) {
+        console.error('❌ Product not found in handleVerDetallesClick:', productId);
+        console.log('Available products:', allProducts.map(p => p.id));
+        return;
+    }
+    
+    console.log('✅ Product found, opening modal for:', product.name);
     openProductModal(productId);
 }
 
@@ -2172,10 +2210,32 @@ function resetAllFilters() {
     loadProducts();
 }
 
-// Setup event listeners - SIMPLIFIED (removed filters)
+// Setup event listeners - WITH SEARCH RESTORED
 function setupEventListeners() {
-    console.log('✅ Setting up simplified event listeners (no filters)');
-    // No filter/search functionality - removed as requested
+    console.log('✅ Setting up event listeners with search functionality');
+    
+    // Search functionality
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            currentFilters.search = e.target.value;
+            loadProducts();
+            
+            // Show/hide clear button
+            if (clearSearchBtn) {
+                clearSearchBtn.classList.toggle('hidden', !e.target.value);
+            }
+        });
+    }
+    
+    // Clear search button
+    if (clearSearchBtn) {
+        clearSearchBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            currentFilters.search = '';
+            clearSearchBtn.classList.add('hidden');
+            loadProducts();
+        });
+    }
     
     // Modal functionality
     closeModal.addEventListener('click', closeProductModal);
@@ -2239,7 +2299,9 @@ function setupEventListeners() {
         
         if (e.ctrlKey && e.key === 'k') {
             e.preventDefault();
-            searchInput.focus();
+            if (searchInput) {
+                searchInput.focus();
+            }
         }
     });
 }

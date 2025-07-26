@@ -743,11 +743,28 @@
         </div>
     </section>
 
-
-
-
-
-
+    <!-- Search Section (Simplified) -->
+    <section class="py-8 bg-gradient-to-br from-gray-50 to-white border-b border-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="max-w-2xl mx-auto">
+                <div class="search-container rounded-xl p-6 shadow-sm">
+                    <div class="flex flex-col space-y-4">
+                        <!-- Search Bar -->
+                        <div class="relative">
+                            <i class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                            <input type="text" 
+                                   id="search-input" 
+                                   placeholder="Buscar productos por nombre, viscosidad o categoría..." 
+                                   class="w-full pl-12 pr-12 py-4 rounded-lg border border-gray-200 focus:ring-2 focus:ring-green-500 focus:border-transparent text-gray-700 font-medium">
+                            <button id="clear-search" class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 hidden">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Products Section -->
     <section id="productos" class="py-16 bg-gray-50">
