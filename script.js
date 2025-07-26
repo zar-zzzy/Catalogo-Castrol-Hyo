@@ -1040,10 +1040,19 @@ document.addEventListener('DOMContentLoaded', function() {
         setupIntersectionObserver();
         setupKeyboardNavigation();
         
+        // Ensure functions are globally available immediately
+        window.handleVerDetallesClick = handleVerDetallesClick;
+        window.openProductModal = openProductModal;
+        
         // Show welcome message
         setTimeout(() => {
             showToast('¡Bienvenido al catálogo Castrol Perú! 🚗');
         }, 1000);
+        
+        // Run diagnostic test after everything loads
+        setTimeout(() => {
+            testModalFunctionality();
+        }, 3000);
         
     } catch (error) {
         handleError(error, 'DOMContentLoaded');
@@ -1334,7 +1343,7 @@ function createProductCardHTML(product) {
                 
                 <div class="flex gap-2">
                     <button class="flex-1 bg-[#007C41] text-white py-2 px-4 rounded-lg font-medium shadow-md transition-all hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-700 focus:ring-offset-2 hover:shadow-xl hover:-translate-y-1 transform duration-200 relative z-30" 
-                            onclick="handleVerDetallesClick('${product.id}', event);">
+                            onclick="handleVerDetallesClick('${product.id}', event); return false;">
                         Ver detalles
                     </button>
                     <button class="px-4 py-2 border-2 border-green-600 text-green-600 rounded-lg hover:bg-green-600 hover:text-white transition-colors" 
@@ -2704,3 +2713,43 @@ function forceCarouselInit() {
 // Make diagnostic functions globally available
 window.testCarousels = testCarousels;
 window.forceCarouselInit = forceCarouselInit;
+
+// Add diagnostic function for modal testing
+function testModalFunctionality() {
+    console.log('🧪 Testing modal functionality...');
+    
+    // Check if functions are available
+    console.log('handleVerDetallesClick available:', typeof window.handleVerDetallesClick);
+    console.log('openProductModal available:', typeof window.openProductModal);
+    
+    // Check if modal elements exist
+    console.log('productModal element:', !!document.getElementById('product-modal'));
+    console.log('modalTitle element:', !!document.getElementById('modal-title'));
+    console.log('modalContent element:', !!document.getElementById('modal-content'));
+    
+    // Check if multi-format products exist
+    const multiFormatProducts = allProducts.filter(p => p.formats && p.formats.length > 1);
+    console.log(`Found ${multiFormatProducts.length} multi-format products:`, multiFormatProducts.map(p => ({
+        id: p.id,
+        name: p.name,
+        formatCount: p.formats.length
+    })));
+    
+    // Test opening modal for first multi-format product
+    if (multiFormatProducts.length > 0) {
+        const testProduct = multiFormatProducts[0];
+        console.log(`🧪 Testing modal open for: ${testProduct.name} (${testProduct.id})`);
+        
+        setTimeout(() => {
+            try {
+                openProductModal(testProduct.id);
+                console.log('✅ Modal test completed successfully');
+            } catch (error) {
+                console.error('❌ Modal test failed:', error);
+            }
+        }, 2000);
+    }
+}
+
+// Make test function available globally
+window.testModalFunctionality = testModalFunctionality;
