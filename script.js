@@ -1049,11 +1049,6 @@ document.addEventListener('DOMContentLoaded', function() {
             showToast('¡Bienvenido al catálogo Castrol Perú! 🚗');
         }, 1000);
         
-        // Run diagnostic test after everything loads
-        setTimeout(() => {
-            testModalFunctionality();
-        }, 3000);
-        
     } catch (error) {
         handleError(error, 'DOMContentLoaded');
     }
@@ -1133,6 +1128,20 @@ function getFilteredProducts() {
             product.viscosity.toLowerCase().includes(searchTerm) ||
             product.oilType.toLowerCase().includes(searchTerm) ||
             (product.description && product.description.toLowerCase().includes(searchTerm))
+        );
+    }
+    
+    // Apply category filter
+    if (currentFilters.category) {
+        filtered = filtered.filter(product => 
+            product.category.toLowerCase() === currentFilters.category.toLowerCase()
+        );
+    }
+    
+    // Apply oil type filter
+    if (currentFilters.oilType) {
+        filtered = filtered.filter(product => 
+            product.oilType.toLowerCase() === currentFilters.oilType.toLowerCase()
         );
     }
     
@@ -1376,12 +1385,27 @@ function getOilTypeColor(oilType) {
            oilType.includes('Sintético') ? 'bg-green-500' : 'bg-gray-500';
 }
 
-// Update results count - SIMPLIFIED
+// Update results count with enhanced statistics
 function updateResultsCount(count) {
     const total = allProducts.length;
-    // Always show all products message since we removed filters
-    // resultsCount no longer exists since we removed the results summary section
-    console.log(`📊 Displaying ${count} of ${total} products total`);
+    const productsCountElement = document.getElementById('products-count');
+    
+    // Update the main products count element (now just the number)
+    if (productsCountElement) {
+        productsCountElement.textContent = count.toString();
+        productsCountElement.classList.add('animate-pulse');
+        setTimeout(() => productsCountElement.classList.remove('animate-pulse'), 500);
+    }
+    
+    // Update categories count
+    const filteredProducts = getFilteredProducts();
+    const uniqueCategories = [...new Set(filteredProducts.map(p => p.category))];
+    const categoriesCountElement = document.getElementById('categories-count');
+    if (categoriesCountElement) {
+        categoriesCountElement.textContent = uniqueCategories.length.toString();
+    }
+    
+    console.log(`📊 Displaying ${count} of ${total} products total across ${uniqueCategories.length} categories`);
 }
 
 // Setup lazy loading for images with better error handling
@@ -1657,12 +1681,12 @@ function createModalContent(product) {
     // Handle multiple formats
     const hasMultipleFormats = product.formats && product.formats.length > 1;
     const currentFormat = product.formats ? product.formats[0] : { size: product.format || '', image: product.image || '' };
+    const fixedFormats = product.formats || [];
     
     // Create image content - with corrected image paths
     let imageContent = '';
     if (hasMultipleFormats) {
         // Use direct image paths (now perfectly aligned)
-        const fixedFormats = product.formats;
         
         imageContent = `
             <div class="modal-image-carousel relative w-full h-64" data-product-id="${product.id}">
@@ -2246,6 +2270,31 @@ function setupEventListeners() {
         });
     }
     
+    // Filter chips functionality
+    filterChips.forEach(chip => {
+        chip.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const filterType = chip.dataset.filter;
+            const filterValue = chip.dataset.value;
+            
+            // Remove active class from siblings
+            document.querySelectorAll(`.filter-chip[data-filter="${filterType}"]`).forEach(sibling => {
+                sibling.classList.remove('active');
+            });
+            
+            // Add active class to clicked chip
+            chip.classList.add('active');
+            
+            // Update filter state
+            currentFilters[filterType] = filterValue;
+            
+            // Apply filters
+            loadProducts();
+        });
+    });
+    
     // Modal functionality
     closeModal.addEventListener('click', closeProductModal);
     productModal.addEventListener('click', (e) => {
@@ -2714,42 +2763,48 @@ function forceCarouselInit() {
 window.testCarousels = testCarousels;
 window.forceCarouselInit = forceCarouselInit;
 
-// Add diagnostic function for modal testing
-function testModalFunctionality() {
-    console.log('🧪 Testing modal functionality...');
+
+
+// Clean up and optimize - removed diagnostic function
+
+// New enhanced functions for the professional search bar
+function toggleAdvancedFilters() {
+    // For now, just show a message (can be expanded later)
+    showToast('💡 Los filtros avanzados ya están visibles. ¡Usa las categorías y tipos de aceite!');
+}
+
+function exportResults() {
+    const filteredProducts = getFilteredProducts();
+    if (filteredProducts.length === 0) {
+        showToast('⚠️ No hay productos para exportar. Ajusta tus filtros.', 'warning');
+        return;
+    }
     
-    // Check if functions are available
-    console.log('handleVerDetallesClick available:', typeof window.handleVerDetallesClick);
-    console.log('openProductModal available:', typeof window.openProductModal);
+    // Create CSV content
+    const csvContent = [
+        // Header
+        'Nombre,Categoría,Viscosidad,Tipo de Aceite,Descripción',
+        // Data rows
+        ...filteredProducts.map(product => 
+            `"${product.name}","${product.category}","${product.viscosity}","${product.oilType}","${product.description || ''}"`
+        )
+    ].join('\n');
     
-    // Check if modal elements exist
-    console.log('productModal element:', !!document.getElementById('product-modal'));
-    console.log('modalTitle element:', !!document.getElementById('modal-title'));
-    console.log('modalContent element:', !!document.getElementById('modal-content'));
-    
-    // Check if multi-format products exist
-    const multiFormatProducts = allProducts.filter(p => p.formats && p.formats.length > 1);
-    console.log(`Found ${multiFormatProducts.length} multi-format products:`, multiFormatProducts.map(p => ({
-        id: p.id,
-        name: p.name,
-        formatCount: p.formats.length
-    })));
-    
-    // Test opening modal for first multi-format product
-    if (multiFormatProducts.length > 0) {
-        const testProduct = multiFormatProducts[0];
-        console.log(`🧪 Testing modal open for: ${testProduct.name} (${testProduct.id})`);
-        
-        setTimeout(() => {
-            try {
-                openProductModal(testProduct.id);
-                console.log('✅ Modal test completed successfully');
-            } catch (error) {
-                console.error('❌ Modal test failed:', error);
-            }
-        }, 2000);
+    // Create and download file
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    if (link.download !== undefined) {
+        const url = URL.createObjectURL(blob);
+        link.setAttribute('href', url);
+        link.setAttribute('download', `catalogo-castrol-${new Date().toISOString().split('T')[0]}.csv`);
+        link.style.visibility = 'hidden';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        showToast(`✅ Exportados ${filteredProducts.length} productos a CSV`, 'success');
     }
 }
 
-// Make test function available globally
-window.testModalFunctionality = testModalFunctionality;
+// Make new functions available globally
+window.toggleAdvancedFilters = toggleAdvancedFilters;
+window.exportResults = exportResults;
