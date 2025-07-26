@@ -11,7 +11,7 @@ let currentFilters = {
     category: '',
     oilType: ''
 };
-let currentSort = 'name';
+let currentSort = 'category'; // Changed to category by default
 let currentView = 'grid';
 let comparisonList = [];
 let allProducts = [];
@@ -1113,36 +1113,14 @@ function loadProducts() {
 
 // Get filtered products based on current filters
 function getFilteredProducts() {
-    return allProducts.filter(product => {
-        const matchesSearch = !currentFilters.search || 
-            product.name.toLowerCase().includes(currentFilters.search.toLowerCase()) ||
-            product.description.toLowerCase().includes(currentFilters.search.toLowerCase()) ||
-            product.viscosity.toLowerCase().includes(currentFilters.search.toLowerCase()) ||
-            (product.oilType && product.oilType.toLowerCase().includes(currentFilters.search.toLowerCase()));
-        
-        const matchesCategory = !currentFilters.category || product.category === currentFilters.category;
-        const matchesOilType = !currentFilters.oilType || product.oilType === currentFilters.oilType;
-        
-        return matchesSearch && matchesCategory && matchesOilType;
-    });
+    // No filtering - return all products as requested by user
+    return allProducts;
 }
 
-// Sort products based on current sort option
+// Sort products based on current sort option - FIXED TO CATEGORY ONLY
 function sortProducts(products) {
-    return products.sort((a, b) => {
-        switch (currentSort) {
-            case 'name':
-                return a.name.localeCompare(b.name);
-            case 'name-desc':
-                return b.name.localeCompare(a.name);
-            case 'viscosity':
-                return a.viscosity.localeCompare(b.viscosity);
-            case 'category':
-                return a.category.localeCompare(b.category);
-            default:
-                return 0;
-        }
-    });
+    // Always sort by category as requested by user
+    return products.sort((a, b) => a.category.localeCompare(b.category));
 }
 
 // Display products in the container
@@ -1174,11 +1152,13 @@ function displayProducts(products) {
         productsContainer.appendChild(categorySection);
     });
     
-    // Initialize carousels for products with multiple formats (lazy loading ya no es necesario)
-    // Using setTimeout to ensure DOM is fully rendered
+    // Initialize carousels for products with multiple formats with better timing
+    // Using requestAnimationFrame and setTimeout to ensure DOM is fully rendered
     setTimeout(() => {
-        initializeProductCarousels();
-    }, 100);
+        requestAnimationFrame(() => {
+            initializeProductCarousels();
+        });
+    }, 200);
 }
 
 // Create category section
@@ -1194,7 +1174,7 @@ function createCategorySection(category, products) {
             <i class="${categoryInfo.icon} mr-3"></i>
             ${categoryInfo.name}
         </h3>
-        <div class="product-grid ${currentView === 'list' ? 'list-view' : ''}" id="${category}-products">
+        <div class="product-grid" id="${category}-products">
             ${products.map(product => createProductCardHTML(product)).join('')}
         </div>
     `;
@@ -1307,7 +1287,7 @@ function createProductCardHTML(product) {
         : `<span class="text-sm font-semibold text-gray-500">${currentFormat.size}</span>`;
     
     return `
-        <div class="bg-white rounded-lg shadow-md card-hover overflow-hidden product-card ${currentView === 'list' ? 'flex' : ''}" 
+                            <div class="bg-white rounded-lg shadow-md card-hover overflow-hidden product-card" 
              data-category="${product.category}" 
              data-product-id="${product.id}"
              data-has-carousel="${hasMultipleFormats}">
@@ -1341,7 +1321,7 @@ function createProductCardHTML(product) {
                 
                 <div class="flex gap-2">
                     <button class="flex-1 bg-[#007C41] text-white py-2 px-4 rounded-lg font-medium shadow-md transition-all hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-700 focus:ring-offset-2 hover:shadow-xl hover:-translate-y-1 transform duration-200 relative z-30" 
-                            onclick="event.stopPropagation(); openProductModal('${product.id}'); console.log('🖱️ Ver detalles clicked for:', '${product.id}');">
+                            onclick="handleVerDetallesClick('${product.id}', event);">
                         Ver detalles
                     </button>
                     <button class="px-4 py-2 border-2 border-green-600 text-green-600 rounded-lg hover:bg-green-600 hover:text-white transition-colors" 
@@ -1374,18 +1354,12 @@ function getOilTypeColor(oilType) {
            oilType.includes('Sintético') ? 'bg-green-500' : 'bg-gray-500';
 }
 
-// Update results count
+// Update results count - SIMPLIFIED
 function updateResultsCount(count) {
     const total = allProducts.length;
-    const hasFilters = currentFilters.search || currentFilters.category || currentFilters.oilType;
-    
-    if (hasFilters) {
-        resultsCount.textContent = `Mostrando ${count} de ${total} productos`;
-        resetFiltersBtn.classList.remove('hidden');
-    } else {
-        resultsCount.textContent = `Mostrando todos los productos (${total})`;
-        resetFiltersBtn.classList.add('hidden');
-    }
+    // Always show all products message since we removed filters
+    // resultsCount no longer exists since we removed the results summary section
+    console.log(`📊 Displaying ${count} of ${total} products total`);
 }
 
 // Setup lazy loading for images with better error handling
@@ -1480,14 +1454,22 @@ function initializeProductCarousels() {
         function showFormat(index) {
             console.log(`🎯 Showing format ${index} for product ${productId}`, product.formats[index]?.size);
             
+            // Validate index
+            if (index < 0 || index >= product.formats.length) {
+                console.error(`❌ Invalid format index ${index} for product ${productId}`);
+                return;
+            }
+            
             // Hide all images
             images.forEach((img, i) => {
                 if (i === index) {
                     img.classList.remove('opacity-0');
                     img.classList.add('opacity-100');
+                    img.style.display = 'block';
                 } else {
                     img.classList.remove('opacity-100');
                     img.classList.add('opacity-0');
+                    img.style.display = 'none';
                 }
             });
             
@@ -1565,10 +1547,21 @@ function setupIntersectionObserver() {
     });
 }
 
-// Open product modal
+// Open product modal with improved error handling
 function openProductModal(productId) {
+    console.log('🖼️ Opening modal for product:', productId);
+    
     const product = allProducts.find(p => p.id === productId);
-    if (!product) return;
+    if (!product) {
+        console.error('❌ Product not found:', productId);
+        return;
+    }
+    
+    // Ensure modal elements are available
+    if (!productModal) {
+        console.error('❌ Modal elements not initialized');
+        return;
+    }
     
     modalTitle.textContent = product.name;
     modalContent.innerHTML = createModalContent(product);
@@ -1589,6 +1582,14 @@ function openProductModal(productId) {
     
     productModal.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
+}
+
+// Helper function for handling "Ver detalles" button clicks
+function handleVerDetallesClick(productId, event) {
+    event.stopPropagation();
+    event.preventDefault();
+    console.log('🖱️ Ver detalles clicked for:', productId);
+    openProductModal(productId);
 }
 
 // Create modal content with multiple format support
@@ -2171,86 +2172,10 @@ function resetAllFilters() {
     loadProducts();
 }
 
-// Setup event listeners
+// Setup event listeners - SIMPLIFIED (removed filters)
 function setupEventListeners() {
-    // Search functionality
-    searchInput.addEventListener('input', debounce(() => {
-        currentFilters.search = searchInput.value;
-        loadProducts();
-    }, 300));
-    
-    clearSearchBtn.addEventListener('click', () => {
-        searchInput.value = '';
-        currentFilters.search = '';
-        loadProducts();
-    });
-    
-    // Filter chips
-    filterChips.forEach(chip => {
-        chip.addEventListener('click', () => {
-            const filterType = chip.dataset.filter;
-            const filterValue = chip.dataset.value;
-            
-            // Remove active class from siblings
-            document.querySelectorAll(`[data-filter="${filterType}"]`).forEach(sibling => {
-                sibling.classList.remove('active');
-            });
-            
-            // Add active class to clicked chip
-            chip.classList.add('active');
-            
-            // Update filter
-            currentFilters[filterType] = filterValue;
-            loadProducts();
-            
-            // Show feedback toast
-            if (filterValue) {
-                const filterNames = {
-                    category: {
-                        diesel: 'Motores Diésel',
-                        gasolina: 'Motores Gasolina', 
-                        motos: 'Motos',
-                        transmisiones: 'Transmisiones',
-                        complementarios: 'Productos Complementarios'
-                    },
-                    oilType: {
-                        'Full Sintético': 'Full Sintético',
-                        'Semi-sintético': 'Semi-sintético',
-                        'Sintético': 'Sintético',
-                        'Mineral': 'Mineral'
-                    }
-                };
-                const categoryName = filterNames[filterType]?.[filterValue] || filterValue;
-                showToast(`Filtrado por: ${categoryName}`, 'info');
-            }
-        });
-    });
-    
-    // View toggles
-    gridViewBtn.addEventListener('click', () => {
-        currentView = 'grid';
-        gridViewBtn.classList.add('active');
-        listViewBtn.classList.remove('active');
-        document.body.classList.remove('list-view');
-        loadProducts();
-    });
-    
-    listViewBtn.addEventListener('click', () => {
-        currentView = 'list';
-        listViewBtn.classList.add('active');
-        gridViewBtn.classList.remove('active');
-        document.body.classList.add('list-view');
-        loadProducts();
-    });
-    
-    // Sort functionality
-    sortSelect.addEventListener('change', () => {
-        currentSort = sortSelect.value;
-        loadProducts();
-    });
-    
-    // Reset filters
-    resetFiltersBtn.addEventListener('click', resetAllFilters);
+    console.log('✅ Setting up simplified event listeners (no filters)');
+    // No filter/search functionality - removed as requested
     
     // Modal functionality
     closeModal.addEventListener('click', closeProductModal);
@@ -2588,6 +2513,7 @@ function setupKeyboardNavigation() {
 
 // Make functions globally available
 window.openProductModal = openProductModal;
+window.handleVerDetallesClick = handleVerDetallesClick;
 window.closeProductModal = closeProductModal;
 window.toggleProductComparison = toggleProductComparison;
 window.openComparisonModal = openComparisonModal;
