@@ -236,7 +236,7 @@ const products = {
         },
         { 
             id: 'g-s3', 
-            name: 'Castrol EDGE 0W-30 HC1', 
+            name: 'Castrol EDGE Professional E 0W-30 JLR H U6', 
             viscosity: '0W-30', 
             oilType: 'Full Sintético', 
             formats: [
@@ -256,6 +256,26 @@ const products = {
         },
         { 
             id: 'g-s4', 
+            name: 'Castrol EDGE 0W-30 HC1 12x1L', 
+            viscosity: '0W-30', 
+            oilType: 'Full Sintético', 
+            formats: [
+                { size: '12x1 L', image: 'img/Castrol EDGE 0W-30 HC1 - 12x1 L.jpg' }
+            ],
+            description: 'Aceite sintético HC1 para motores de alto rendimiento.', 
+            category: 'gasolina', 
+            specs: { 
+                api: 'SP', 
+                features: [
+                    'Fórmula HC1 avanzada',
+                    'Protección superior del motor',
+                    'Rendimiento excepcional',
+                    'Tecnología de vanguardia'
+                ]
+            }
+        },
+        { 
+            id: 'g-s5', 
             name: 'Castrol EDGE US Dexos 5W-30', 
             viscosity: '5W-30', 
             oilType: 'Full Sintético', 
@@ -277,7 +297,7 @@ const products = {
             }
         },
         { 
-            id: 'g-s5', 
+            id: 'g-s6', 
             name: 'Castrol EDGE K 5W-30', 
             viscosity: '5W-30', 
             oilType: 'Full Sintético', 
@@ -297,7 +317,7 @@ const products = {
             }
         },
         { 
-            id: 'g-s6', 
+            id: 'g-s7', 
             name: 'Castrol EDGE A3/B4 5W-40', 
             viscosity: '5W-40', 
             oilType: 'Full Sintético', 
@@ -318,7 +338,7 @@ const products = {
             }
         },
         { 
-            id: 'g-s7', 
+            id: 'g-s8', 
             name: 'Castrol EDGE Turbo Diesel 5W-40', 
             viscosity: '5W-40', 
             oilType: 'Full Sintético', 
