@@ -1150,8 +1150,20 @@ function getFilteredProducts() {
 
 // Sort products based on current sort option - FIXED TO CATEGORY ONLY
 function sortProducts(products) {
-    // Always sort by category as requested by user
-    return products.sort((a, b) => a.category.localeCompare(b.category));
+    // Custom category order: gasolina, motos, diesel, transmisiones, complementarios
+    const categoryOrder = {
+        'gasolina': 1,
+        'motos': 2,
+        'diesel': 3,
+        'transmisiones': 4,
+        'complementarios': 5
+    };
+    
+    return products.sort((a, b) => {
+        const orderA = categoryOrder[a.category] || 999;
+        const orderB = categoryOrder[b.category] || 999;
+        return orderA - orderB;
+    });
 }
 
 // Display products in the container
@@ -1177,10 +1189,14 @@ function displayProducts(products) {
     // Clear container
     productsContainer.innerHTML = '';
     
-    // Create sections for each category
-    Object.keys(groupedProducts).forEach(category => {
-        const categorySection = createCategorySection(category, groupedProducts[category]);
-        productsContainer.appendChild(categorySection);
+    // Create sections for each category in specific order
+    const categoryOrder = ['gasolina', 'motos', 'diesel', 'transmisiones', 'complementarios'];
+    
+    categoryOrder.forEach(category => {
+        if (groupedProducts[category]) {
+            const categorySection = createCategorySection(category, groupedProducts[category]);
+            productsContainer.appendChild(categorySection);
+        }
     });
     
     // Initialize carousels for products with multiple formats with better timing
