@@ -276,11 +276,11 @@ const products = {
         },
         { 
             id: 'g-s5', 
-            name: 'Castrol EDGE 5W-20 6x946 U3', 
+            name: 'Castrol EDGE 5W-20 U3', 
             viscosity: '5W-20', 
             oilType: 'Full Sintético', 
             formats: [
-                { size: '6x946 ml', image: 'img/Castrol EDGE 5W-20 6x946 U3.jpg' }
+                { size: '6x946 ml', image: 'img/Castrol EDGE 5W-20 U3 6x946.jpg' }
             ],
             description: 'Aceite sintético U3 para motores gasolina de alta eficiencia.', 
             category: 'gasolina', 
@@ -322,7 +322,8 @@ const products = {
             viscosity: '5W-30', 
             oilType: 'Full Sintético', 
             formats: [
-                { size: '5 qt', image: 'img/Castrol EDGE K 5W-30 - 5 qt.jpg' }
+                { size: '5 qt', image: 'img/Castrol EDGE K 5W-30 - 5 qt.jpg' },
+                { size: '6x946 ml', image: 'img/Castrol EDGE K 5W-30 - 6x946 ml.jpg' }
             ],
             description: 'Aceite sintético para motores de última generación.', 
             category: 'gasolina', 
