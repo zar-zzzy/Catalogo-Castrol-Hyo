@@ -746,24 +746,26 @@ const products = {
         },
         { 
             id: 'm-m3', 
-            name: 'Castrol Actevo Essential 4T 20W-50', 
-            viscosity: '20W-50', 
+            name: 'Castrol Actevo Essential 2T', 
+            viscosity: '2T', 
             oilType: 'Mineral', 
             formats: [
-                { size: '6x946 ml', image: 'img/Castrol Actevo Essential 4T 20W-50 - 6x946 ml.jpg' }
+                { size: '100x160 ml', image: 'img/Castrol Actevo Essential 2T - 100x160 ml.jpg' },
+                { size: '100x200 ml', image: 'img/Castrol Actevo Essential 2T - 100x200 ml.jpg' }
             ],
-            description: 'Aceite mineral para motos 4T.', 
+            description: 'Aceite mineral para motores 2T, presentación económica.', 
             category: 'motos', 
             specs: { 
-                jaso: 'MA', 
+                jaso: 'FD', 
                 features: [
-                    'Presentación económica',
-                    'Protección confiable',
-                    'Para uso diario',
-                    'Calidad Castrol'
+                    'Para motores 2 tiempos',
+                    'Presentación múltiple',
+                    'Combustión limpia',
+                    'Protección del motor'
                 ]
             }
         }
+
     ],
     transmisiones: [
         // Sintético
@@ -986,26 +988,7 @@ const products = {
                 ]
             }
         },
-        { 
-            id: 'c4', 
-            name: 'Castrol Actevo Essential 2T', 
-            viscosity: '2T', 
-            oilType: '', 
-            formats: [
-                { size: '100x160 ml - 100x200 ml', image: 'img/Castrol Actevo Essential 2T - 100x160 ml - 100x200 ml.jpg' }
-            ],
-            description: 'Aceite para motores 2T, presentación económica.', 
-            category: 'complementarios', 
-            specs: { 
-                jaso: 'FD', 
-                features: [
-                    'Para motores 2 tiempos',
-                    'Presentación múltiple',
-                    'Combustión limpia',
-                    'Protección del motor'
-                ]
-            }
-        }
+
     ]
 };
 
