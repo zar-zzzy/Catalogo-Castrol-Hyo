@@ -647,8 +647,7 @@ const products = {
             viscosity: '20W-50', 
             oilType: 'Full Sintético', 
             formats: [
-                { size: '12x1L', image: 'img/Castrol POWER 1 V-Twin 4T 20W-50 - 12x1 L.jpg' },
-                { size: '6x1 qt', image: 'img/Castrol POWER 1 V-Twin 4T 20W-50 - 6x1 qt.jpg' }
+                { size: '12x1L', image: 'img/Castrol POWER 1 V-Twin 4T 20W-50 - 12x1 L.jpg' }
             ],
             description: 'Aceite sintético para motos V-Twin.', 
             category: 'motos', 
