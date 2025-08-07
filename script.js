@@ -142,8 +142,11 @@ const products = {
             viscosity: '25W-60', 
             oilType: 'Mineral', 
             formats: [
-                { size: '946 ml', image: 'img/Castrol CRB Viscus 25W-60 -  946 ml.jpg' },
-                { size: 'galón', image: 'img/Castrol CRB Viscus 25W-60 - galón.jpg' }
+                { size: '20x946L', image: 'img/Castrol CRB Viscus 25W-60 - 20x946L.jpg' },
+                { size: '12x946L MC', image: 'img/Castrol CRB Viscus 25W-60 - 12x946L MC.jpg' },
+                { size: '3x3.78L', image: 'img/Castrol CRB Viscus 25W-60 - 3x3.78L.jpg' },
+                { size: '2.5GL', image: 'img/Castrol CRB Viscus 25W-60 - 2.5GL.jpg' },
+                { size: '20L', image: 'img/Castrol CRB Viscus 25W-60 - 20L.jpg' }
             ],
             description: 'Aceite mineral de alta viscosidad para motores diésel exigentes.', 
             category: 'diesel', 
