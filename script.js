@@ -171,25 +171,6 @@ const products = {
                     'Para motores convencionales'
                 ]
             }
-        },
-        { 
-            id: 'd-m4', 
-            name: 'Castrol HD Motor Oil SAE 40/50', 
-            viscosity: 'SAE 40/50', 
-            oilType: 'Mineral', 
-            formats: [
-                { size: '12x946 ml', image: 'img/Castrol HD Motor Oil SAE 40- 50 - 12x946 ml.jpg' }
-            ],
-            description: 'Aceite mineral para motores diésel, protección básica y económica.', 
-            category: 'diesel', 
-            specs: { 
-                features: [
-                    'Protección básica económica',
-                    'Para uso general',
-                    'Disponible en presentación múltiple',
-                    'Ideal para flotas'
-                ]
-            }
         }
     ],
     gasolina: [
@@ -530,26 +511,7 @@ const products = {
                 ]
             }
         },
-        { 
-            id: 'g-m3', 
-            name: 'Castrol GTX 10W-40', 
-            viscosity: '10W-40', 
-            oilType: 'Mineral', 
-            formats: [
-                { size: '3.78 L', image: 'img/Castrol GTX 10W-40 - 3.78 L.jpg' }
-            ],
-            description: 'Aceite mineral para motores gasolina.', 
-            category: 'gasolina', 
-            specs: { 
-                api: 'SN', 
-                features: [
-                    'Viscosidad media',
-                    'Protección equilibrada',
-                    'Uso general',
-                    'Confiabilidad probada'
-                ]
-            }
-        },
+        
         { 
             id: 'g-m4', 
             name: 'Castrol GTX 20W-50', 
@@ -598,7 +560,8 @@ const products = {
             viscosity: '25W-60', 
             oilType: 'Mineral', 
             formats: [
-                { size: '3.78 L', image: 'img/Castrol GTX Alto Kilometraje 25W-60 - 3.78 L.jpg' }
+                { size: '6x1L', image: 'img/Castrol GTX Alto Kilometraje 25W-60 - 6x1 L.jpg' },
+                { size: '3.78 L', image: 'img/Castrol GTX Alto Kilometraje 25W-60 - 3.78 L.jpg' }
             ],
             description: 'Aceite mineral para motores de alto kilometraje.', 
             category: 'gasolina', 
@@ -609,6 +572,27 @@ const products = {
                     'Viscosidad especial',
                     'Sellado mejorado',
                     'Restauración del motor'
+                ]
+            }
+        },
+        // Mineral
+        { 
+            id: 'g-m7', 
+            name: 'Castrol HD Motor Oil SAE 40/50', 
+            viscosity: 'SAE 40/50', 
+            oilType: 'Mineral', 
+            formats: [
+                { size: '12x946 ml', image: 'img/Castrol HD Motor Oil SAE 40- 50 - 12x946 ml.jpg' },
+                { size: '12x946 ml', image: 'img/Castrol HD Motor Oil SAE 40- 50 - 12x946 ml - 2.jpg' }
+            ],
+            description: 'Aceite mineral para motores gasolina, protección básica y económica.', 
+            category: 'gasolina', 
+            specs: { 
+                features: [
+                    'Protección básica económica',
+                    'Para uso general',
+                    'Disponible en presentación múltiple',
+                    'Ideal para flotas'
                 ]
             }
         }
@@ -654,6 +638,27 @@ const products = {
                     'Resistencia a altas RPM',
                     'Protección superior',
                     'Tecnología de carreras'
+                ]
+            }
+        },
+        { 
+            id: 'm-s3', 
+            name: 'Castrol POWER 1 V-Twin 4T 20W-50', 
+            viscosity: '20W-50', 
+            oilType: 'Full Sintético', 
+            formats: [
+                { size: '12x1L', image: 'img/Castrol POWER 1 V-Twin 4T 20W-50 - 12x1 L.jpg' },
+                { size: '6x1 qt', image: 'img/Castrol POWER 1 V-Twin 4T 20W-50 - 6x1 qt.jpg' }
+            ],
+            description: 'Aceite sintético para motos V-Twin.', 
+            category: 'motos', 
+            specs: { 
+                jaso: 'MA', 
+                features: [
+                    'Especializado para V-Twin',
+                    'Protección de motores grandes',
+                    'Resistencia a la vibración',
+                    'Tecnología sintética avanzada'
                 ]
             }
         },
@@ -721,26 +726,6 @@ const products = {
         // Mineral
         { 
             id: 'm-m1', 
-            name: 'Castrol POWER 1 V-Twin 4T 20W-50', 
-            viscosity: '20W-50', 
-            oilType: 'Mineral', 
-            formats: [
-                { size: '6x1 qt', image: 'img/Castrol POWER 1 V-Twin 4T 20W-50 - 6x1 qt.jpg' }
-            ],
-            description: 'Aceite mineral para motos V-Twin.', 
-            category: 'motos', 
-            specs: { 
-                jaso: 'MA', 
-                features: [
-                    'Especializado para V-Twin',
-                    'Protección de motores grandes',
-                    'Resistencia a la vibración',
-                    'Fórmula tradicional'
-                ]
-            }
-        },
-        { 
-            id: 'm-m2', 
             name: 'Castrol Actevo 4T 20W-50', 
             viscosity: '20W-50', 
             oilType: 'Mineral', 
@@ -760,7 +745,7 @@ const products = {
             }
         },
         { 
-            id: 'm-m3', 
+            id: 'm-m2', 
             name: 'Castrol Actevo Essential 4T 25W-60', 
             viscosity: '25W-60', 
             oilType: 'Mineral', 
@@ -780,7 +765,7 @@ const products = {
             }
         },
         { 
-            id: 'm-m4', 
+            id: 'm-m3', 
             name: 'Castrol Actevo Essential 4T 20W-50', 
             viscosity: '20W-50', 
             oilType: 'Mineral', 
@@ -798,7 +783,8 @@ const products = {
                     'Calidad Castrol'
                 ]
             }
-        }
+        },
+        // Semi-sintético
     ],
     transmisiones: [
         // Sintético
