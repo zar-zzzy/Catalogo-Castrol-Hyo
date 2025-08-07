@@ -973,6 +973,26 @@ const products = {
                     'Versatilidad total'
                 ]
             }
+        },
+        { 
+            id: 'c4', 
+            name: 'Transmax Full Syn MV ATF', 
+            viscosity: 'MV ATF', 
+            oilType: 'Full Sintético', 
+            formats: [
+                { size: '6x1qt', image: 'img/Transmax Full Syn MV ATF - 6x1qt.jpg' }
+            ],
+            description: 'Aceite sintético para transmisiones automáticas de alto rendimiento.', 
+            category: 'complementarios', 
+            specs: { 
+                type: 'MV ATF', 
+                features: [
+                    'Fórmula sintética avanzada',
+                    'Para transmisiones automáticas',
+                    'Alto rendimiento',
+                    'Protección superior'
+                ]
+            }
         }
 
     ]
