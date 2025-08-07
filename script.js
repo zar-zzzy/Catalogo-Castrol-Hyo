@@ -64,9 +64,31 @@ const products = {
                 ]
             }
         },
-        // Sintético
         { 
             id: 'd-s3', 
+            name: 'Castrol Vecton Long Drain E6/E9 5W-40 C1', 
+            viscosity: '5W-40', 
+            oilType: 'Full Sintético', 
+            formats: [
+                { size: '3x3.78', image: 'img/Castrol Vecton Long Drain E6-E9 5W-40 C1 - 3x3.78.jpg' }
+            ],
+            description: 'Aceite sintético de larga duración para motores diésel Euro VI y anteriores, viscosidad 5W-40.', 
+            category: 'diesel', 
+            specs: { 
+                api: 'SN', 
+                acea: 'E6/E9', 
+                features: [
+                    'Intervalos de cambio extendidos hasta 120,000 km',
+                    'Protección superior contra desgaste',
+                    'Control excepcional de hollín',
+                    'Resistencia a la oxidación mejorada',
+                    'Compatible con sistemas de postratamiento'
+                ]
+            }
+        },
+        // Sintético
+        { 
+            id: 'd-s4', 
             name: 'Castrol Vecton CK-4/SN 15W-40', 
             viscosity: '15W-40', 
             oilType: 'Sintético', 
