@@ -804,7 +804,7 @@ const products = {
             viscosity: 'Mercon V/Dexron III', 
             oilType: 'Mineral', 
             formats: [
-                { size: '18.9 L', image: 'img/Castrol TRANSMAX Mercon V - Dexron III - 18.9 L.jpg' }
+                { size: '6x1qt', image: 'img/Castrol TRANSMAX Mercon V - Dexron III - 6x1qt.jpg' }
             ],
             description: 'Aceite mineral para transmisiones automáticas.', 
             category: 'complementarios', 
@@ -824,7 +824,7 @@ const products = {
             viscosity: 'Dex/Merc', 
             oilType: 'Mineral', 
             formats: [
-                { size: '18.9 L', image: 'img/Castrol TRANSMAX Dex-Merc - 18.9 L.jpg' }
+                { size: '6x1qt', image: 'img/Castrol TRANSMAX Dex-Merc - 6x1qt.jpg' }
             ],
             description: 'Aceite mineral para transmisiones automáticas.', 
             category: 'complementarios', 
