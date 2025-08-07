@@ -69,7 +69,7 @@ const products = {
             id: 'd-s4', 
             name: 'Castrol Vecton CK-4/SN 15W-40', 
             viscosity: '15W-40', 
-            oilType: 'Sintético', 
+            oilType: 'Semi-sintético', 
             formats: [
                 { size: '5 gal', image: 'img/Castrol Vecton CK-4-SN 15W-40 - 5 gal.jpg' },
                 { size: '3x3.78', image: 'img/Castrol Vecton CK-4-SN 15W-40 - 3x3.78.jpg' },
