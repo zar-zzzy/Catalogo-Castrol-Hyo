@@ -1170,10 +1170,52 @@ function sortProducts(products) {
         'complementarios': 5
     };
     
+    // Oil type order: Full Sintético, Sintético, Semi-sintético, Mineral
+    const oilTypeOrder = {
+        'Full Sintético': 1,
+        'Sintético': 2,
+        'Semi-sintético': 3,
+        'Mineral': 4
+    };
+    
+    // Viscosity order for better presentation
+    const viscosityOrder = {
+        '0W-20': 1,
+        '0W-30': 2,
+        '5W-20': 3,
+        '5W-30': 4,
+        '5W-40': 5,
+        '10W-30': 6,
+        '10W-40': 7,
+        '15W-40': 8,
+        '20W-50': 9,
+        '25W-60': 10,
+        'SAE 40/50': 11,
+        '2T': 12,
+        'CVT': 13,
+        'ATF DX III': 14,
+        '75W-90': 15
+    };
+    
     return products.sort((a, b) => {
-        const orderA = categoryOrder[a.category] || 999;
-        const orderB = categoryOrder[b.category] || 999;
-        return orderA - orderB;
+        // First sort by category
+        const categoryOrderA = categoryOrder[a.category] || 999;
+        const categoryOrderB = categoryOrder[b.category] || 999;
+        if (categoryOrderA !== categoryOrderB) {
+            return categoryOrderA - categoryOrderB;
+        }
+        
+        // Then sort by oil type within category
+        const oilTypeOrderA = oilTypeOrder[a.oilType] || 999;
+        const oilTypeOrderB = oilTypeOrder[b.oilType] || 999;
+        if (oilTypeOrderA !== oilTypeOrderB) {
+            return oilTypeOrderA - oilTypeOrderB;
+        }
+        
+        // Finally sort by viscosity within oil type
+        const viscosityOrderA = viscosityOrder[a.viscosity] || 999;
+        const viscosityOrderB = viscosityOrder[b.viscosity] || 999;
+        return viscosityOrderA - viscosityOrderB;
     });
 }
 
@@ -1227,14 +1269,45 @@ function createCategorySection(category, products) {
     
     const categoryInfo = getCategoryInfo(category);
     
+    // Group products by oil type within category
+    const oilTypeGroups = {};
+    products.forEach(product => {
+        if (!oilTypeGroups[product.oilType]) {
+            oilTypeGroups[product.oilType] = [];
+        }
+        oilTypeGroups[product.oilType].push(product);
+    });
+    
+    // Oil type order for display
+    const oilTypeOrder = ['Full Sintético', 'Sintético', 'Semi-sintético', 'Mineral'];
+    
+    // Create oil type sections
+    const oilTypeSections = oilTypeOrder
+        .filter(oilType => oilTypeGroups[oilType])
+        .map(oilType => {
+            const oilTypeProducts = oilTypeGroups[oilType];
+            const oilTypeColor = getOilTypeColor(oilType);
+            
+            return `
+                <div class="mb-8">
+                    <h4 class="text-lg font-semibold ${oilTypeColor} mb-4 flex items-center">
+                        <i class="fas fa-oil-can mr-2"></i>
+                        ${oilType}
+                    </h4>
+                    <div class="product-grid" id="${category}-${oilType.replace(/\s+/g, '-').toLowerCase()}-products">
+                        ${oilTypeProducts.map(product => createProductCardHTML(product)).join('')}
+                    </div>
+                </div>
+            `;
+        })
+        .join('');
+    
     section.innerHTML = `
         <h3 class="text-2xl font-bold castrol-green-text mb-8 flex items-center" data-category-section="${category}">
             <i class="${categoryInfo.icon} mr-3"></i>
             ${categoryInfo.name}
         </h3>
-        <div class="product-grid" id="${category}-products">
-            ${products.map(product => createProductCardHTML(product)).join('')}
-        </div>
+        ${oilTypeSections}
     `;
     
     return section;
