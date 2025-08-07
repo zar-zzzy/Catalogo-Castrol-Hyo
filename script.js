@@ -661,25 +661,44 @@ const products = {
                 ]
             }
         },
-        // Semi-sintético
-
         { 
-            id: 'm-ss1', 
+            id: 'm-s4', 
             name: 'Castrol Actevo St-St 4T 10W-40', 
             viscosity: '10W-40', 
-            oilType: 'Semi-sintético', 
+            oilType: 'Full Sintético', 
             formats: [
                 { size: '6x1 L', image: 'img/Castrol Actevo St-St 4T 10W-40 - 6x1 L.jpg' }
+            ],
+            description: 'Aceite sintético para motos 4T.', 
+            category: 'motos', 
+            specs: { 
+                jaso: 'MA', 
+                features: [
+                    'Tecnología sintética avanzada',
+                    'Protección del motor',
+                    'Control de temperatura',
+                    'Durabilidad mejorada'
+                ]
+            }
+        },
+        // Semi-sintético
+        { 
+            id: 'm-ss1', 
+            name: 'Castrol Actevo 4T 20W-50', 
+            viscosity: '20W-50', 
+            oilType: 'Semi-sintético', 
+            formats: [
+                { size: '6x1 L', image: 'img/Castrol Actevo 4T 20W-50 - 6x1 L.jpg' }
             ],
             description: 'Aceite semi-sintético para motos 4T.', 
             category: 'motos', 
             specs: { 
                 jaso: 'MA', 
                 features: [
-                    'Viscosidad versátil',
-                    'Protección del motor',
-                    'Control de temperatura',
-                    'Durabilidad mejorada'
+                    'Fórmula semi-sintética',
+                    'Protección equilibrada',
+                    'Uso general',
+                    'Confiabilidad probada'
                 ]
             }
         },
@@ -687,26 +706,6 @@ const products = {
         // Mineral
         { 
             id: 'm-m1', 
-            name: 'Castrol Actevo 4T 20W-50', 
-            viscosity: '20W-50', 
-            oilType: 'Mineral', 
-            formats: [
-                { size: '6x1 L', image: 'img/Castrol Actevo 4T 20W-50 - 6x1 L.jpg' }
-            ],
-            description: 'Aceite mineral para motos 4T.', 
-            category: 'motos', 
-            specs: { 
-                jaso: 'MA', 
-                features: [
-                    'Fórmula mineral económica',
-                    'Protección básica',
-                    'Uso general',
-                    'Confiabilidad probada'
-                ]
-            }
-        },
-        { 
-            id: 'm-m2', 
             name: 'Castrol Actevo Essential 4T 25W-60', 
             viscosity: '25W-60', 
             oilType: 'Mineral', 
@@ -726,7 +725,7 @@ const products = {
             }
         },
         { 
-            id: 'm-m3', 
+            id: 'm-m2', 
             name: 'Castrol Actevo Essential 4T 20W-50', 
             viscosity: '20W-50', 
             oilType: 'Mineral', 
