@@ -918,26 +918,7 @@ const products = {
                 ]
             }
         },
-        { 
-            id: 'c2', 
-            name: 'Castrol Hyspin AWS 46', 
-            viscosity: '46', 
-            oilType: '', 
-            formats: [
-                { size: '5 gal', image: 'img/Castrol Hyspin AWS 46 - 5 gal.jpg' }
-            ],
-            description: 'Aceite hidráulico para sistemas industriales.', 
-            category: 'complementarios', 
-            specs: { 
-                features: [
-                    'Viscosidad media',
-                    'Aplicación universal',
-                    'Protección hidráulica',
-                    'Calidad industrial'
-                ]
-            }
-        },
-        { 
+        {
             id: 'c3', 
             name: 'Castrol Universal Tractor Fluid (UTF)', 
             viscosity: '', 
