@@ -784,7 +784,7 @@ const products = {
             viscosity: 'CVT', 
             oilType: 'Mineral', 
             formats: [
-                { size: '18.9 L', image: 'img/Castrol TRANSMAX CVT - 18.9 L.jpg' }
+                { size: '6x1qt', image: 'img/Castrol TRANSMAX CVT - 6x1qt.jpg' }
             ],
             description: 'Aceite mineral para transmisiones CVT.', 
             category: 'complementarios', 
