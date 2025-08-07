@@ -92,7 +92,7 @@ const products = {
             id: 'd-ss1', 
             name: 'Castrol CRB Multi CK-4 15W-40', 
             viscosity: '15W-40', 
-            oilType: 'Semi-sintético', 
+            oilType: 'Mineral', 
             formats: [
                 { size: '6x1L', image: 'img/Castrol CRB Multi CK-4 15W-40 - 6x1L.jpg' },
                 { size: '3x4L', image: 'img/Castrol CRB Multi CK-4 15W-40 - 3x4L.jpg' },
