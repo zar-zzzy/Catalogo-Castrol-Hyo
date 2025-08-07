@@ -796,8 +796,9 @@ const products = {
                     'Suavidad de operación',
                     'Durabilidad extendida'
                 ]
-            },
-        { 
+            }
+        },
+        {
             id: 't-m3', 
             name: 'Castrol TRANSMAX Mercon V/Dexron III', 
             viscosity: 'Mercon V/Dexron III', 
