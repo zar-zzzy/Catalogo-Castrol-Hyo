@@ -118,8 +118,10 @@ const products = {
             viscosity: '15W-40', 
             oilType: 'Mineral', 
             formats: [
-                { size: '18.9 L', image: 'img/Castrol CRB Turbomax CI-4-SL-E7 15W-40 - 18.9 L.jpg' },
-                { size: '5 gal', image: 'img/Castrol CRB Turbomax CI-4-SL-E7 15W-40 -  5 gal.jpg' }
+                { size: '6x1L', image: 'img/Castrol CRB Turbomax CI-4-SL-E7 15W-40 - 6x1L.jpg' },
+                { size: '3x4L', image: 'img/Castrol CRB Turbomax CI-4-SL-E7 15W-40 - 3x4L.jpg' },
+                { size: '2.5GL', image: 'img/Castrol CRB Turbomax CI-4-SL-E7 15W-40 - 2.5GL.jpg' },
+                { size: '20L', image: 'img/Castrol CRB Turbomax CI-4-SL-E7 15W-40 - 18.9 L.jpg' }
             ],
             description: 'Aceite mineral para motores diésel, protección robusta y confiable.', 
             category: 'diesel', 
