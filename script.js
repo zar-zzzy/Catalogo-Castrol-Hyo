@@ -662,28 +662,9 @@ const products = {
             }
         },
         // Semi-sintético
+
         { 
             id: 'm-ss1', 
-            name: 'Castrol Actevo St-St 4T 10W-30', 
-            viscosity: '10W-30', 
-            oilType: 'Semi-sintético', 
-            formats: [
-                { size: '6x1 L', image: 'img/Castrol Actevo St-St 4T 10W-30 - 6x1 L.jpg' }
-            ],
-            description: 'Aceite semi-sintético para motos 4T.', 
-            category: 'motos', 
-            specs: { 
-                jaso: 'MA', 
-                features: [
-                    'Fórmula semi-sintética',
-                    'Protección equilibrada',
-                    'Arranque mejorado',
-                    'Rendimiento confiable'
-                ]
-            }
-        },
-        { 
-            id: 'm-ss2', 
             name: 'Castrol Actevo St-St 4T 10W-40', 
             viscosity: '10W-40', 
             oilType: 'Semi-sintético', 
@@ -702,26 +683,7 @@ const products = {
                 ]
             }
         },
-        { 
-            id: 'm-ss3', 
-            name: 'Castrol Actevo St-St 4T 15W-50', 
-            viscosity: '15W-50', 
-            oilType: 'Semi-sintético', 
-            formats: [
-                { size: '12x1 L', image: 'img/Castrol Actevo St-St 4T 15W-50 - 12x1 L.jpg' }
-            ],
-            description: 'Aceite semi-sintético para motos 4T.', 
-            category: 'motos', 
-            specs: { 
-                jaso: 'MA', 
-                features: [
-                    'Alta viscosidad',
-                    'Protección extrema',
-                    'Para condiciones severas',
-                    'Resistencia térmica'
-                ]
-            }
-        },
+
         // Mineral
         { 
             id: 'm-m1', 
@@ -782,8 +744,7 @@ const products = {
                     'Calidad Castrol'
                 ]
             }
-        },
-        // Semi-sintético
+        }
     ],
     transmisiones: [
         // Sintético
