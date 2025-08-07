@@ -918,6 +918,167 @@ const products = {
         }
     ],
     complementarios: [
+        // Sintético
+        { 
+            id: 't-s1', 
+            name: 'Castrol TRANSMAX Universal LL 75W-90', 
+            viscosity: '75W-90', 
+            oilType: 'Sintético', 
+            formats: [
+                { size: '18.9 L', image: 'img/Castrol TRANSMAX Universal LL 75W-90 - 18.9 L.jpg' }
+            ],
+            description: 'Aceite sintético para transmisiones universales.', 
+            category: 'complementarios', 
+            specs: { 
+                api: 'GL-5', 
+                features: [
+                    'Fórmula sintética avanzada',
+                    'Compatibilidad universal',
+                    'Larga duración',
+                    'Protección superior'
+                ]
+            }
+        },
+        // Mineral
+        { 
+            id: 't-m1', 
+            name: 'Castrol TRANSMAX CVT', 
+            viscosity: 'CVT', 
+            oilType: 'Mineral', 
+            formats: [
+                { size: '18.9 L', image: 'img/Castrol TRANSMAX CVT - 18.9 L.jpg' }
+            ],
+            description: 'Aceite mineral para transmisiones CVT.', 
+            category: 'complementarios', 
+            specs: { 
+                type: 'CVT', 
+                features: [
+                    'Especializado para CVT',
+                    'Protección de correa',
+                    'Suavidad de operación',
+                    'Durabilidad extendida'
+                ]
+            }
+        },
+        { 
+            id: 't-m2', 
+            name: 'Castrol TRANSMAX ATF DX III', 
+            viscosity: 'ATF DX III', 
+            oilType: 'Mineral', 
+            formats: [
+                { size: '18.9 L', image: 'img/Castrol TRANSMAX ATF DX III - 18.9 L.jpg' }
+            ],
+            description: 'Aceite mineral para transmisiones automáticas.', 
+            category: 'complementarios', 
+            specs: { 
+                type: 'ATF DX III', 
+                features: [
+                    'Especificación Dexron III',
+                    'Cambios suaves',
+                    'Protección hidráulica',
+                    'Compatibilidad amplia'
+                ]
+            }
+        },
+        { 
+            id: 't-m3', 
+            name: 'Castrol TRANSMAX Mercon V/Dexron III', 
+            viscosity: 'Mercon V/Dexron III', 
+            oilType: 'Mineral', 
+            formats: [
+                { size: '18.9 L', image: 'img/Castrol TRANSMAX Mercon V - Dexron III - 18.9 L.jpg' }
+            ],
+            description: 'Aceite mineral para transmisiones automáticas.', 
+            category: 'complementarios', 
+            specs: { 
+                type: 'Mercon V/Dexron III', 
+                features: [
+                    'Doble especificación',
+                    'Versatilidad de uso',
+                    'Protección confiable',
+                    'Rendimiento probado'
+                ]
+            }
+        },
+        { 
+            id: 't-m4', 
+            name: 'Castrol TRANSMAX Dex/Merc', 
+            viscosity: 'Dex/Merc', 
+            oilType: 'Mineral', 
+            formats: [
+                { size: '18.9 L', image: 'img/Castrol TRANSMAX Dex-Merc - 18.9 L.jpg' }
+            ],
+            description: 'Aceite mineral para transmisiones automáticas.', 
+            category: 'complementarios', 
+            specs: { 
+                type: 'Dexron/Mercon', 
+                features: [
+                    'Compatibilidad múltiple',
+                    'Uso universal',
+                    'Economía de inventario',
+                    'Calidad confiable'
+                ]
+            }
+        },
+        { 
+            id: 't-m5', 
+            name: 'Castrol AXLE Limited Slip 80W-90', 
+            viscosity: '80W-90', 
+            oilType: 'Mineral', 
+            formats: [
+                { size: '18.9 L', image: 'img/Castrol AXLE Limited Slip 80W-90 - 18.9 L.jpg' }
+            ],
+            description: 'Aceite mineral para diferenciales Limited Slip.', 
+            category: 'complementarios', 
+            specs: { 
+                api: 'GL-5 LS', 
+                features: [
+                    'Para diferenciales Limited Slip',
+                    'Aditivos especiales',
+                    'Protección anti-chatter',
+                    'Rendimiento optimizado'
+                ]
+            }
+        },
+        { 
+            id: 't-m6', 
+            name: 'Castrol AXLE GL-5 85W-140', 
+            viscosity: '85W-140', 
+            oilType: 'Mineral', 
+            formats: [
+                { size: '18.9 L', image: 'img/Castrol AXLE GL-5 85W-140 - 18.9 L.jpg' }
+            ],
+            description: 'Aceite mineral para diferenciales GL-5.', 
+            category: 'complementarios', 
+            specs: { 
+                api: 'GL-5', 
+                features: [
+                    'Especificación GL-5',
+                    'Alta viscosidad',
+                    'Protección extrema',
+                    'Para trabajo pesado'
+                ]
+            }
+        },
+        { 
+            id: 't-m7', 
+            name: 'Castrol TRANS C 10W/30', 
+            viscosity: '10W/30', 
+            oilType: 'Mineral', 
+            formats: [
+                { size: '5 gal', image: 'img/Castrol TRANS C 10W - 30 - 5 gal.jpg' }
+            ],
+            description: 'Aceite mineral para transmisiones y convertidores.', 
+            category: 'complementarios', 
+            specs: { 
+                features: [
+                    'Para transmisiones y convertidores',
+                    'Viscosidad media',
+                    'Uso industrial',
+                    'Protección confiable'
+                ]
+            }
+        },
         { 
             id: 'c1', 
             name: 'Castrol Hyspin AWS 68', 
@@ -974,7 +1135,7 @@ const products = {
                     'Versatilidad total'
                 ]
             }
-        },
+        }
 
     ]
 };
@@ -1127,13 +1288,12 @@ function getFilteredProducts() {
 
 // Sort products based on current sort option - FIXED TO CATEGORY ONLY
 function sortProducts(products) {
-    // Custom category order: gasolina, motos, diesel, transmisiones, complementarios
+    // Custom category order: gasolina, motos, diesel, complementarios
     const categoryOrder = {
         'gasolina': 1,
         'motos': 2,
         'diesel': 3,
-        'transmisiones': 4,
-        'complementarios': 5
+        'complementarios': 4
     };
     
     // Oil type order: Full Sintético, Sintético, Semi-sintético, Mineral
@@ -1209,7 +1369,7 @@ function displayProducts(products) {
     productsContainer.innerHTML = '';
     
     // Create sections for each category in specific order
-    const categoryOrder = ['gasolina', 'motos', 'diesel', 'transmisiones', 'complementarios'];
+    const categoryOrder = ['gasolina', 'motos', 'diesel', 'complementarios'];
     
     categoryOrder.forEach(category => {
         if (groupedProducts[category]) {
@@ -1254,7 +1414,7 @@ function getCategoryInfo(category) {
         diesel: { name: 'Motores Diésel', icon: 'fas fa-truck' },
         gasolina: { name: 'Motores Gasolina', icon: 'fas fa-car' },
         motos: { name: 'Motos', icon: 'fas fa-motorcycle' },
-        transmisiones: { name: 'Transmisiones', icon: 'fas fa-cogs' },
+
         complementarios: { name: 'Productos Complementarios', icon: 'fas fa-tools' }
     };
     return categoryMap[category] || { name: category, icon: 'fas fa-box' };
@@ -2437,7 +2597,7 @@ function handleContactForm(e) {
                 diesel: 'Motores Diésel',
                 gasolina: 'Motores Gasolina',
                 motos: 'Motos',
-                transmisiones: 'Transmisiones',
+        
                 complementarios: 'Productos Complementarios'
             };
             whatsappMessage += `\n\nEstoy interesado en: ${categoryNames[data.productInterest] || data.productInterest}`;
