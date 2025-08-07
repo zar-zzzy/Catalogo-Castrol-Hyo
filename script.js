@@ -844,7 +844,8 @@ const products = {
             viscosity: '80W-90', 
             oilType: 'Mineral', 
             formats: [
-                { size: '18.9 L', image: 'img/Castrol AXLE Limited Slip 80W-90 - 18.9 L.jpg' }
+                { size: '12x946L', image: 'img/Castrol AXLE Limited Slip 80W-90 - 12x946L.jpg' },
+                { size: '18.9L', image: 'img/Castrol AXLE Limited Slip 80W-90 - 18.9L.jpg' }
             ],
             description: 'Aceite mineral para diferenciales Limited Slip.', 
             category: 'complementarios', 
