@@ -158,26 +158,6 @@ const products = {
                     'Economía de uso'
                 ]
             }
-        },
-        { 
-            id: 'd-m3', 
-            name: 'Castrol CRB Monograde SAE 40/50', 
-            viscosity: 'SAE 40/50', 
-            oilType: 'Mineral', 
-            formats: [
-                { size: '5 gal', image: 'img/Castrol CRB Monograde SAE 40 - 50 - 5 gal.jpg' },
-                { size: '208 L', image: 'img/Castrol CRB Monograde SAE 40 - 50 - 208 L.jpg' }
-            ],
-            description: 'Aceite monogrado mineral para motores diésel convencionales.', 
-            category: 'diesel', 
-            specs: { 
-                features: [
-                    'Fórmula monogrado tradicional',
-                    'Protección básica confiable',
-                    'Económico y eficiente',
-                    'Para motores convencionales'
-                ]
-            }
         }
     ],
     gasolina: [
