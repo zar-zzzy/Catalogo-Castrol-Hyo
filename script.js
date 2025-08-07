@@ -760,7 +760,7 @@ const products = {
             id: 't-s1', 
             name: 'Castrol TRANSMAX Universal LL 75W-90', 
             viscosity: '75W-90', 
-            oilType: 'Sintético', 
+            oilType: 'Full Sintético', 
             formats: [
                 { size: '20L', image: 'img/Castrol TRANSMAX Universal LL 75W-90 - 20L.jpg' },
                 { size: '12x1L', image: 'img/Castrol TRANSMAX Universal LL 75W-90 - 12x1L.jpg' }
