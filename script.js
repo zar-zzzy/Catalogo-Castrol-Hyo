@@ -44,28 +44,6 @@ const products = {
         },
         { 
             id: 'd-s2', 
-            name: 'Castrol Vecton LD CK-4/E9 10W-30', 
-            viscosity: '10W-30', 
-            oilType: 'Full Sintético', 
-            formats: [
-                { size: '5 gal', image: 'img/Castrol Vecton LD CK-4-E9 10W-30 - 5 gal.jpg' },
-                { size: '208 L', image: 'img/Castrol Vecton LD CK-4-E9 10W-30 -  208 L.jpg' }
-            ],
-            description: 'Aceite sintético para motores diésel modernos, máxima eficiencia y protección.', 
-            category: 'diesel', 
-            specs: { 
-                api: 'CK-4', 
-                acea: 'E9', 
-                features: [
-                    'Eficiencia de combustible mejorada',
-                    'Protección avanzada del motor',
-                    'Control superior de depósitos',
-                    'Estabilidad térmica excepcional'
-                ]
-            }
-        },
-        { 
-            id: 'd-s3', 
             name: 'Castrol Vecton Long Drain E6/E9 5W-40 C1', 
             viscosity: '5W-40', 
             oilType: 'Full Sintético', 
