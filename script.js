@@ -1269,45 +1269,14 @@ function createCategorySection(category, products) {
     
     const categoryInfo = getCategoryInfo(category);
     
-    // Group products by oil type within category
-    const oilTypeGroups = {};
-    products.forEach(product => {
-        if (!oilTypeGroups[product.oilType]) {
-            oilTypeGroups[product.oilType] = [];
-        }
-        oilTypeGroups[product.oilType].push(product);
-    });
-    
-    // Oil type order for display
-    const oilTypeOrder = ['Full Sintético', 'Sintético', 'Semi-sintético', 'Mineral'];
-    
-    // Create oil type sections
-    const oilTypeSections = oilTypeOrder
-        .filter(oilType => oilTypeGroups[oilType])
-        .map(oilType => {
-            const oilTypeProducts = oilTypeGroups[oilType];
-            const oilTypeColor = getOilTypeColor(oilType);
-            
-            return `
-                <div class="mb-8">
-                    <h4 class="text-lg font-semibold ${oilTypeColor} mb-4 flex items-center">
-                        <i class="fas fa-oil-can mr-2"></i>
-                        ${oilType}
-                    </h4>
-                    <div class="product-grid" id="${category}-${oilType.replace(/\s+/g, '-').toLowerCase()}-products">
-                        ${oilTypeProducts.map(product => createProductCardHTML(product)).join('')}
-                    </div>
-                </div>
-            `;
-        })
-        .join('');
-    
     section.innerHTML = `
         <h3 class="text-2xl font-bold castrol-green-text mb-8 flex items-center" data-category-section="${category}">
             <i class="${categoryInfo.icon} mr-3"></i>
             ${categoryInfo.name}
         </h3>
-        ${oilTypeSections}
+        <div class="product-grid" id="${category}-products">
+            ${products.map(product => createProductCardHTML(product)).join('')}
+        </div>
     `;
     
     return section;
