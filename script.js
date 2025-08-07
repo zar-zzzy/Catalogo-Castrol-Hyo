@@ -797,27 +797,6 @@ const products = {
                     'Durabilidad extendida'
                 ]
             }
-        },
-        { 
-            id: 't-m2', 
-            name: 'Castrol TRANSMAX ATF DX III', 
-            viscosity: 'ATF DX III', 
-            oilType: 'Mineral', 
-            formats: [
-                { size: '18.9 L', image: 'img/Castrol TRANSMAX ATF DX III - 18.9 L.jpg' }
-            ],
-            description: 'Aceite mineral para transmisiones automáticas.', 
-            category: 'complementarios', 
-            specs: { 
-                type: 'ATF DX III', 
-                features: [
-                    'Especificación Dexron III',
-                    'Cambios suaves',
-                    'Protección hidráulica',
-                    'Compatibilidad amplia'
-                ]
-            }
-        },
         { 
             id: 't-m3', 
             name: 'Castrol TRANSMAX Mercon V/Dexron III', 
