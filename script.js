@@ -865,7 +865,8 @@ const products = {
             viscosity: '85W-140', 
             oilType: 'Mineral', 
             formats: [
-                { size: '18.9 L', image: 'img/Castrol AXLE GL-5 85W-140 - 18.9 L.jpg' }
+                { size: '12x1qt', image: 'img/Castrol AXLE GL-5 85W-140 - 12x1qt.jpg' },
+                { size: '5gal', image: 'img/Castrol AXLE GL-5 85W-140 - 5gal.jpg' }
             ],
             description: 'Aceite mineral para diferenciales GL-5.', 
             category: 'complementarios', 
