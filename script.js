@@ -44,7 +44,7 @@ const products = {
         },
         { 
             id: 'd-s2', 
-            name: 'Castrol Vecton Long Drain E6/E9 5W-40 C1', 
+            name: 'Castrol Vecton E6/E9 5W-40 C1', 
             viscosity: '5W-40', 
             oilType: 'Full Sintético', 
             formats: [
