@@ -26,8 +26,7 @@ const products = {
             viscosity: '10W-40', 
             oilType: 'Full Sintético', 
             formats: [
-                { size: '5 gal', image: 'img/Castrol Vecton Long Drain E6-E9 10W-40 - 5 gal.jpg' },
-                { size: '208 L', image: 'img/Castrol Vecton Long Drain E6-E9 10W-40 -  208 L.jpg' }
+                { size: '5 gal', image: 'img/Castrol Vecton Long Drain E6-E9 10W-40 - 5 gal.jpg' }
             ],
             description: 'Aceite sintético de larga duración para motores diésel Euro VI y anteriores.', 
             category: 'diesel', 
