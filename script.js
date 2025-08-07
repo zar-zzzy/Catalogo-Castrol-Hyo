@@ -72,7 +72,8 @@ const products = {
             oilType: 'Sintético', 
             formats: [
                 { size: '5 gal', image: 'img/Castrol Vecton CK-4-SN 15W-40 - 5 gal.jpg' },
-                { size: '208L', image: 'img/Castrol Vecton CK-4-SN 15W-40 - 208L.jpg' }
+                { size: '3x3.78', image: 'img/Castrol Vecton CK-4-SN 15W-40 - 3x3.78.jpg' },
+                { size: '12x1qt', image: 'img/Castrol Vecton CK-4-SN 15W-40 - 12x1qt.jpg' }
             ],
             description: 'Aceite sintético para motores diésel de alto desempeño y protección avanzada.', 
             category: 'diesel', 
