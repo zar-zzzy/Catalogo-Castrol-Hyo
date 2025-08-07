@@ -726,11 +726,11 @@ const products = {
         },
         { 
             id: 'm-m2', 
-            name: 'Castrol Actevo Essential 4T 25W-50', 
-            viscosity: '25W-50', 
+            name: 'Castrol Actevo Essential 4T 20W-50', 
+            viscosity: '20W-50', 
             oilType: 'Mineral', 
             formats: [
-                { size: '6x946 ml', image: 'img/Castrol Actevo Essential 4T 25W-50 - 6x946 ml.jpg' }
+                { size: '6x946 ml', image: 'img/Castrol Actevo Essential 4T 20W-50 - 6x946 ml.jpg' }
             ],
             description: 'Aceite mineral para motos 4T.', 
             category: 'motos', 
