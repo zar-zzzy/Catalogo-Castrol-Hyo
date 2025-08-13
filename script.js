@@ -293,16 +293,19 @@ const products = {
                 { size: '5 qt', image: 'img/Castrol EDGE K 5W-30 - 5 qt.jpg' },
                 { size: '6x946 ml', image: 'img/Castrol EDGE K 5W-30 - 6x946.jpg' }
             ],
-            description: 'Aceite sintético para motores de última generación.', 
+            description: 'VW AMAROK (MODERNAS Y ANTIGUAS), MINIVAN: VW CRAFTER, RENAULT MASTER, MERCEDES SPRINTER, HYUNDAI 350. CUALQUIER VEHICULO QUE UTILICE 5W30 SEA GASOLINA O DIESEL DE SERVICIO LIVIANO ESTE PRODUCTO SOBREPASA CUALQUIER ESPECIFICACION DE LUBRICANTES SIMILARES DE LA COMPETENCIA. RECOMENDADO PARA VEHICULOS CON FILTRO DE PARTICULAS.', 
             category: 'gasolina', 
-            specs: { 
-                api: 'SP', 
+            specs: {
+                api: 'SP',
+
                 features: [
-                    'Fórmula K especializada',
-                    'Máxima protección',
-                    'Rendimiento superior',
-                    'Tecnología avanzada'
-                ]
+                    'LIBERA EL MAXIMO RENDIMIENTO',
+                    'PROBADO CON LOS MÁS ALTOS ESTÁNDARESDE LOS FABRICANTES DE AUTOMÓVILES',
+                    'PROTEGE EL MOTOR DURANTE TODO EL INTERVALO DE DRENAJE INCLUSO BAJO PRESIÓN EXTREMA'
+                ],
+
+                acea: 'C3, API SP,',
+                vw: '504 00 - 507 00 - 505 00 - 505 01'
             }
         },
         { 
@@ -314,17 +317,21 @@ const products = {
                 { size: '6x946 ml', image: 'img/Castrol EDGE A3-B4 5W-40 - 6x946 ml.jpg' },
                 { size: '5 qt', image: 'img/Castrol EDGE A3-B4 5W-40 - 5 qt.jpg' }
             ],
-            description: 'Aceite sintético para motores de alto desempeño.', 
+            description: 'PUEDE SER UTILIZADA POR VEHICULOS DIESEL LIVIANOS Y A GASOLINA QUE REQUIERAN CUMPLIR CON ACEA A3/B4 Y QUE NO TENGAN FILTRO DE PARTICULAS. A3 INDICADO PARA MOTORES DE ALTO RENDIMIENTO Y/O CAMBIOS PROLONGADOS DE ACEITE Y BAJO TODOS LOS RANGOS DE TEMPERATURA B4 INDICADO PARA VEHICULOS DIESEL DE PASAJEROS CON INYECCIOON DIRECTA', 
             category: 'gasolina', 
-            specs: { 
-                api: 'SP', 
-                acea: 'A3/B4', 
+            specs: {
+                api: 'SP/CF',
+                acea: 'A3/B3, A3/B4, API SP/CF, BMW Longlife-01,',
+
                 features: [
-                    'Especificación europea A3/B4',
-                    'Alto rendimiento',
-                    'Protección avanzada',
-                    'Calidad superior'
-                ]
+                    'LIBERA EL MAXIMO RENDIMIENTO',
+                    'FORMULADO PARA VEHICULOS DE ALTO RENDIMIENTO',
+                    'PROPORCIONA UN NIVEL INIGUALABLE DE PROTECCIÓN BAJO CUALQUIER VARIEDAD DE CONDICIONES DE CONDUCCIÓN Y TEMPERATURAS',
+                    'MEJORA LA EFICIENCIA DEL MOTOR',
+                    'PROPORCIONA Y MANTIENE MÁXIMA POTENCIA POR MÁS TIEMPO'
+                ],
+
+                vw: '502 00 / 505 00'
             }
         },
         { 
@@ -336,16 +343,20 @@ const products = {
                 { size: '12x1 L', image: 'img/Castrol EDGE Turbo Diesel 5W-40 - 12x1 L.jpg' },
                 { size: '4x4 L', image: 'img/Castrol EDGE Turbo Diesel 5W-40 -  4x4 L.jpg' }
             ],
-            description: 'Aceite sintético para motores turbo gasolina y diésel.', 
+            description: 'RECOMENDADO PARA LAS PICK UPS DIESEL MAS COMERCIALES, HILUX, L200, FOTON, POER, AMAROK (MOTOR 2.0), MAHINDRA, ALASKAN, MAXUS, FRONTIER, NP300, BT50, RANGER. DUAL, PUEDE SER UTILIZADO EN VEHICULOS A GASOLINA Y DIESEL LIVIANO Y CON FILTRO DE PARTICULAS MINIVAN MERCEDES BENZ, RENAULT MASTER', 
             category: 'gasolina', 
-            specs: { 
-                api: 'SP', 
+            specs: {
+                api: 'SN/CF',
+
                 features: [
-                    'Para motores turbo',
-                    'Protección contra altas temperaturas',
-                    'Rendimiento dual',
-                    'Tecnología avanzada'
-                ]
+                    'LIBERA EL MAXIMO RENDIMIENTO',
+                    'OFRECE MÁS DESARROLLO DE POTENCIA Y ACELERACIÓN',
+                    'RECOMENDADO POR LOS PRINCIPALES FABRICANTES DE AUTOMÓVILES DEL MUNDO'
+                ],
+
+                acea: 'C3 API SN/CF',
+                dexos: '2',
+                vw: '505 00/ 505 01'
             }
         },
         // Semi-sintético
@@ -358,16 +369,16 @@ const products = {
                 { size: '12x1 L', image: 'img/Castrol MAGNATEC C3 5W-30 - 12x1 L.jpg' },
                 { size: '4x4 L', image: 'img/Castrol MAGNATEC C3 5W-30 -  4x4 L.jpg' }
             ],
-            description: 'Aceite semi-sintético con moléculas inteligentes para protección continua.', 
+            description: 'PROTECCION ININTERRUMPIDA DESDE CADA ARRANQUE Castrol MAGNATEC 5W-30 C3 ESTA RECOMENDADO PARA MOTORES DE AUTOMOVILES A GASOLINA Y DIESEL DONDE EL FABRICANTE RECOMIENDA UN LUBRICANTE CON ESPECIFICACION API SP, ACEA C2, C3 o anterior y grado de viscosidad 5W-30. CASTROL MAGNATEC SE ADHIERE, FIJA Y OTROTEGE PARA OFRECER UN 50% MAS DE POROTECCION CONTRA EL DESGASTE DE MOTOR', 
             category: 'gasolina', 
             specs: { 
-                api: 'SN', 
-                acea: 'C3', 
+                api: 'SP', 
+                acea: 'C2 y C3, API SP,', 
                 features: [
-                    'Moléculas inteligentes',
-                    'Protección desde el arranque',
-                    'Reducción del desgaste',
-                    'Tecnología MAGNATEC'
+                    'RECOMENDADO PARA SU USO EN MOTORES DE AUTOMÓVILES GASOLINA, DIESEL LIVIANO E HIBRIDOS DE LA MAYORIA DE VEHICULOS QUE REQUIEREN ESTA VISCOSIDAD',
+                    'MAGNATEC 5W',
+                    '30 C3 HA SIDO ESPECIFICAMENTE FORMULADO PARA PROPORCIONAR UNA PROTECCIÓN SOBRESALIENTE DE AQUELLOS MOTORES DE ÚLTIMA TECNOLOGÍA EQUIPADOS CON SISTEMAS DE TRATAMIENTO DE GASES DE ESCAPE TALES COMO FILTROS DE PARTÍCULAS DIESEL (DPF) Y CATALIZADORES DE',
+                    'TRES VÍAS (TWC)'
                 ]
             }
         },
@@ -401,15 +412,13 @@ const products = {
                 { size: '6x946 ml', image: 'img/Castrol MAGNATEC 10W-30 - 6x946 ml.jpg' },
                 { size: '3.78 L', image: 'img/Castrol MAGNATEC 10W-30 -  3.78 L.jpg' }
             ],
-            description: 'Aceite semi-sintético para motores gasolina.', 
+            description: 'EL CASTROL MAGNATEC ES EL LUBRICANTE PARA VEHICULOS GASOLINEROS Y A GAS MAS RECONOCIDO DEL MERCADO, LOS CONDUCTORES MAS EXIGENTES ELIGEN UN LUBRICANTE QUE LOS PROTEJA INCLUSO SI NO ESTAN MANEJANDO, ESTO PORQUE LAS MOLECULAS MAGNETICAS DEL PRODUCTO (TECNOLOGIA EXCLUSIVA DE CASTROL) SE ADHUEREN Y SIGUEN CUIDANDO EL MOTOR. UN CONDUCTOR QUE DESEE CUIDAR SU VEHICULO Y A LA VEZ BUSCA ECONOMIZAR, ESTE ES EL PRODUCTO IDEAL', 
             category: 'gasolina', 
             specs: { 
-                api: 'SN', 
+                api: 'SP ILSAC GF-6', 
                 features: [
-                    'Protección inteligente',
-                    'Arranque seguro',
-                    'Durabilidad mejorada',
-                    'Tecnología probada'
+                    'CASTROL MAGNATEC SE ADHIERE A LAS PARTES CRÍTICAS DEL MOTOR CUANDO EL ACEITE SE ESCURRE AL CÁRTER PROPORCIONANDO UNA CAPA DE PROTECCIÓN ACTIVA Y CONTINUA ESPECIALMENTE DURANTE EL ENCENDIDO Y EL CALENTAMIENTO Y CONTINÚAN DURANTE TODA LA JORNADA',
+                    'SE UNEN A LAS SUPERFICIES DEL METAL PARA PROTEGERLO CONTRA EL DESGASTE FORMULADO CON TECNOLOGÍA SINTÉTICA PARA PROPORCIONAR UNA PROTECCIÓN SUPERIOR A ALTAS Y BAJAS TEMPERATURAS Y EN CUALQUIER ESTILO Y CONDICIÓN DE MANEJO'
                 ]
             }
         },

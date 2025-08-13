@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "jscodeshift": "^17.3.0",
+    "recast": "^0.23.11",
+    "xlsx": "^0.18.5"
+  }
+}
