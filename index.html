@@ -261,15 +261,7 @@
             backdrop-filter: blur(4px);
         }
         
-        .compare-indicator {
-            animation: bounce 0.5s ease-in-out;
-        }
         
-        @keyframes bounce {
-            0%, 20%, 60%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            80% { transform: translateY(-5px); }
-        }
         
         .toast {
             position: fixed;
@@ -410,8 +402,7 @@
         @media (prefers-reduced-motion: reduce) {
             .card-hover,
             .floating-whatsapp,
-            .skeleton,
-            .compare-indicator {
+            .skeleton {
                 animation: none !important;
                 transition: none !important;
             }
@@ -692,11 +683,7 @@
                         <a href="#inicio" class="text-gray-700 hover:castrol-green-text px-3 py-2 rounded-md text-sm font-medium transition-colors">Inicio</a>
                         <a href="#productos" class="text-gray-700 hover:castrol-green-text px-3 py-2 rounded-md text-sm font-medium transition-colors">Productos</a>
                         <a href="#contacto" class="text-gray-700 hover:castrol-green-text px-3 py-2 rounded-md text-sm font-medium transition-colors">Contacto</a>
-                        <button id="compare-toggle" class="relative text-gray-700 hover:castrol-green-text px-3 py-2 rounded-md text-sm font-medium transition-colors">
-                            <i class="fas fa-balance-scale mr-1"></i>
-                            Comparar
-                            <span id="compare-count" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center hidden">0</span>
-                        </button>
+                        
                     </div>
                 </div>
                 
@@ -714,10 +701,7 @@
                 <a href="#inicio" class="text-gray-700 hover:castrol-green-text block px-3 py-2 rounded-md text-base font-medium">Inicio</a>
                 <a href="#productos" class="text-gray-700 hover:castrol-green-text block px-3 py-2 rounded-md text-base font-medium">Productos</a>
                 <a href="#contacto" class="text-gray-700 hover:castrol-green-text block px-3 py-2 rounded-md text-base font-medium">Contacto</a>
-                <button id="mobile-compare-toggle" class="text-gray-700 hover:castrol-green-text block px-3 py-2 rounded-md text-base font-medium w-full text-left">
-                    <i class="fas fa-balance-scale mr-1"></i>
-                    Comparar <span id="mobile-compare-count" class="hidden">(0)</span>
-                </button>
+                
             </div>
         </div>
     </nav>
@@ -1101,10 +1085,7 @@
                 <div class="flex justify-between items-start mb-4">
                     <h3 id="modal-title" class="text-2xl font-bold castrol-green-text"></h3>
                     <div class="flex space-x-2">
-                        <button id="add-to-compare" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm">
-                            <i class="fas fa-balance-scale mr-1"></i>
-                            Comparar
-                        </button>
+                        
                         <button id="close-modal" class="text-gray-500 hover:text-gray-700 p-2">
                             <i class="fas fa-times text-xl"></i>
                         </button>
@@ -1117,24 +1098,7 @@
         </div>
     </div>
 
-    <!-- Comparison Modal -->
-    <div id="comparison-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
-        <div class="flex items-center justify-center min-h-screen p-4">
-            <div class="bg-white rounded-lg max-w-6xl w-full max-h-[90vh] overflow-y-auto">
-                <div class="p-6">
-                    <div class="flex justify-between items-center mb-6">
-                        <h3 class="text-2xl font-bold castrol-green-text">Comparación de Productos</h3>
-                        <button id="close-comparison" class="text-gray-500 hover:text-gray-700 p-2">
-                            <i class="fas fa-times text-xl"></i>
-                        </button>
-                    </div>
-                    <div id="comparison-content">
-                        <!-- Comparison content will be loaded here -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    
 
     <!-- Back to Top Button -->
     <button id="back-to-top" class="fixed bottom-20 left-6 bg-gray-800 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:bg-gray-700 transition-all duration-300 opacity-0 pointer-events-none z-40">

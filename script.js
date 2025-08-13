@@ -13,7 +13,7 @@ let currentFilters = {
 };
 let currentSort = 'category'; // Changed to category by default
 let currentView = 'grid';
-let comparisonList = [];
+// Comparar eliminado
 let allProducts = [];
 
 // Product data with enhanced specifications and multiple format support
@@ -976,14 +976,7 @@ const productModal = document.getElementById('product-modal');
 const modalTitle = document.getElementById('modal-title');
 const modalContent = document.getElementById('modal-content');
 const closeModal = document.getElementById('close-modal');
-const addToCompareBtn = document.getElementById('add-to-compare');
-const comparisonModal = document.getElementById('comparison-modal');
-const comparisonContent = document.getElementById('comparison-content');
-const closeComparison = document.getElementById('close-comparison');
-const compareToggle = document.getElementById('compare-toggle');
-const compareCount = document.getElementById('compare-count');
-const mobileCompareToggle = document.getElementById('mobile-compare-toggle');
-const mobileCompareCount = document.getElementById('mobile-compare-count');
+// elementos de comparación removidos
 const mobileMenuButton = document.getElementById('mobile-menu-button');
 const mobileMenu = document.getElementById('mobile-menu');
 const backToTopBtn = document.getElementById('back-to-top');
@@ -1244,7 +1237,7 @@ function getCategoryInfo(category) {
 // Create product card HTML with carousel support
 function createProductCardHTML(product) {
     const oilTypeBadge = getOilTypeBadge(product.oilType);
-    const isInComparison = comparisonList.find(p => p.id === product.id) !== undefined;
+    const isInComparison = false;
     
     // Handle multiple formats
     const hasMultipleFormats = product.formats && product.formats.length > 1;
@@ -1343,11 +1336,7 @@ function createProductCardHTML(product) {
                     ${imageContent}
                 </div>
                 ${oilTypeBadge}
-                <button class="absolute top-3 left-3 w-8 h-8 rounded-full ${isInComparison ? 'bg-blue-600 text-white' : 'bg-white text-gray-600'} shadow-md hover:shadow-lg transition-all z-20" 
-                        onclick="toggleProductComparison('${product.id}')" 
-                        title="${isInComparison ? 'Remover de comparación' : 'Agregar a comparación'}">
-                    <i class="fas fa-balance-scale text-xs"></i>
-                </button>
+                
             </div>
             
             <div class="p-6 ${currentView === 'list' ? 'flex-1' : ''}">
@@ -1643,14 +1632,7 @@ function openProductModal(productId) {
     modalTitle.textContent = product.name;
     modalContent.innerHTML = createModalContent(product);
     
-    // Update add to compare button
-    const isInComparison = comparisonList.find(p => p.id === product.id) !== undefined;
-    addToCompareBtn.textContent = isInComparison ? 'Remover de comparación' : 'Agregar a comparación';
-    addToCompareBtn.className = isInComparison ? 
-        'bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors text-sm' :
-        'bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm';
-    
-    addToCompareBtn.onclick = () => toggleProductComparison(productId);
+    // removed: botón de comparación en modal
     
     // Initialize modal carousel if product has multiple formats
     if (product.formats && product.formats.length > 1) {
@@ -2000,216 +1982,28 @@ function closeProductModal() {
 }
 
 // Toggle product in comparison list
-function toggleProductComparison(productId) {
-    try {
-        const product = allProducts.find(p => p.id === productId);
-        if (!product) {
-            showToast('Producto no encontrado', 'error');
-            return;
-        }
-        
-        const existingIndex = comparisonList.findIndex(p => p.id === productId);
-        
-        if (existingIndex !== -1) {
-            comparisonList.splice(existingIndex, 1);
-            showToast(`${product.name} removido de la comparación`, 'info');
-        } else {
-            if (comparisonList.length >= 4) {
-                showToast('Máximo 4 productos para comparar', 'error');
-                return;
-            }
-            comparisonList.push(product);
-            showToast(`${product.name} agregado a la comparación`, 'success');
-        }
-        
-        updateComparisonUI();
-        loadProducts(); // Refresh to update compare buttons
-    } catch (error) {
-        handleError(error, 'toggleProductComparison');
-    }
-}
+// removed: toggleProductComparison
 
 // Update comparison UI
-function updateComparisonUI() {
-    const count = comparisonList.length;
-    
-    if (count > 0) {
-        compareCount.textContent = count;
-        compareCount.classList.remove('hidden');
-        mobileCompareCount.textContent = `(${count})`;
-        mobileCompareCount.classList.remove('hidden');
-    } else {
-        compareCount.classList.add('hidden');
-        mobileCompareCount.classList.add('hidden');
-    }
-}
+// removed: updateComparisonUI
 
 // Open comparison modal
-function openComparisonModal() {
-    if (comparisonList.length < 2) {
-        alert('Selecciona al menos 2 productos para comparar');
-        return;
-    }
-    
-    comparisonContent.innerHTML = createComparisonContent();
-    comparisonModal.classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
-}
+// removed: openComparisonModal
 
 // Create comparison content
-function createComparisonContent() {
-    if (comparisonList.length === 0) {
-        return '<p class="text-center text-gray-500">No hay productos seleccionados para comparar</p>';
-    }
-    
-    return `
-        <div class="overflow-x-auto">
-            <table class="w-full border-collapse">
-                <thead>
-                    <tr>
-                        <th class="border p-3 bg-gray-50 text-left font-semibold">Característica</th>
-                        ${comparisonList.map(product => `
-                            <th class="border p-3 bg-gray-50 text-center font-semibold min-w-48">
-                                <div class="text-sm">${product.name}</div>
-                            </th>
-                        `).join('')}
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="border p-3 font-medium">Imagen</td>
-                        ${comparisonList.map(product => {
-                            // Get the first format image or fallback to product.image
-                            const imagePath = product.formats ? product.formats[0].image : product.image;
-                            const fixedImagePath = imagePath; // Now perfectly aligned
-                            
-                            return `
-                            <td class="border p-3 text-center">
-                                <div class="w-20 h-20 bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg flex items-center justify-center mx-auto p-2">
-                                    <img src="${fixedImagePath}" alt="${product.name}" 
-                                         class="max-w-full max-h-full object-contain rounded"
-                                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                                    <div class="text-center text-xs" style="display: none;">
-                                        <i class="fas fa-image text-gray-400"></i>
-                                    </div>
-                                </div>
-                            </td>
-                        `}).join('')}
-                    </tr>
-                    <tr>
-                        <td class="border p-3 font-medium">Viscosidad</td>
-                        ${comparisonList.map(product => `
-                            <td class="border p-3 text-center font-semibold">${product.viscosity}</td>
-                        `).join('')}
-                    </tr>
-                    <tr>
-                        <td class="border p-3 font-medium">Tipo de Aceite</td>
-                        ${comparisonList.map(product => `
-                            <td class="border p-3 text-center">
-                                <span class="px-2 py-1 rounded text-sm ${getOilTypeClass(product.oilType)}">
-                                    ${product.oilType || 'Estándar'}
-                                </span>
-                            </td>
-                        `).join('')}
-                    </tr>
-                    <tr>
-                        <td class="border p-3 font-medium">Formato</td>
-                        ${comparisonList.map(product => {
-                            const format = product.formats ? product.formats[0].size : product.format;
-                            return `<td class="border p-3 text-center">${format}</td>`;
-                        }).join('')}
-                    </tr>
-                    <tr>
-                        <td class="border p-3 font-medium">Descripción</td>
-                        ${comparisonList.map(product => `
-                            <td class="border p-3 text-sm">${product.description}</td>
-                        `).join('')}
-                    </tr>
-                    <tr>
-                        <td class="border p-3 font-medium">API</td>
-                        ${comparisonList.map(product => `
-                            <td class="border p-3 text-center">${product.specs?.api || '-'}</td>
-                        `).join('')}
-                    </tr>
-                    <tr>
-                        <td class="border p-3 font-medium">ACEA</td>
-                        ${comparisonList.map(product => `
-                            <td class="border p-3 text-center">${product.specs?.acea || '-'}</td>
-                        `).join('')}
-                    </tr>
-                    <tr>
-                        <td class="border p-3 font-medium">JASO</td>
-                        ${comparisonList.map(product => `
-                            <td class="border p-3 text-center">${product.specs?.jaso || '-'}</td>
-                        `).join('')}
-                    </tr>
-                    <tr>
-                        <td class="border p-3 font-medium">Acciones</td>
-                        ${comparisonList.map(product => `
-                            <td class="border p-3 text-center">
-                                <div class="flex flex-col gap-2">
-                                    <button onclick="openProductModal('${product.id}')" 
-                                            class="bg-green-600 text-white px-3 py-1 rounded text-sm hover:bg-green-700">
-                                        Ver detalles
-                                    </button>
-                                    <button onclick="toggleProductComparison('${product.id}'); updateComparisonAfterRemove();" 
-                                            class="bg-red-600 text-white px-3 py-1 rounded text-sm hover:bg-red-700">
-                                        Remover
-                                    </button>
-                                </div>
-                            </td>
-                        `).join('')}
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        
-        <div class="mt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p class="text-sm text-gray-600">Comparando ${comparisonList.length} productos</p>
-            <div class="flex gap-2">
-                <button onclick="clearComparison()" 
-                        class="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700 transition-colors">
-                    Limpiar comparación
-                </button>
-                <button onclick="closeComparisonModal()" 
-                        class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors">
-                    Cerrar
-                </button>
-            </div>
-        </div>
-    `;
-}
+// removed: createComparisonContent
 
 // Get oil type class for comparison
-function getOilTypeClass(oilType) {
-    if (!oilType) return 'bg-gray-100 text-gray-800';
-    return oilType.includes('Full Sintético') ? 'bg-green-100 text-green-800' :
-           oilType.includes('Semi-sintético') ? 'bg-orange-100 text-orange-800' :
-           oilType.includes('Sintético') ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800';
-}
+// removed: getOilTypeClass
 
 // Update comparison after remove
-function updateComparisonAfterRemove() {
-    if (comparisonList.length < 2) {
-        closeComparisonModal();
-    } else {
-        comparisonContent.innerHTML = createComparisonContent();
-    }
-}
+// removed: updateComparisonAfterRemove
 
 // Close comparison modal
-function closeComparisonModal() {
-    comparisonModal.classList.add('hidden');
-    document.body.style.overflow = 'auto';
-}
+// removed: closeComparisonModal
 
 // Clear comparison
-function clearComparison() {
-    comparisonList = [];
-    updateComparisonUI();
-    loadProducts();
-    closeComparisonModal();
-}
+// removed: clearComparison
 
 // Share product
 function shareProduct(productId) {
@@ -2319,15 +2113,7 @@ function setupEventListeners() {
         }
     });
     
-    // Comparison functionality
-    compareToggle.addEventListener('click', openComparisonModal);
-    mobileCompareToggle.addEventListener('click', openComparisonModal);
-    closeComparison.addEventListener('click', closeComparisonModal);
-    comparisonModal.addEventListener('click', (e) => {
-        if (e.target === comparisonModal) {
-            closeComparisonModal();
-        }
-    });
+    // comparación eliminada
     
     // Mobile menu
     mobileMenuButton.addEventListener('click', () => {
@@ -2366,8 +2152,6 @@ function setupEventListeners() {
         if (e.key === 'Escape') {
             if (!productModal.classList.contains('hidden')) {
                 closeProductModal();
-            } else if (!comparisonModal.classList.contains('hidden')) {
-                closeComparisonModal();
             }
         }
         
@@ -2607,12 +2391,7 @@ function setupKeyboardNavigation() {
                     searchInput.focus();
                     showToast('Búsqueda activada (Ctrl+K)', 'info');
                     break;
-                case 'c':
-                    if (comparisonList.length >= 2) {
-                        e.preventDefault();
-                        openComparisonModal();
-                    }
-                    break;
+                
             }
         }
         
@@ -2620,8 +2399,6 @@ function setupKeyboardNavigation() {
         if (e.key === 'Escape') {
             if (!productModal.classList.contains('hidden')) {
                 closeProductModal();
-            } else if (!comparisonModal.classList.contains('hidden')) {
-                closeComparisonModal();
             }
         }
         
@@ -2651,13 +2428,8 @@ function setupKeyboardNavigation() {
 window.openProductModal = openProductModal;
 window.handleVerDetallesClick = handleVerDetallesClick;
 window.closeProductModal = closeProductModal;
-window.toggleProductComparison = toggleProductComparison;
-window.openComparisonModal = openComparisonModal;
-window.closeComparisonModal = closeComparisonModal;
-window.clearComparison = clearComparison;
 window.shareProduct = shareProduct;
 window.resetAllFilters = resetAllFilters;
-window.updateComparisonAfterRemove = updateComparisonAfterRemove;
 
 // Diagnostic function to check missing images
 function checkMissingImages() {
