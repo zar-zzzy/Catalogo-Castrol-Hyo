@@ -987,8 +987,8 @@ document.addEventListener('DOMContentLoaded', function() {
     try {
         initializePerformanceMonitoring();
         initializeProducts();
-        loadProducts();
-        setupEventListeners();
+    loadProducts();
+    setupEventListeners();
         setupIntersectionObserver();
         setupKeyboardNavigation();
         
@@ -1039,8 +1039,8 @@ window.addEventListener('load', function() {
                 // Apply exit animation class
                 loadingScreen.classList.add('loading-exit');
                 
-                setTimeout(() => {
-                    loadingScreen.style.display = 'none';
+        setTimeout(() => {
+            loadingScreen.style.display = 'none';
                     // Show welcome toast with professional message
                     showToast('¡Catálogo cargado exitosamente! 🛢️', 'success');
                 }, 600);
@@ -1364,7 +1364,7 @@ function createProductCardHTML(product) {
                             onclick="shareProduct('${product.id}')"
                             title="Compartir producto">
                         <i class="fas fa-share-alt"></i>
-                    </button>
+            </button>
                 </div>
             </div>
         </div>
@@ -1758,8 +1758,8 @@ function createModalContent(product) {
             <div>
                 <div class="relative mb-6">
                     <div class="w-full h-64 bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg flex items-center justify-center p-6 relative">
-                        ${imageContent}
-                    </div>
+                    ${imageContent}
+                </div>
                     
                 </div>
                 
@@ -1784,22 +1784,22 @@ function createModalContent(product) {
             </div>
             
             <div class="space-y-6">
-                <div>
+            <div>
                     <h4 class="font-semibold mb-3 text-lg">Descripción</h4>
                     <p class="text-gray-700 leading-relaxed">${product.description}</p>
-                </div>
-                
+            </div>
+            
                 ${specsHtml ? `
-                <div>
+            <div>
                     <h4 class="font-semibold mb-3 text-lg">Especificaciones Técnicas</h4>
                     <div class="bg-blue-50 p-4 rounded-lg space-y-1 text-sm">
-                        ${specsHtml}
-                    </div>
+                    ${specsHtml}
                 </div>
+            </div>
                 ` : ''}
-                
+            
                 ${features.length > 0 ? `
-                <div>
+            <div>
                     <h4 class="font-semibold mb-3 text-lg">Características Principales</h4>
                     <ul class="space-y-2">
                         ${features.map(feature => `
@@ -1808,22 +1808,26 @@ function createModalContent(product) {
                                 <span class="text-gray-700">${feature}</span>
                             </li>
                         `).join('')}
-                    </ul>
-                </div>
+                </ul>
+            </div>
                 ` : ''}
-                
+            
                 <div class="flex flex-col sm:flex-row gap-3 pt-4 border-t">
                     <a href="https://wa.me/51984618572?text=${encodeURIComponent(`Hola, me interesa el producto: ${product.name}`)}" 
-                       target="_blank"
-                       class="flex-1 bg-green-500 text-white py-3 px-4 rounded-lg hover:bg-green-600 transition-colors text-center font-medium">
-                        <i class="fab fa-whatsapp mr-2"></i>
-                        Consultar por WhatsApp
-                    </a>
+                   target="_blank"
+                   class="flex-1 bg-green-500 text-white py-3 px-4 rounded-lg hover:bg-green-600 transition-colors text-center font-medium">
+                    <i class="fab fa-whatsapp mr-2"></i>
+                    Consultar por WhatsApp
+                </a>
                     <button onclick="shareProduct('${product.id}')" 
                             class="flex-1 bg-blue-500 text-white py-3 px-4 rounded-lg hover:bg-blue-600 transition-colors font-medium">
                         <i class="fas fa-share-alt mr-2"></i>
                         Compartir Producto
-                    </button>
+                </button>
+                    ${product.sourceUrl ? `
+                    <a href="${product.sourceUrl}" target="_blank" class="flex-1 bg-gray-800 text-white py-3 px-4 rounded-lg hover:bg-gray-900 transition-colors text-center font-medium">
+                        <i class="fas fa-file-alt mr-2"></i> Ficha técnica
+                    </a>` : ''}
                 </div>
             </div>
         </div>
@@ -2428,7 +2432,7 @@ function setupKeyboardNavigation() {
 // Make functions globally available
 window.openProductModal = openProductModal;
 window.handleVerDetallesClick = handleVerDetallesClick;
-window.closeProductModal = closeProductModal;
+window.closeProductModal = closeProductModal; 
 window.shareProduct = shareProduct;
 window.resetAllFilters = resetAllFilters;
 
