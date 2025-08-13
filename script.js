@@ -1236,7 +1236,7 @@ function getCategoryInfo(category) {
 
 // Create product card HTML with carousel support
 function createProductCardHTML(product) {
-    const oilTypeBadge = getOilTypeBadge(product.oilType);
+    // Removed oil type banner (kept only small dot and label)
     const isInComparison = false;
     
     // Handle multiple formats
@@ -1335,7 +1335,7 @@ function createProductCardHTML(product) {
                 <div class="product-image-container w-full ${currentView === 'list' ? 'h-full' : 'h-56'} flex items-center justify-center p-4 rounded-t-lg relative">
                     ${imageContent}
                 </div>
-                ${oilTypeBadge}
+                
                 
             </div>
             
@@ -1372,15 +1372,7 @@ function createProductCardHTML(product) {
 }
 
 // Get oil type badge
-function getOilTypeBadge(oilType) {
-    if (!oilType) return '';
-    
-    const badgeClass = oilType.includes('Full Sintético') ? 'badge-synthetic' :
-                      oilType.includes('Semi-sintético') ? 'badge-semi-synthetic' :
-                      oilType.includes('Sintético') ? 'badge-synthetic' : 'badge-mineral';
-    
-    return `<div class="product-badge ${badgeClass}">${oilType}</div>`;
-}
+// Removed banner badge in favor of compact dot with label
 
 // Get oil type color
 function getOilTypeColor(oilType) {
@@ -1768,7 +1760,7 @@ function createModalContent(product) {
                     <div class="w-full h-64 bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg flex items-center justify-center p-6 relative">
                         ${imageContent}
                     </div>
-                    ${getOilTypeBadge(product.oilType)}
+                    
                 </div>
                 
                 <div class="bg-gray-50 p-4 rounded-lg">
@@ -1850,7 +1842,7 @@ function initializeModalCarousel(product) {
     
     let currentIndex = 0;
     const images = carousel.querySelectorAll('.modal-carousel-image');
-    const indicators = carousel.querySelectorAll('.modal-format-indicator');
+    let indicators = carousel.querySelectorAll('.modal-format-indicator');
     const prevBtn = carousel.querySelector('.modal-carousel-prev');
     const nextBtn = carousel.querySelector('.modal-carousel-next');
     
@@ -1933,11 +1925,15 @@ function initializeModalCarousel(product) {
         });
     }
     
-    // Add indicator click handlers (also refresh these)
+    // Add indicator click handlers (refresh nodes after cloning to keep references in sync)
     indicators.forEach((indicator, index) => {
         const newIndicator = indicator.cloneNode(true);
         indicator.parentNode.replaceChild(newIndicator, indicator);
-        newIndicator.addEventListener('click', (e) => {
+    });
+    // Re-query indicators after replacement and attach listeners
+    indicators = carousel.querySelectorAll('.modal-format-indicator');
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
             console.log(`🎯 Modal indicator clicked: ${index}`);
