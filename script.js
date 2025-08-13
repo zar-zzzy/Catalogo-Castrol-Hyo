@@ -1818,7 +1818,7 @@ function createModalContent(product) {
                 ` : ''}
                 
                 <div class="flex flex-col sm:flex-row gap-3 pt-4 border-t">
-                    <a href="https://wa.me/51999999999?text=${encodeURIComponent(`Hola, me interesa el producto: ${product.name}`)}" 
+                    <a href="https://wa.me/51984618572?text=${encodeURIComponent(`Hola, me interesa el producto: ${product.name}`)}" 
                        target="_blank"
                        class="flex-1 bg-green-500 text-white py-3 px-4 rounded-lg hover:bg-green-600 transition-colors text-center font-medium">
                         <i class="fab fa-whatsapp mr-2"></i>
@@ -2221,7 +2221,7 @@ function handleContactForm(e) {
             whatsappMessage += `\n📱 ${data.phone}`;
         }
         
-        const whatsappUrl = `https://wa.me/51999999999?text=${encodeURIComponent(whatsappMessage)}`;
+        const whatsappUrl = `https://wa.me/51984618572?text=${encodeURIComponent(whatsappMessage)}`;
         
         showToast('¡Formulario enviado! Redirigiendo a WhatsApp...');
         
