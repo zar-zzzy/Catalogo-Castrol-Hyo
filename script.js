@@ -2041,15 +2041,10 @@ function resetAllFilters() {
     };
     
     searchInput.value = '';
-    
-    // Reset filter chips
-    filterChips.forEach(chip => {
-        chip.classList.remove('active');
-        if (chip.dataset.value === '') {
-            chip.classList.add('active');
-        }
-    });
-    
+	
+	// Sync UI with state
+	updateFilterChipsUI();
+	
     loadProducts();
 }
 
@@ -2089,18 +2084,11 @@ function setupEventListeners() {
             const filterType = chip.dataset.filter;
             const filterValue = chip.dataset.value;
             
-            // Remove active class from siblings
-            document.querySelectorAll(`.filter-chip[data-filter="${filterType}"]`).forEach(sibling => {
-                sibling.classList.remove('active');
-            });
-            
-            // Add active class to clicked chip
-            chip.classList.add('active');
-            
             // Update filter state
             currentFilters[filterType] = filterValue;
-            
-            // Apply filters
+			
+			// Sync UI with state and apply filters
+			updateFilterChipsUI();
             loadProducts();
         });
     });
@@ -2162,6 +2150,20 @@ function setupEventListeners() {
             }
         }
     });
+}
+
+// Ensure the UI reflects currentFilters state for active chips
+function updateFilterChipsUI() {
+	// Category chips
+	document.querySelectorAll('.filter-chip[data-filter="category"]').forEach(chip => {
+		const isActive = (currentFilters.category ?? '') === chip.dataset.value;
+		chip.classList.toggle('active', isActive);
+	});
+	// Oil type chips
+	document.querySelectorAll('.filter-chip[data-filter="oilType"]').forEach(chip => {
+		const isActive = (currentFilters.oilType ?? '') === chip.dataset.value;
+		chip.classList.toggle('active', isActive);
+	});
 }
 
 // Handle contact form
