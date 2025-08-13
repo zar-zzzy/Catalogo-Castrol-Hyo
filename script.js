@@ -1283,7 +1283,7 @@ function createProductCardHTML(product) {
                 <!-- Format indicators - MEJORADOS PARA MAYOR VISIBILIDAD -->
                 <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-1 z-10">
                     ${fixedFormats.map((format, index) => `
-                        <div class="format-indicator w-3 h-3 rounded-full cursor-pointer transition-all duration-300 border-2 ${index === 0 ? 'bg-white border-green-600 shadow-lg' : 'bg-white bg-opacity-70 border-white hover:bg-opacity-90 hover:border-green-400'}" 
+                        <div class="format-indicator w-3 h-3 rounded-full cursor-pointer transition-all duration-300 border-2 ${index === 0 ? 'bg-white border-green-600 shadow-lg ring-2 ring-green-300 scale-110' : 'bg-white bg-opacity-70 border-white hover:bg-opacity-90 hover:border-green-400'}" 
                              data-format-index="${index}"
                              title="Presentación: ${format.size}"></div>
                     `).join('')}
@@ -1528,9 +1528,9 @@ function initializeProductCarousels() {
         indicators.forEach((indicator, i) => {
             if (i === index) {
                 indicator.classList.remove('bg-white', 'bg-opacity-70', 'border-white');
-                indicator.classList.add('bg-white', 'border-green-600', 'shadow-lg');
+                indicator.classList.add('bg-white', 'border-green-600', 'shadow-lg', 'ring-2', 'ring-green-300', 'scale-110');
             } else {
-                indicator.classList.remove('bg-white', 'border-green-600', 'shadow-lg');
+                indicator.classList.remove('bg-white', 'border-green-600', 'shadow-lg', 'ring-2', 'ring-green-300', 'scale-110');
                 indicator.classList.add('bg-white', 'bg-opacity-70', 'border-white');
             }
         });
@@ -1538,6 +1538,9 @@ function initializeProductCarousels() {
             // Update format display
             if (formatDisplay) {
                 formatDisplay.textContent = product.formats[index].size;
+                // Visual feedback on format label
+                formatDisplay.classList.add('text-green-700');
+                setTimeout(() => formatDisplay.classList.remove('text-green-700'), 600);
             }
             
             currentIndex = index;
@@ -1876,9 +1879,9 @@ function initializeModalCarousel(product) {
         indicators.forEach((indicator, i) => {
             if (i === index) {
                 indicator.classList.remove('bg-black', 'bg-opacity-70', 'text-white', 'border-transparent');
-                indicator.classList.add('bg-white', 'text-green-600', 'border-green-600', 'shadow-lg');
+                indicator.classList.add('bg-white', 'text-green-600', 'border-green-600', 'shadow-lg', 'ring-2', 'ring-green-300');
             } else {
-                indicator.classList.remove('bg-white', 'text-green-600', 'border-green-600', 'shadow-lg');
+                indicator.classList.remove('bg-white', 'text-green-600', 'border-green-600', 'shadow-lg', 'ring-2', 'ring-green-300');
                 indicator.classList.add('bg-black', 'bg-opacity-70', 'text-white', 'border-transparent');
             }
         });
